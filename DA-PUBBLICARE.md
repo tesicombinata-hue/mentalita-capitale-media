@@ -93,6 +93,41 @@ Fonti: Rockstar e Take-Two (risultati del 9/11/2026), stima di Business Insider,
 
 ---
 
+## 4. 4 pillole di mentalità: martedì 24 novembre, ore 18:30
+
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-24/reel_4_pillole_mentalita.mp4
+
+Audio: di tendenza, emotivo e ispirazionale (piano o archi, crescendo lento).
+
+Didascalia:
+
+```
+8 lettere. Il modo in cui ragiona chi i soldi li tiene 👇
+
+C – Costanza: poco ogni mese batte tanto ogni tanto.
+A – Abitudini: il patrimonio si costruisce con quello che fai tutti i giorni.
+P – Pazienza: all'inizio sembra che non succeda niente. Poi succede tutto.
+I – Istruzione: prima di mettere i soldi da qualche parte, capisci dove li metti.
+T – Tempo: chi parte prima non ha bisogno di correre.
+A – Autocontrollo: non tutto quello che puoi comprare devi comprarlo.
+L – Lungo periodo: una brutta giornata non è una brutta vita.
+E – Equilibrio: risparmiare non vuol dire smettere di vivere.
+
+Non serve essere ricchi per ragionare così. Si comincia ragionando così.
+
+Qual è la lettera su cui devi lavorare di più? Scrivila nei commenti 👇
+Salvalo e rileggilo nelle giornate storte.
+
+Segui @mentalita.capitale: ogni giorno i numeri che nessuno ti spiega.
+
+Contenuto educativo, non consulenza finanziaria.
+
+#mentalita #finanzapersonale #educazionefinanziaria #risparmio #crescitapersonale #disciplina #mentalitacapitale
+```
+
+---
+
+
 ## Già programmati in vidIQ: escono da soli, l'audio originale della scena c'è già
 - Mar 17, 18:30: meme nonno Simpson (audio originale della scena)
 - Lun 23, 18:30: meme The Social Network (audio originale della scena, la battuta è il meme)
