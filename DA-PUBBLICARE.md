@@ -62,7 +62,37 @@ Video: Dronepilot Chile su Pexels.
 
 ---
 
-## Già programmati in vidIQ (non toccare)
+## 3. Carosello GTA 6 in numeri: mercoledì 18 novembre, ore 12:00
+Alle 12:30 uscirà da vidIQ anche la versione senza musica: archiviala subito (⋯ → Manage → Archive).
+
+Slide, in ordine (dal telefono: aprile una per una, tieni premuto e scegli "Salva immagine"):
+1. https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-18/carosello_gta6_01.jpg
+2. https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-18/carosello_gta6_02.jpg
+3. https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-18/carosello_gta6_03.jpg
+4. https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-18/carosello_gta6_04.jpg
+5. https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-18/carosello_gta6_05.jpg
+6. https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-18/carosello_gta6_06.jpg
+7. https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-18/carosello_gta6_07.jpg
+8. https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-18/carosello_gta6_08.jpg
+
+Audio: di tendenza, epico o cinematico.
+
+Didascalia:
+
+```
+GTA 6 esce domani. Ecco i numeri dietro il lancio più atteso nella storia dei videogiochi.
+
+13 anni dopo GTA V, e con un costo stimato dagli analisti tra 1 e 1,5 miliardi di dollari, deve battere un record: GTA V incassò 1 miliardo in 3 giorni.
+
+Quale numero ti ha sorpreso di più? Scrivilo nei commenti 👇
+
+Fonti: Rockstar e Take-Two (risultati del 9/11/2026), stima di Business Insider, Yahoo Finance per il titolo. I rendimenti passati non sono indicativi di quelli futuri. Contenuto educativo, non consulenza finanziaria.
+
+#gta6 #gtavi #rockstargames #taketwo #videogiochi #finanza #mentalitacapitale
+```
+
+---
+
+## Già programmati in vidIQ: escono da soli, l'audio originale della scena c'è già
 - Mar 17, 18:30: meme nonno Simpson (audio originale della scena)
-- Mer 18, 12:30: carosello GTA 6 in numeri
 - Lun 23, 18:30: meme The Social Network (audio originale della scena, la battuta è il meme)
