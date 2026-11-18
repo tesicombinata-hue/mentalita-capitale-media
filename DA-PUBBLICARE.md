@@ -9,6 +9,43 @@ Come si fa, per ogni Reel:
 
 ---
 
+## REAL TIME: Inflazione al 5,5%, post singolo (consigliato: giovedì 19 novembre, ore 12:30)
+Va bene fino a venerdì: il dato Istat è uscito il 17/11.
+
+Immagine: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-18/post_inflazione_realtime.png
+
+Audio (anche sui post con immagine si aggiunge la musica): di tendenza, serio e calmo, beat lento.
+
+Didascalia:
+
+```
+Se il tuo stipendio è uguale a un anno fa, in realtà te l'hanno tagliato 👇
+
+Ieri l'Istat ha dato il dato definitivo: a ottobre i prezzi sono più alti del 5,5% rispetto a un anno fa. A spingere è soprattutto l'energia, salita del 31,9%.
+
+Cosa vuol dire per te:
+– con 1.800 € netti, per comprare le stesse cose di un anno fa ti servirebbero 1.899 €;
+– se la busta paga non si è mossa, perdi circa 94 € al mese di potere d'acquisto: più di 1.100 € in un anno;
+– 10.000 € fermi sul conto oggi comprano quanto 9.479 € di un anno fa. 521 € in meno, senza aver speso niente.
+
+3 cose da fare questa settimana:
+1. Controlla nel tuo contratto (CCNL) quando è previsto il prossimo aumento.
+2. Se hai una valutazione o un colloquio in arrivo, porta questo numero: un aumento del 5,5% serve solo a restare dove eri.
+3. Guarda quanto tieni fermo sul conto oltre al fondo emergenze: anche quei soldi perdono valore.
+
+L'inflazione non si vede in busta paga. Si vede alla cassa.
+
+Salvalo e mandalo a chi dice "tanto lo stipendio è sempre quello".
+Segui @mentalita.capitale: ogni giorno i numeri che nessuno ti spiega.
+
+Fonte: Istat, prezzi al consumo, dati definitivi di ottobre 2026 (diffusi il 17/11/2026). Calcoli nostri: importo × 1,055 e importo ÷ 1,055. Esempio ipotetico: il paniere di ognuno è diverso. Contenuto educativo, non consulenza finanziaria.
+
+#inflazione #stipendio #potereacquisto #soldi #finanzapersonale #risparmio #mentalitacapitale
+```
+
+---
+
+
 ## 1. Take-Two dal 2001 a oggi: SUBITO (ripubblicazione)
 Prima archivia quello uscito alle 18:30 (⋯ → Manage → Archive).
 
