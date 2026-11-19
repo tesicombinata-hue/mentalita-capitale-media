@@ -10,7 +10,7 @@ Come si fa, per ogni Reel:
 ---
 
 ## OGGI 19/11 ore 12:30 – REEL Inflazione al 5,5% (sostituisce il post singolo qui sotto)
-Primo Reel con la tecnica della scheda A della guida (tutto il testo fermo, sfondo chiaro, riquadri, 6,5 s).
+Primo Reel con la tecnica della scheda A della guida (tutto il testo fermo, sfondo VIDEO con onde in movimento - Pexels 39407733 -, riquadri, 6,5 s). Versione 2 del 19/11 ore 10.
 
 Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-19/reel_inflazione.mp4
 

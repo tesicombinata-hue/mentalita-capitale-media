@@ -6,7 +6,8 @@ Uso: python3 reel_testo.py contenuto.json uscita.mp4 [secondo]   (con il secondo
 
 contenuto.json:
 {
-  "sfondo": "bg.jpg",                # immagine 1080x1920 (o più grande), giorno, luminosa
+  "sfondo": "bg.mp4",                # VIDEO di giorno con movimento vero (consigliato) oppure immagine .jpg
+  "inizio_video": 0,                 # secondo da cui parte il video di sfondo
   "durata": 6.5,
   "titolo": ["RIGA 1", "RIGA 2"],    # riquadro giallo, testo nero
   "righe": ["💶 testo", "..."],       # riquadri bianchi, testo nero grassetto; l'emoji iniziale è facoltativa
@@ -102,6 +103,24 @@ def frame(bg, ov, t, dur):
 
 if __name__ == "__main__":
     c = json.load(open(sys.argv[1])); out = sys.argv[2]
+    dur = c.get("durata", 6.5)
+    if c["sfondo"].lower().endswith((".mp4", ".mov")):
+        # sfondo VIDEO (consigliato: movimento vero). Il testo è un livello fisso sopra il video.
+        ov, ybottom = build_overlay(c)
+        print("fine del blocco di testo a y =", ybottom, "(sotto 1590 resta libero)")
+        ov.save("_overlay.png")
+        ss = str(c.get("inizio_video", 0))
+        if len(sys.argv) > 3:
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", str(float(ss) + float(sys.argv[3])), "-i", c["sfondo"], "-i", "_overlay.png",
+                            "-filter_complex", f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H}[b];[b][1:v]overlay=0:0",
+                            "-frames:v", "1", out], check=True)
+            sys.exit()
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", ss, "-t", str(dur), "-i", c["sfondo"], "-i", "_overlay.png",
+                        "-f", "lavfi", "-t", str(dur), "-i", "anullsrc=r=44100:cl=stereo",
+                        "-filter_complex", f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS}[b];[b][1:v]overlay=0:0[v]",
+                        "-map", "[v]", "-map", "2:a", "-t", str(dur), "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
+                        "-pix_fmt", "yuv420p", "-c:a", "aac", out], check=True)
+        sys.exit()
     bg = Image.open(c["sfondo"]).convert("RGB")
     if bg.size != (W, H):
         r = max(W / bg.width, H / bg.height); bg = bg.resize((int(bg.width * r) + 1, int(bg.height * r) + 1))
@@ -109,7 +128,6 @@ if __name__ == "__main__":
     bg = bg.resize((int(W * 1.08), int(H * 1.08)), Image.LANCZOS).crop((int(W * 0.04), int(H * 0.04), int(W * 0.04) + W, int(H * 0.04) + H))
     ov, ybottom = build_overlay(c)
     print("fine del blocco di testo a y =", ybottom, "(sotto 1590 resta libero)")
-    dur = c.get("durata", 6.5)
     if len(sys.argv) > 3:
         frame(bg, ov, float(sys.argv[3]), dur).save(out); sys.exit()
     p = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
