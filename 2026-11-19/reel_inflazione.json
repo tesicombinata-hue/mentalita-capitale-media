@@ -1,0 +1,18 @@
+{
+  "sfondo": "bg_mare.jpg",
+  "durata": 6.5,
+  "y_inizio": 320,
+  "titolo": ["INFLAZIONE AL 5,5%:", "QUANTO HAI PERSO TU?"],
+  "righe": [
+    "💶 1.300 € netti → -68 € al mese",
+    "💶 1.500 € netti → -78 € al mese",
+    "💶 1.800 € netti → -94 € al mese",
+    "💶 2.200 € netti → -115 € al mese",
+    "💶 2.500 € netti → -130 € al mese",
+    "🏦 10.000 € fermi sul conto → -521 €",
+    "⚡ Energia: +31,9% in un anno"
+  ],
+  "chiusura": ["Se la busta paga è uguale a un anno fa,", "in realtà te l'hanno tagliata."],
+  "invito": ["Commenta INFLAZIONE e ti dico", "le 3 mosse per difenderti"],
+  "nota": "Fonte: Istat, dati definitivi ottobre 2026. Potere d'acquisto, esempio ipotetico."
+}
