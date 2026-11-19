@@ -73,7 +73,7 @@ def build_overlay(c):
     y = box(ov, y, c["titolo"], font("Inter-Black.otf", 60), YELLOW, BLACK, pad=(30, 18), gap=4) + 26
     fr = font("Inter-Bold.otf", 40)
     for r in c["righe"]:
-        y = box(ov, y, [r], fr, WHITE, BLACK, pad=(22, 10), radius=14, emoji_size=40) + 12
+        y = box(ov, y, r.split("\n"), fr, WHITE, BLACK, pad=(22, 10), radius=14, emoji_size=40) + 12  # "\n" = riquadro su più righe
     if c.get("chiusura"):
         y = box(ov, y + 14, c["chiusura"], font("Inter-ExtraBold.otf", 40), WHITE, BLACK, pad=(24, 12)) + 12
     if c.get("invito"):

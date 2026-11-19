@@ -12,7 +12,7 @@ Come si fa, per ogni Reel:
 ## TEST INFLAZIONE – oggi 19/11, 3 versioni dello stesso Reel (si confrontano tra 24-48 ore)
 - **Versione A (12:30) – angolo "QUANTO PERDI"**: gancio "Inflazione al 5,5%: quanto hai perso tu?", tabella della perdita per stipendio, sfondo onda dalla nave.
 - **Versione B (16:30) – angolo "COSA FARE"**: gancio "Hai 1.800 € netti? Da ottobre te ne mancano 94 al mese", 3 numeri + 3 azioni concrete + "un aumento del 5,5% serve solo a restare dove eri", invito a salvare, sfondo onde sugli scogli. Sezione subito sotto.
-- **Versione C (20:30) – terzo angolo**: da definire.
+- **Versione C (20:30) – angolo "PROTEGGI I TUOI SOLDI"**: lista utile "Inflazione al 5,5%: 5 mosse per non perdere soldi" (bollette, budget, fondo emergenze, conto allo 0%, rendimento), invito a salvare, sfondo spiaggia dall'alto. Sezione subito sotto la B.
 Stesso argomento, tre angoli diversi: si confronta quale angolo funziona e perché. Tra una e l'altra almeno 4 ore, brani diversi.
 
 ### Versione B – ore 16:30
@@ -44,6 +44,38 @@ Commenta INFLAZIONE e ti rispondo con un consiglio sulla tua situazione.
 Fonte: Istat, prezzi al consumo, dati definitivi di ottobre 2026 (17/11/2026). Calcoli nostri: perdita = stipendio − stipendio ÷ 1,055. Esempio ipotetico: il paniere di ognuno è diverso. Contenuto educativo, non consulenza finanziaria.
 
 #inflazione #stipendio #potereacquisto #soldi #finanzapersonale #risparmio #mentalitacapitale
+```
+
+---
+
+
+### Versione C – ore 20:30 – angolo "PROTEGGI I TUOI SOLDI" (lista utile)
+
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-19/reel_inflazione_C.mp4
+
+Audio: di tendenza, positivo e ritmato, diverso da quelli di A e B.
+
+Didascalia:
+
+```
+Inflazione al 5,5%: 5 mosse per non perdere soldi. Salvalo 👇
+
+L'Istat l'ha confermato: a ottobre i prezzi sono più alti del 5,5% rispetto a un anno fa, con l'energia a +31,9%. Non puoi fermare l'inflazione, ma puoi decidere quanto ti costa.
+
+1. Bollette: confronta le offerte di luce e gas. Cambiare fornitore è gratis e non ti lascia senza corrente.
+2. Budget: rifallo con le cifre di oggi. Le spese fisse sono salite, il tuo piano probabilmente no.
+3. Fondo emergenze: sul conto tieni 3-6 mesi di spese, non di più.
+4. Conto corrente: allo 0% perde il 5,5% l'anno. Su 10.000 € sono 521 € di potere d'acquisto in meno.
+5. Il resto: deve rendere almeno quanto l'inflazione, altrimenti perde valore anche se non lo tocchi.
+
+Chi i soldi li tiene, non li lascia fermi.
+
+Salvalo e commenta INFLAZIONE: ti rispondo con la mossa da cui partire nella tua situazione.
+Segui @mentalita.capitale: ogni giorno i numeri che nessuno ti spiega.
+
+Fonte: Istat, prezzi al consumo, dati definitivi di ottobre 2026 (17/11/2026). Calcolo: 10.000 € ÷ 1,055. Esempio ipotetico. Contenuto educativo, non consulenza finanziaria.
+
+#inflazione #risparmio #bollette #soldi #finanzapersonale #educazionefinanziaria #mentalitacapitale
 ```
 
 ---
