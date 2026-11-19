@@ -10,10 +10,10 @@ Come si fa, per ogni Reel:
 ---
 
 ## TEST INFLAZIONE – oggi 19/11, 3 versioni dello stesso Reel (si confrontano tra 24-48 ore)
-- **Versione A (12:30)**: gancio "Inflazione al 5,5%: quanto hai perso tu?", sfondo onda dalla nave. È la sezione qui sotto.
-- **Versione B (16:30)**: gancio "Hai 1.800 € netti? Da ottobre te ne mancano 94 al mese", sfondo onde sugli scogli. Sezione subito sotto.
-- **Versione C (20:30)**: da definire.
-Tra una e l'altra almeno 4 ore. Stessa didascalia di base, cambia solo la prima riga.
+- **Versione A (12:30) – angolo "QUANTO PERDI"**: gancio "Inflazione al 5,5%: quanto hai perso tu?", tabella della perdita per stipendio, sfondo onda dalla nave.
+- **Versione B (16:30) – angolo "COSA FARE"**: gancio "Hai 1.800 € netti? Da ottobre te ne mancano 94 al mese", 3 numeri + 3 azioni concrete + "un aumento del 5,5% serve solo a restare dove eri", invito a salvare, sfondo onde sugli scogli. Sezione subito sotto.
+- **Versione C (20:30) – terzo angolo**: da definire.
+Stesso argomento, tre angoli diversi: si confronta quale angolo funziona e perché. Tra una e l'altra almeno 4 ore, brani diversi.
 
 ### Versione B – ore 16:30
 
@@ -38,8 +38,8 @@ Le 3 mosse per difenderti:
 2. Se hai una valutazione o un colloquio in arrivo, porta questo numero: un aumento del 5,5% serve solo a restare dove eri.
 3. Guarda quanto tieni fermo sul conto oltre al fondo emergenze: anche quei soldi perdono valore.
 
+Salvalo per il prossimo colloquio: un aumento del 5,5% non è un premio, serve solo a restare dove eri.
 Commenta INFLAZIONE e ti rispondo con un consiglio sulla tua situazione.
-Salvalo e mandalo a chi dice "tanto lo stipendio è sempre quello".
 
 Fonte: Istat, prezzi al consumo, dati definitivi di ottobre 2026 (17/11/2026). Calcoli nostri: perdita = stipendio − stipendio ÷ 1,055. Esempio ipotetico: il paniere di ognuno è diverso. Contenuto educativo, non consulenza finanziaria.
 
