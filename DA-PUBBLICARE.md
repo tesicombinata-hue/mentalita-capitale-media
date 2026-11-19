@@ -13,6 +13,7 @@ Come si fa, per ogni Reel:
 - **Versione A (12:30) – angolo "QUANTO PERDI"**: gancio "Inflazione al 5,5%: quanto hai perso tu?", tabella della perdita per stipendio, sfondo onda dalla nave.
 - **Versione B (16:30) – angolo "COSA FARE"**: gancio "Hai 1.800 € netti? Da ottobre te ne mancano 94 al mese", 3 numeri + 3 azioni concrete + "un aumento del 5,5% serve solo a restare dove eri", invito a salvare, sfondo onde sugli scogli. Sezione subito sotto.
 - **Versione C (20:30) – angolo "PROTEGGI I TUOI SOLDI"**: lista utile "Inflazione al 5,5%: 5 mosse per non perdere soldi" (bollette, budget, fondo emergenze, conto allo 0%, rendimento), invito a salvare, sfondo spiaggia dall'alto. Sezione subito sotto la B.
+Didascalie aggiornate alle 11:50 (regalo concreto nella prima riga, voce "noi", obiezioni, parole chiave). Parole chiave diverse per versione: A = INFLAZIONE, B = AUMENTO, C = CONTO. A chi commenta si scrive in DM chiedendo la cifra; Claude prepara il calcolo.
 Stesso argomento, tre angoli diversi: si confronta quale angolo funziona e perché. Tra una e l'altra almeno 4 ore, brani diversi.
 
 ### Versione B – ore 16:30
@@ -24,26 +25,29 @@ Audio: di tendenza, ritmato, diverso da quello della versione A.
 Didascalia:
 
 ```
-Hai 1.800 € netti? Da ottobre te ne mancano 94 al mese 👇
+Commenta AUMENTO e ti mandiamo in DM quanto devi chiedere al prossimo colloquio per non perdere soldi, calcolato sul tuo stipendio 👇
 
-L'Istat ha dato il dato definitivo: a ottobre i prezzi sono più alti del 5,5% rispetto a un anno fa. A spingere è soprattutto l'energia, salita del 31,9%.
+Hai 1.800 € netti? Da ottobre te ne mancano 94 al mese.
+L'Istat ha confermato l'inflazione al 5,5%: per comprare le stesse cose di un anno fa oggi ti servono 1.899 €, cioè 99 € in più ogni mese.
 
-Cosa vuol dire per te:
-– con 1.800 € netti, per comprare le stesse cose di un anno fa ti servirebbero 1.899 €;
-– se la busta paga non si è mossa, perdi circa 94 € al mese di potere d'acquisto: più di 1.100 € in un anno;
-– 10.000 € fermi sul conto oggi comprano quanto 9.479 € di un anno fa.
+Un aumento del 5,5% non è un premio. Serve solo a restare dove eri.
 
-Le 3 mosse per difenderti:
-1. Controlla nel tuo contratto (CCNL) quando è previsto il prossimo aumento.
-2. Se hai una valutazione o un colloquio in arrivo, porta questo numero: un aumento del 5,5% serve solo a restare dove eri.
-3. Guarda quanto tieni fermo sul conto oltre al fondo emergenze: anche quei soldi perdono valore.
+Cosa puoi fare adesso:
+1. Guarda nel tuo contratto (CCNL) quando è previsto il prossimo aumento e di quanto.
+2. Se hai una valutazione o un colloquio in arrivo, entra con questo numero. Chiedere il 5,5% non è chiedere di più: è chiedere di non perdere.
+3. Se non è previsto niente, mettilo per iscritto e chiedi un incontro. Chi porta un dato ufficiale viene ascoltato più di chi dice "mi serve di più".
 
-Salvalo per il prossimo colloquio: un aumento del 5,5% non è un premio, serve solo a restare dove eri.
-Commenta INFLAZIONE e ti rispondo con un consiglio sulla tua situazione.
+"E se mi dicono di no?"
+Almeno sai dove sei. Ed è un'informazione utile per decidere i prossimi passi.
 
-Fonte: Istat, prezzi al consumo, dati definitivi di ottobre 2026 (17/11/2026). Calcoli nostri: perdita = stipendio − stipendio ÷ 1,055. Esempio ipotetico: il paniere di ognuno è diverso. Contenuto educativo, non consulenza finanziaria.
+Commenta AUMENTO: ti rispondiamo in DM con la cifra precisa da chiedere sul tuo stipendio.
+Salvalo per il prossimo colloquio.
+Segui @mentalita.capitale: ogni giorno i numeri che nessuno ti spiega.
 
-#inflazione #stipendio #potereacquisto #soldi #finanzapersonale #risparmio #mentalitacapitale
+Fonte: Istat, prezzi al consumo, dati definitivi di ottobre 2026 (17/11/2026). Calcoli: stipendio × 1,055 e stipendio − stipendio ÷ 1,055. Esempio ipotetico. Contenuto educativo, non consulenza.
+
+[inflazione, aumento stipendio, quanto chiedere di aumento, come chiedere un aumento, colloquio di lavoro, CCNL aumenti, stipendio netto, potere d'acquisto, busta paga, lavoro, carriera, finanza personale]
+#aumento #stipendio #inflazione #mentalitacapitale
 ```
 
 ---
@@ -58,24 +62,35 @@ Audio: di tendenza, positivo e ritmato, diverso da quelli di A e B.
 Didascalia:
 
 ```
-Inflazione al 5,5%: 5 mosse per non perdere soldi. Salvalo 👇
+Commenta CONTO e ti mandiamo in DM quanto stanno perdendo i tuoi risparmi fermi, calcolato sulla tua cifra 👇
 
-L'Istat l'ha confermato: a ottobre i prezzi sono più alti del 5,5% rispetto a un anno fa, con l'energia a +31,9%. Non puoi fermare l'inflazione, ma puoi decidere quanto ti costa.
+Inflazione al 5,5%: 5 mosse per non perdere soldi. Salvalo, ti servirà.
 
-1. Bollette: confronta le offerte di luce e gas. Cambiare fornitore è gratis e non ti lascia senza corrente.
+Prima un numero: se i tuoi risparmi stanno fermi sul conto corrente allo 0%, in un anno hanno perso il 5,5% del loro valore.
+5.000 € → circa 261 € in meno
+10.000 € → circa 521 € in meno
+20.000 € → circa 1.043 € in meno
+Senza aver speso un euro.
+
+Le 5 mosse:
+1. Bollette: confronta le offerte di luce e gas. Cambiare fornitore è gratis e non resti senza corrente.
 2. Budget: rifallo con le cifre di oggi. Le spese fisse sono salite, il tuo piano probabilmente no.
-3. Fondo emergenze: sul conto tieni 3-6 mesi di spese, non di più.
-4. Conto corrente: allo 0% perde il 5,5% l'anno. Su 10.000 € sono 521 € di potere d'acquisto in meno.
+3. Fondo emergenze: sul conto tieni 3-6 mesi di spese. Quella è la cifra che deve stare ferma, non di più.
+4. Conto corrente: va bene per le spese del mese, non per i risparmi di anni.
 5. Il resto: deve rendere almeno quanto l'inflazione, altrimenti perde valore anche se non lo tocchi.
+
+"Ma investire è rischioso."
+Anche tenere tutto fermo lo è: la perdita è solo più lenta e meno visibile.
 
 Chi i soldi li tiene, non li lascia fermi.
 
-Salvalo e commenta INFLAZIONE: ti rispondo con la mossa da cui partire nella tua situazione.
+Commenta CONTO: ti rispondiamo in DM con il calcolo sulla tua cifra.
 Segui @mentalita.capitale: ogni giorno i numeri che nessuno ti spiega.
 
-Fonte: Istat, prezzi al consumo, dati definitivi di ottobre 2026 (17/11/2026). Calcolo: 10.000 € ÷ 1,055. Esempio ipotetico. Contenuto educativo, non consulenza finanziaria.
+Fonte: Istat, prezzi al consumo, dati definitivi di ottobre 2026 (17/11/2026). Calcolo: cifra − cifra ÷ 1,055. Esempio ipotetico. Contenuto educativo, non consulenza finanziaria.
 
-#inflazione #risparmio #bollette #soldi #finanzapersonale #educazionefinanziaria #mentalitacapitale
+[inflazione, risparmi, soldi fermi sul conto, conto corrente, fondo emergenza, come proteggere i risparmi, caro bollette, cambiare fornitore luce e gas, budget familiare, come risparmiare, finanza personale, educazione finanziaria]
+#risparmio #inflazione #soldi #mentalitacapitale
 ```
 
 ---
@@ -88,31 +103,35 @@ Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-me
 
 Audio: di tendenza, ritmato (non triste), volume pieno.
 Copertina: va bene il primo fotogramma.
-Dopo l'uscita: rispondi ai commenti "INFLAZIONE" con le 3 mosse (sono nella didascalia, puoi copiarle in risposta).
+Dopo l'uscita: a chi commenta INFLAZIONE scrivi in DM "Ciao! Quanto prendi netto al mese?" e mandami la cifra: ti preparo il calcolo da incollare.
 
 Didascalia:
 
 ```
-Se il tuo stipendio è uguale a un anno fa, in realtà te l'hanno tagliato 👇
+Commenta INFLAZIONE e ti mandiamo in DM quanto stai perdendo con il TUO stipendio, calcolato sulla tua cifra 👇
 
-L'Istat ha dato il dato definitivo: a ottobre i prezzi sono più alti del 5,5% rispetto a un anno fa. A spingere è soprattutto l'energia, salita del 31,9%.
+L'Istat ha dato il dato definitivo: a ottobre i prezzi sono più alti del 5,5% rispetto a un anno fa. L'energia da sola è salita del 31,9%.
 
-Cosa vuol dire per te:
-– con 1.800 € netti, per comprare le stesse cose di un anno fa ti servirebbero 1.899 €;
-– se la busta paga non si è mossa, perdi circa 94 € al mese di potere d'acquisto: più di 1.100 € in un anno;
-– 10.000 € fermi sul conto oggi comprano quanto 9.479 € di un anno fa.
+Tradotto in busta paga: se il tuo stipendio è rimasto uguale, con le stesse cifre compri meno cose.
+Con 1.800 € netti perdi circa 94 € al mese di potere d'acquisto. In un anno sono più di 1.100 €.
+Nessuno te li ha tolti dal conto, ma è come se l'avessero fatto.
 
-Le 3 mosse per difenderti:
-1. Controlla nel tuo contratto (CCNL) quando è previsto il prossimo aumento.
-2. Se hai una valutazione o un colloquio in arrivo, porta questo numero: un aumento del 5,5% serve solo a restare dove eri.
-3. Guarda quanto tieni fermo sul conto oltre al fondo emergenze: anche quei soldi perdono valore.
+"Ma io un aumento l'ho avuto."
+Se è sotto il 5,5%, stai comunque perdendo: l'aumento ha solo ridotto la perdita.
 
-Commenta INFLAZIONE e ti rispondo con un consiglio sulla tua situazione.
+"Il mio carrello è diverso."
+Vero, ognuno ha il suo. Ma se paghi luce e gas, la tua perdita è probabilmente più alta della media, non più bassa.
+
+Il primo passo è sapere il tuo numero esatto.
+Scrivi INFLAZIONE qui sotto: ti rispondiamo in DM con il calcolo sulla tua cifra.
+
 Salvalo e mandalo a chi dice "tanto lo stipendio è sempre quello".
+Segui @mentalita.capitale: ogni giorno i numeri che nessuno ti spiega.
 
-Fonte: Istat, prezzi al consumo, dati definitivi di ottobre 2026 (17/11/2026). Calcoli nostri: perdita = stipendio − stipendio ÷ 1,055. Esempio ipotetico: il paniere di ognuno è diverso. Contenuto educativo, non consulenza finanziaria.
+Fonte: Istat, prezzi al consumo, dati definitivi di ottobre 2026 (17/11/2026). Calcolo: stipendio − stipendio ÷ 1,055. Esempio ipotetico. Contenuto educativo, non consulenza finanziaria.
 
-#inflazione #stipendio #potereacquisto #soldi #finanzapersonale #risparmio #mentalitacapitale
+[inflazione, inflazione 2026, potere d'acquisto, stipendio, quanto perdo con l'inflazione, aumento stipendio, caro bollette, prezzi Istat, busta paga, risparmio, finanza personale, educazione finanziaria]
+#inflazione #stipendio #potereacquisto #mentalitacapitale
 ```
 
 ---
