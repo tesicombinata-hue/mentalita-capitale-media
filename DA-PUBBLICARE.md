@@ -9,7 +9,47 @@ Come si fa, per ogni Reel:
 
 ---
 
-## OGGI 19/11 ore 12:30 – REEL Inflazione al 5,5% (sostituisce il post singolo qui sotto)
+## TEST INFLAZIONE – oggi 19/11, 3 versioni dello stesso Reel (si confrontano tra 24-48 ore)
+- **Versione A (12:30)**: gancio "Inflazione al 5,5%: quanto hai perso tu?", sfondo onda dalla nave. È la sezione qui sotto.
+- **Versione B (16:30)**: gancio "Hai 1.800 € netti? Da ottobre te ne mancano 94 al mese", sfondo onde sugli scogli. Sezione subito sotto.
+- **Versione C (20:30)**: da definire.
+Tra una e l'altra almeno 4 ore. Stessa didascalia di base, cambia solo la prima riga.
+
+### Versione B – ore 16:30
+
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-19/reel_inflazione_B.mp4
+
+Audio: di tendenza, ritmato, diverso da quello della versione A.
+
+Didascalia:
+
+```
+Hai 1.800 € netti? Da ottobre te ne mancano 94 al mese 👇
+
+L'Istat ha dato il dato definitivo: a ottobre i prezzi sono più alti del 5,5% rispetto a un anno fa. A spingere è soprattutto l'energia, salita del 31,9%.
+
+Cosa vuol dire per te:
+– con 1.800 € netti, per comprare le stesse cose di un anno fa ti servirebbero 1.899 €;
+– se la busta paga non si è mossa, perdi circa 94 € al mese di potere d'acquisto: più di 1.100 € in un anno;
+– 10.000 € fermi sul conto oggi comprano quanto 9.479 € di un anno fa.
+
+Le 3 mosse per difenderti:
+1. Controlla nel tuo contratto (CCNL) quando è previsto il prossimo aumento.
+2. Se hai una valutazione o un colloquio in arrivo, porta questo numero: un aumento del 5,5% serve solo a restare dove eri.
+3. Guarda quanto tieni fermo sul conto oltre al fondo emergenze: anche quei soldi perdono valore.
+
+Commenta INFLAZIONE e ti rispondo con un consiglio sulla tua situazione.
+Salvalo e mandalo a chi dice "tanto lo stipendio è sempre quello".
+
+Fonte: Istat, prezzi al consumo, dati definitivi di ottobre 2026 (17/11/2026). Calcoli nostri: perdita = stipendio − stipendio ÷ 1,055. Esempio ipotetico: il paniere di ognuno è diverso. Contenuto educativo, non consulenza finanziaria.
+
+#inflazione #stipendio #potereacquisto #soldi #finanzapersonale #risparmio #mentalitacapitale
+```
+
+---
+
+
+### Versione A – ore 12:30 – REEL Inflazione al 5,5% (sostituisce il post singolo più sotto)
 Primo Reel con la tecnica della scheda A della guida (tutto il testo fermo, sfondo VIDEO con onde in movimento - Pexels 39407733 -, riquadri, 6,5 s). Versione 2 del 19/11 ore 10.
 
 Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-19/reel_inflazione.mp4
