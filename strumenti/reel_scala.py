@@ -16,11 +16,11 @@ FB = "/usr/share/fonts/opentype/inter/Inter-Bold.otf"
 FX = "/usr/share/fonts/opentype/inter/Inter-ExtraBold.otf"
 
 # ---------- mondo ----------
-GROUND, TOPY = 3000, 1200          # terreno e cima del muro
+GROUND, TOPY = 2700, 1300          # terreno e cima del muro
 WALL_X = 560                        # faccia sinistra del muro
 LAD = (462, 548)                    # montanti della scala
-LAD_TOP = 1120
-SIGNS = [(2560, "PRIMO LAVORO"), (2050, "PRIMA AZIENDA"), (1520, "PRIMO MILIONE")]
+LAD_TOP = 1220
+SIGNS = [(2330, "PRIMO LAVORO"), (1930, "PRIMA AZIENDA"), (1530, "PRIMO MILIONE")]
 PED = (800, TOPY)                   # piedistallo del trofeo
 CAMX = 965                          # operatore
 
@@ -35,10 +35,11 @@ def keyed(t, keys):                 # keys: [(t, value_tuple)], interpolazione c
             return tuple(lerp(a, b, k) for a, b in zip(v0, v1))
     return keys[-1][1]
 
-CAM = [(0, (430, 2760, 2.0)), (1.2, (430, 2760, 2.0)), (2.3, (600, 2060, 0.93)), (6.3, (600, 2060, 0.93)),
-       (7.0, (770, 1130, 1.65)), (9.7, (770, 1130, 1.65)), (10.3, (450, 2740, 1.5)), (11.6, (450, 2740, 1.5)),
-       (11.9, (680, 1180, 1.65)), (12.3, (680, 1180, 1.65)), (12.6, (600, 2060, 0.93)), (13.25, (600, 2060, 0.93)),
-       (13.6, (740, 1130, 1.65)), (DUR, (740, 1130, 1.65))]
+FULL = (620, 2008, 0.82)            # vista intera: si vedono insieme la coppa in cima e la madre in fondo
+CAM = [(0, (430, 2470, 2.0)), (1.2, (430, 2470, 2.0)), (2.3, FULL), (6.3, FULL),
+       (7.0, (770, 1230, 1.65)), (9.7, (770, 1230, 1.65)), (10.3, (450, 2440, 1.5)), (11.6, (450, 2440, 1.5)),
+       (11.9, (680, 1280, 1.65)), (12.3, (680, 1280, 1.65)), (12.6, FULL), (13.25, FULL),
+       (13.6, (740, 1230, 1.65)), (DUR, (740, 1230, 1.65))]
 
 class Cam:
     def __init__(s, t):
@@ -133,12 +134,6 @@ def world(dr, cam, t, shake):
         for xx in range(WALL_X + off, 1600, 220):
             dr.line([cam.p(xx, yy - 60), cam.p(xx, yy)], fill=(52, 56, 64), width=cam.w(3))
     dr.rectangle([*cam.p(WALL_X, TOPY - 10), *cam.p(1600, TOPY + 8)], fill=(70, 74, 82))
-    # cartelli
-    fs = ImageFont.truetype(FX, max(8, int(26 * cam.s)))
-    for y, txt in SIGNS:
-        x0, y0 = cam.p(WALL_X + 30, y - 32); x1, y1 = cam.p(WALL_X + 330, y + 32)
-        dr.rounded_rectangle([x0, y0, x1, y1], radius=cam.w(8), fill=(40, 30, 14), outline=(232, 170, 60), width=cam.w(4))
-        tw = dr.textlength(txt, font=fs); dr.text(((x0 + x1) / 2 - tw / 2, (y0 + y1) / 2 - fs.size * 0.6), txt, font=fs, fill=(245, 190, 80))
     # scala (trema quando la madre non ce la fa più)
     wood = (176, 104, 46)
     for x in LAD:
@@ -159,6 +154,35 @@ def world(dr, cam, t, shake):
     # piedistallo
     x0, y0 = cam.p(PED[0] - 34, PED[1] - 70); x1, y1 = cam.p(PED[0] + 34, PED[1])
     dr.rectangle([x0, y0, x1, y1], fill=(28, 28, 32), outline=(90, 90, 96), width=cam.w(3))
+
+def draw_signs(dr, cam, t):
+    # cartelli: si accendono quando il figlio ci passa davanti, brillano quando è quasi in cima
+    fs = ImageFont.truetype(FX, max(8, int(34 * cam.s)))
+    for y, txt in SIGNS:
+        lit = LIT(t, y)
+        x0, y0 = cam.p(WALL_X + 24, y - 42); x1, y1 = cam.p(WALL_X + 384, y + 42)
+        fill = tuple(int(lerp(a, b, min(1, lit * 1.4))) for a, b in zip((40, 30, 14), (255, 196, 70)))
+        tc = (40, 24, 6) if lit > 0.3 else (245, 190, 80)
+        dr.rounded_rectangle([x0, y0, x1, y1], radius=cam.w(10), fill=fill, outline=(240, 180, 64), width=cam.w(4))
+        tw = dr.textlength(txt, font=fs); dr.text(((x0 + x1) / 2 - tw / 2, (y0 + y1) / 2 - fs.size * 0.62), txt, font=fs, fill=tc)
+
+def LIT(t, y):
+    """quanto è accesa una targa: si accende al passaggio, brilla di più tra 2,8 e 4,6 s, poi resta accesa piano"""
+    if t >= 7: return 1.0
+    yf = lerp(GROUND - 250, TOPY + 30, min(1, t / 5.0))
+    on = 1.0 if yf < y - 40 else 0.0
+    pulse = ease((t - 2.8) / 0.4) * (1 - ease((t - 4.6) / 0.6))
+    return on * (0.55 + 0.45 * pulse) if pulse > 0 or t > 4.6 else on * 0.55
+
+def glow_signs(cam, t):
+    g = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(g)
+    for y, _ in SIGNS:
+        lit = LIT(t, y)
+        if lit <= 0: continue
+        x0, y0 = cam.p(WALL_X + 4, y - 62); x1, y1 = cam.p(WALL_X + 404, y + 62)
+        d.rounded_rectangle([x0, y0, x1, y1], radius=cam.w(30), fill=(255, 190, 60, int(200 * lit)))
+    from PIL import ImageFilter
+    return g.filter(ImageFilter.GaussianBlur(max(4, 22 * cam.s)))
 
 def trophy(dr, cam, x, y):
     gold = (240, 190, 60)
@@ -190,7 +214,7 @@ BUB = [(0.2, 1.4, "mom", "Ti tengo io."), (1.5, 2.6, "son", "Grazie, mà!"), (2.
 def son_state(t):
     f = 1
     if t < 5.0:
-        k = t / 5.0; yf = lerp(2650, TOPY + 30, k)
+        k = t / 5.0; yf = lerp(GROUND - 250, TOPY + 30, k)
         return hip_on(505 - 30, yf, climb(t * 7), f), climb(t * 7), f, None
     if t < 5.6:
         k = (t - 5.0) / 0.6; return hip_on(lerp(505, 650, k), TOPY, walk(k * 6), f), walk(k * 6), f, None
@@ -207,9 +231,9 @@ def son_state(t):
     if t < 12.3:
         k = (t - 12.15) / 0.15; return hip_on(lerp(620, 520, k), TOPY, walk(k * 3), -1), walk(k * 3), -1, None
     if t < 12.65:                                   # scende di corsa
-        k = (t - 12.3) / 0.35; return hip_on(505 - 30, lerp(TOPY + 30, 2950, ease(k)), climb(0.5), f), climb(0.5), f, None
+        k = (t - 12.3) / 0.35; return hip_on(505 - 30, lerp(TOPY + 30, GROUND - 50, ease(k)), climb(0.5), f), climb(0.5), f, None
     if t < 13.3:                                    # la porta su
-        k = (t - 12.65) / 0.65; return hip_on(505 - 30, lerp(2750, TOPY + 30, ease(k)), climb(t * 18), f), climb(t * 18), f, None
+        k = (t - 12.65) / 0.65; return hip_on(505 - 30, lerp(GROUND - 250, TOPY + 30, ease(k)), climb(t * 18), f), climb(t * 18), f, None
     if t < 13.8: return hip_on(620, TOPY, STAND, f), STAND, f, None
     if t < 14.3:
         k = (t - 13.8) / 0.5; return hip_on(620, TOPY, mix(STAND, GIVE, k), f), mix(STAND, GIVE, k), f, None
@@ -221,7 +245,7 @@ def mom_state(t):
         pose = mix(HOLD, TIRED, age)
         return hip_on(392, GROUND, pose, f), pose, f, age, None
     if t < 13.3:
-        k = (t - 12.65) / 0.65; return hip_on(505 - 30, lerp(2950, TOPY + 30, ease(k)), climb(t * 18), f), climb(t * 18), f, 1, None
+        k = (t - 12.65) / 0.65; return hip_on(505 - 30, lerp(GROUND - 50, TOPY + 30, ease(k)), climb(t * 18), f), climb(t * 18), f, 1, None
     pose = mix(STAND, RAISE, (t - 14.5) / 0.5) if t > 14.5 else STAND
     return hip_on(720, TOPY, pose, f), pose, f, 1, ("hand" if t > 14.3 else None)
 
@@ -245,6 +269,8 @@ def render(t, rnd_rain, rnd_snow, fnt):
     dr = ImageDraw.Draw(img)
     shake = 9 * math.sin(t * 55) if 10.9 < t < 11.6 else 0
     world(dr, cam, t, shake)
+    img = Image.alpha_composite(img, glow_signs(cam, t)); dr = ImageDraw.Draw(img)
+    draw_signs(dr, cam, t)
     camera_rig(dr, cam, CAMX, TOPY)
     s_hip, s_pose, s_f, _ = son_state(t); s_sk = skel(s_hip, s_pose, s_f)
     m_hip, m_pose, m_f, age, _ = mom_state(t); m_sk = skel(m_hip, m_pose, m_f)
@@ -271,7 +297,7 @@ def render(t, rnd_rain, rnd_snow, fnt):
             x, y = heads[who]; bubble(dr, cam, x, y - (110 if t > 7 else 46), txt, fnt)
     wm = ImageFont.truetype("/usr/share/fonts/opentype/inter/Inter-SemiBold.otf", 40)
     tw = dr.textlength("@mentalita.capitale", font=wm)
-    over = Image.new("RGBA", (W, H), (0, 0, 0, 0)); ImageDraw.Draw(over).text((W / 2 - tw / 2, 1500), "@mentalita.capitale", font=wm, fill=(255, 255, 255, 70))
+    over = Image.new("RGBA", (W, H), (0, 0, 0, 0)); ImageDraw.Draw(over).text((W / 2 - tw / 2, 1560), "@mentalita.capitale", font=wm, fill=(255, 255, 255, 70))
     img = Image.alpha_composite(img, over)
     return img.convert("RGB")
 
