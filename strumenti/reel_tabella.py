@@ -13,7 +13,7 @@ from PIL import Image, ImageDraw, ImageFilter
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from reel_testo import font, emoji_img, split_emoji, box, W, H, FPS, YELLOW, BLUE, WHITE, BLACK
 
-XL, XR0, XR1 = 80, 680, 930     # colonna sinistra da XL; colonna destra tra XR0 e XR1 (le icone coprono x > 940)
+XL, XR0, XR1 = 60, 720, 940     # colonna sinistra da XL; colonna destra tra XR0 e XR1 (le icone coprono x > 940)
 
 def cell(layer, x, y, text, f, align="left", width=None, pad=(18, 10)):
     d = ImageDraw.Draw(layer)
@@ -34,8 +34,9 @@ def cell(layer, x, y, text, f, align="left", width=None, pad=(18, 10)):
 def build_overlay(c):
     ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     y = c.get("y_inizio", 300)
-    y = box(ov, y, c["titolo"], font("Inter-Black.otf", 62), YELLOW, BLACK, pad=(30, 18), gap=4) + 24
-    fh, fr = font("Inter-ExtraBold.otf", 38), font("Inter-Bold.otf", 34)
+    y = box(ov, y, c["titolo"], font("Inter-Black.otf", c.get("f_titolo", 62)), YELLOW, BLACK, pad=(30, 18), gap=4) + 24
+    fh, fr = font("Inter-ExtraBold.otf", c.get("f_intestazioni", 38)), font("Inter-Bold.otf", c.get("f_righe", 34))
+    gap = c.get("spazio_righe", 10)
     cr = (XR0 + XR1) / 2
     _, yb = cell(ov, XL, y, c["intestazioni"][0], fh)
     cell(ov, cr, y, c["intestazioni"][1], fh, align="center")
@@ -43,10 +44,10 @@ def build_overlay(c):
     for voce, cifra in c["righe"]:
         xe, yb = cell(ov, XL, y, voce, fr)
         assert xe < XR0 - 10, f"voce troppo lunga: {voce} ({xe:.0f} px)"
-        cell(ov, cr, y, cifra, fr, align="center", width=200)
-        y = yb + 10
+        cell(ov, cr, y, cifra, fr, align="center", width=XR1 - XR0 - 10)
+        y = yb + gap
     if c.get("invito"):
-        y = box(ov, y + 18, c["invito"], font("Inter-Black.otf", 40), BLUE, WHITE, pad=(26, 14)) + 10
+        y = box(ov, y + 18, c["invito"], font("Inter-Black.otf", c.get("f_invito", 40)), BLUE, WHITE, pad=(26, 14)) + 10
     if c.get("nota"):
         fn = font("Inter-SemiBold.otf", 24); d = ImageDraw.Draw(ov)
         tw = d.textlength(c["nota"], font=fn)

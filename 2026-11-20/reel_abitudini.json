@@ -2,20 +2,59 @@
  "sfondo": "src/sfondo_04.mp4",
  "inizio_video": 0,
  "durata": 7,
- "y_inizio": 290,
- "titolo": ["QUANTO TI COSTANO", "LE TUE ABITUDINI?"],
- "intestazioni": ["Abitudine", "Costo all'anno"],
- "righe": [
-  ["🚬 Sigarette, 1 pacco al giorno", "2.482 €"],
-  ["🍸 Serata fuori ogni weekend", "2.080 €"],
-  ["🛵 Delivery 3 volte a settimana", "2.028 €"],
-  ["📱 iPhone nuovo ogni anno", "1.489 €"],
-  ["🥐 Colazione al bar ogni giorno", "1.095 €"],
-  ["🎾 Padel 2 volte a settimana", "1.040 €"],
-  ["📺 3 abbonamenti streaming", "330 €"],
-  ["💧 Acqua in bottiglia", "260 €"],
-  ["🏦 Commissioni bancarie", "101 €"]
+ "y_inizio": 250,
+ "titolo": [
+  "QUANTO TI COSTANO",
+  "LE TUE ABITUDINI?"
  ],
- "invito": ["Tu quante ne hai? Scrivi il numero"],
- "nota": "Stime su prezzi medi in Italia. Fonti e calcoli in didascalia."
+ "intestazioni": [
+  "Abitudine",
+  "Costo all'anno"
+ ],
+ "righe": [
+  [
+   "🚬 Sigarette, 1 pacco al giorno",
+   "2.482 €"
+  ],
+  [
+   "🍸 Serata fuori ogni weekend",
+   "2.080 €"
+  ],
+  [
+   "🛵 Delivery 3 volte a settimana",
+   "2.028 €"
+  ],
+  [
+   "📱 iPhone nuovo ogni anno",
+   "1.489 €"
+  ],
+  [
+   "🥐 Colazione al bar ogni giorno",
+   "1.095 €"
+  ],
+  [
+   "🎾 Padel 2 volte a settimana",
+   "1.040 €"
+  ],
+  [
+   "📺 3 abbonamenti streaming",
+   "330 €"
+  ],
+  [
+   "💧 Acqua in bottiglia",
+   "260 €"
+  ],
+  [
+   "🏦 Commissioni bancarie",
+   "101 €"
+  ]
+ ],
+ "invito": [
+  "Tu quante ne hai? Scrivi il numero"
+ ],
+ "f_titolo": 76,
+ "f_intestazioni": 46,
+ "f_righe": 40,
+ "f_invito": 48,
+ "spazio_righe": 26
 }
