@@ -9,6 +9,34 @@ Come si fa, per ogni Reel:
 
 ---
 
+## NUOVO 20/11 – "Chi teneva la scala" (B animato, orario da decidere)
+Ricreazione in italiano del Reel di @visualhustles (madre che tiene la scala, "self-made"). 16 s.
+
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-20/reel_scala.mp4
+
+Audio: di tendenza, emozionante (piano o archi), che cresce nel finale.
+
+Didascalia:
+
+```
+Nessuno sale da solo. Qualcuno ha sempre tenuto la scala.
+
+Lui è passato dal primo lavoro al primo milione.
+Lei è rimasta giù, sotto la pioggia, la neve e la notte. Le mani che tremavano, i capelli che diventavano bianchi, senza mai lasciare la presa.
+
+In cima le telecamere gli hanno chiesto come ci fosse riuscito. E lui ha risposto: "Mi sono fatto da solo."
+
+Poi la scala ha tremato. E per la prima volta ha guardato giù.
+
+Dicci la verità: esiste davvero chi si è fatto da solo, o ci dimentichiamo chi teneva la scala? 👇
+
+Segui @mentalita.capitale: ogni giorno i numeri e le idee che nessuno ti spiega.
+
+#mentalita #famiglia #successo #gratitudine #mentalitacapitale
+```
+
+---
+
 ## NUOVO 20/11 – "Overthinker / Founder" (trampolini, orario da decidere)
 Copia in italiano del Reel di @neuronvisuals "Overthinker vs Doer" (107.000 invii). Nessun testo in video oltre alle due etichette, video in loop. Il founder fa cinque tuffi che migliorano piano piano: spanciata, di piedi goffo, di testa storto, di testa pulito, capriola perfetta. Watermark @mentalita.capitale.
 
