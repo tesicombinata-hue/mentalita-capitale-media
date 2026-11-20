@@ -1,0 +1,27 @@
+{
+ "sfondo": "src/sfondo_08.mp4",
+ "inizio_video": 0,
+ "durata": 6.5,
+ "y_inizio": 300,
+ "titolo": [
+  "BLACK FRIDAY: 6 SITI",
+  "SU 10 NON IN REGOLA"
+ ],
+ "righe": [
+  "🛒 L'83% degli italiani comprerà qualcosa",
+  "💶 Spesa media prevista: 246 €",
+  "🔍 6 siti su 10: sconti non corretti\no poco trasparenti",
+  "❓ Solo l'1,4% sa come\nva indicato uno sconto",
+  "✅ La regola: lo sconto si calcola sul prezzo\npiù basso degli ultimi 30 giorni",
+  "🧾 Il 35% l'anno scorso ha comprato\ncose che non aveva programmato"
+ ],
+ "chiusura": [
+  "Il prezzo barrato da solo",
+  "non dimostra niente."
+ ],
+ "invito": [
+  "Tu lo sapevi? Scrivilo nei commenti",
+  "e mandalo a chi ha già il carrello pieno"
+ ],
+ "nota": "Fonte: Altroconsumo, indagine ott. 2026 e inchiesta su 208 siti (gen. 2026)."
+}

@@ -1,0 +1,19 @@
+{
+ "sfondo": "src/sfondo_01.mp4",
+ "inizio_video": 0,
+ "durata": 6.5,
+ "y_inizio": 300,
+ "titolo": ["TAGLIO IRPEF 2027:", "QUANTO PRENDI TU?"],
+ "righe": [
+  "💶 25.000 € l'anno → 0 €",
+  "💶 35.000 € l'anno → 0 €",
+  "💶 50.000 € l'anno → 0 €",
+  "💶 52.000 € l'anno → +200 €",
+  "💶 55.000 € e oltre → +500 €",
+  "👷 Operai: in media 4 € a testa",
+  "💼 Dirigenti: in media 444 € a testa"
+ ],
+ "chiusura": ["Nella metà delle famiglie con meno reddito", "non ci guadagna nessuno."],
+ "invito": ["Commenta IRPEF: ti diciamo", "quanto cambia sul tuo reddito"],
+ "nota": "Reddito imponibile annuo. Fonte: ddl Bilancio 2027 (in Parlamento), stime Upb 12/11/2026."
+}

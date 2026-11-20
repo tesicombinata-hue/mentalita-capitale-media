@@ -9,6 +9,111 @@ Come si fa, per ogni Reel:
 
 ---
 
+## OGGI venerdì 20/11 – 3 Reel (esecuzione di recupero: la prima fascia slitta alle 13:30)
+- **13:30 – Real time (formato A) "Taglio IRPEF 2027: quanto prendi tu?"** – sfrutta la meccanica di Inflazione A (domanda + tabella per fascia), la vincitrice del test T1. Sfondo: cascata.
+- **16:30 – B animato "Stesso stipendio, due scelte"** – test: un confronto in cui ci si riconosce porta i primi invii?
+- **20:30 – A "Black Friday: 6 siti su 10 non in regola"** – test: domanda di opinione senza parola chiave contro regalo con parola chiave. Sfondo: surfista.
+Parole chiave: IRPEF (13:30), PRIMA (16:30); alle 20:30 nessuna parola chiave, solo la domanda. A chi commenta si scrive in DM chiedendo la cifra; Claude prepara il calcolo.
+Copertina in griglia: nera, titolo bianco, accento blu. Dopo aver incollato, controllare che ogni hashtag abbia il "#".
+
+### 13:30 – Taglio IRPEF 2027
+
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-20/reel_irpef.mp4
+
+Audio: di tendenza, serio e ritmato (stile notizia).
+
+Didascalia:
+
+```
+Commenta IRPEF e ti mandiamo in DM quanto ti cambia il taglio 2027, calcolato sul tuo reddito 👇
+
+La manovra 2027 allarga la seconda fascia IRPEF: il 33% si applica fino a 55.000 € di reddito, invece che fino a 50.000 €. Vale per il solo 2027 ed è ancora in esame in Parlamento.
+
+Tradotto: si risparmia il 10% solo sulla parte di reddito tra 50.000 e 55.000 €.
+Con 52.000 € l'anno sono 200 €. Da 55.000 € in su, 500 € (il massimo).
+Sotto i 50.000 €: 0 €.
+
+Secondo l'Ufficio parlamentare di bilancio ci guadagna l'8% dei contribuenti. Tra gli operai l'1%, in media 4 € a testa. Tra i dirigenti l'89%, in media 444 €.
+
+"Quindi con 1.500 € al mese non cambia niente?"
+Da questa misura no. Il primo passo è sapere cosa ti spetta davvero, non quello che dicono i titoli.
+
+Commenta IRPEF: ti rispondiamo in DM con il calcolo sul tuo reddito.
+Mandalo al collega che pensa che dal 2027 gli salga lo stipendio.
+Segui @mentalita.capitale: ogni giorno i numeri che nessuno ti spiega.
+
+Fonti: ddl di Bilancio 2027, in esame in Parlamento; stime Upb presentate il 12/11/2026 alle commissioni Bilancio (QuiFinanza, 14/11/2026). Calcolo: 10% della parte di reddito imponibile tra 50.000 e 55.000 €. Le cifre possono cambiare con gli emendamenti.
+
+[irpef 2027, taglio irpef, manovra 2027, legge di bilancio 2027, busta paga, scaglioni irpef, tasse, stipendio, quanto risparmio]
+#irpef #manovra2027 #bustapaga #tasse #mentalitacapitale
+```
+
+### 16:30 – Stesso stipendio, due scelte
+
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-20/reel_due_scelte.mp4
+
+Audio: di tendenza, ritmato e leggero, diverso dagli altri due (il video ha un ritmo mese per mese: un brano con battito regolare).
+
+Didascalia:
+
+```
+Commenta PRIMA e ti mandiamo in DM quanto metti da parte in 1 e in 5 anni, calcolato sul tuo stipendio 👇
+
+Stesso stipendio, 1.800 € netti. Due scelte.
+Marco risparmia quello che avanza a fine mese. Luca mette da parte 180 € il giorno in cui arriva lo stipendio, e vive con il resto.
+
+Dopo un anno Luca ha 2.160 € da parte. Dopo 5 anni 10.800 €, senza contare nessun interesse.
+Marco ha 0 €: a fine mese non avanza mai niente, perché le spese occupano tutto lo spazio che trovano.
+
+"Ma con 1.800 € non riesco a mettere da parte 180 €."
+Parti da 50 €. Conta più l'ordine della cifra: prima metti da parte, poi spendi.
+
+Non conta quanto guadagni. Conta l'ordine.
+
+Tu sei Marco o Luca? Scrivilo nei commenti 👇
+Mandalo all'amico che a fine mese è sempre a zero.
+Commenta PRIMA: ti rispondiamo in DM con il calcolo sul tuo stipendio.
+Segui @mentalita.capitale: ogni giorno i numeri che nessuno ti spiega.
+
+Esempio ipotetico: 10% di 1.800 € netti al mese, senza interessi. Calcolo: 180 × 12 = 2.160 €; 180 × 60 = 10.800 €.
+
+[risparmio, come risparmiare, stipendio, prima paga te stesso, budget, risparmiare con 1800 euro, finanza personale, soldi]
+#risparmio #stipendio #budget #mentalitacapitale
+```
+
+### 20:30 – Black Friday: 6 siti su 10 non in regola
+
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-20/reel_blackfriday_sconti.mp4
+
+Audio: di tendenza, ironico o "colpo di scena", diverso dagli altri due.
+
+Didascalia:
+
+```
+Black Friday: 6 negozi online su 10 non mostrano gli sconti come dovrebbero. Tu sapevi come si controlla? 👇
+
+Altroconsumo ha controllato 208 siti di e-commerce: in 6 casi su 10 gli sconti non erano corretti o non erano trasparenti.
+E nella sua indagine di ottobre su 2.017 persone, solo l'1,4% sa quali informazioni deve mostrare uno sconto.
+
+La regola (Codice del consumo, art. 17-bis): lo sconto si calcola sul prezzo più basso applicato negli ultimi 30 giorni. Il prezzo barrato da solo non dimostra niente.
+
+Intanto l'83% pensa di comprare qualcosa, con una spesa media prevista di 246 €: su 1.800 € netti è il 13,7% dello stipendio.
+E il 35% di chi ha comprato l'anno scorso ha preso cose non programmate o ha sforato il budget.
+
+Prima di pagare: cerca nella pagina il prezzo più basso degli ultimi 30 giorni. Se non c'è, lo sconto non lo puoi verificare.
+
+Tu lo sapevi? Scrivi SÌ o NO nei commenti.
+Mandalo a chi ha già il carrello pieno.
+Segui @mentalita.capitale: ogni giorno i numeri che nessuno ti spiega.
+
+Fonti: Altroconsumo, indagine di ottobre 2026 su 2.017 persone (12/11/2026) e inchiesta su 208 siti di e-commerce (analizzati a gennaio 2026, pubblicata il 12/02/2026). Calcolo: 246 ÷ 1.800 = 13,7%.
+
+[black friday, sconti, falsi sconti, prezzo più basso 30 giorni, shopping online, risparmio, codice del consumo]
+#blackfriday #sconti #risparmio #mentalitacapitale
+```
+
+---
+
 ## TEST INFLAZIONE – oggi 19/11, 3 versioni dello stesso Reel (si confrontano tra 24-48 ore)
 - **Versione A (12:30) – angolo "QUANTO PERDI"**: gancio "Inflazione al 5,5%: quanto hai perso tu?", tabella della perdita per stipendio, sfondo onda dalla nave.
 - **Versione B (16:30) – angolo "COSA FARE"**: gancio "Hai 1.800 € netti? Da ottobre te ne mancano 94 al mese", 3 numeri + 3 azioni concrete + "un aumento del 5,5% serve solo a restare dove eri", invito a salvare, sfondo onde sugli scogli. Sezione subito sotto.

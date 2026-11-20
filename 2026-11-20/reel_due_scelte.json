@@ -1,0 +1,11 @@
+{
+ "titolo": ["STESSO STIPENDIO, 1.800 €", "DUE SCELTE. TU CHI SEI?"],
+ "sinistra": {"nome": "MARCO", "sotto": ["risparmia quello", "che avanza"], "picco": 150,
+   "motivi": ["cena fuori", "Amazon", "weekend", "regalo", "bolletta", "aperitivo", "imprevisto", "saldi", "benzina", "cena fuori", "Amazon", "Black Friday"]},
+ "destra": {"nome": "LUCA", "sotto": ["mette da parte 180 €", "appena arriva lo stipendio"], "mensile": 180},
+ "mesi": 12, "anni_finali": 5,
+ "t_mesi": 7.2, "t_salto": 9.4, "t_fine": 10.9,
+ "chiusura": "Conta l'ordine, non lo stipendio.",
+ "invito": ["Commenta PRIMA: quanto metti da parte tu?"],
+ "nota": "Esempio ipotetico: 10% di 1.800 € netti, senza interessi."
+}
