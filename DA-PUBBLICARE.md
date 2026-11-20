@@ -9,6 +9,53 @@ Come si fa, per ogni Reel:
 
 ---
 
+## NUOVO 20/11 – "Quanto ti costano le tue abitudini?" (orario da decidere con il titolare)
+Replica della tecnica del Reel "Piccole abitudini" di @monetikafinanza (1,5 Mln di views, 3.045 invii), con le abitudini più commentate sotto l'originale più padel e iPhone.
+
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-20/reel_abitudini.mp4
+
+Audio: di tendenza, leggero e ritmato.
+
+Didascalia:
+
+```
+Nessuna di queste spese sembra grande. Il problema è quante volte la fai 👇
+
+Quando si parla di soldi si pensa sempre alle spese grosse: l'affitto, l'auto, le vacanze.
+Ma a svuotare il conto a fine anno sono quasi sempre quelle da 3, 10, 20 €. Quelle a cui non pensi, perché "che sarà mai".
+
+Un delivery in più, una serata nel weekend, la colazione al bar, un abbonamento che non guardi più.
+Prese una per una, niente. Moltiplicate per 52 settimane o per 365 giorni, diventano migliaia di euro.
+
+Non è quanto spendi. È quanto spesso lo fai.
+
+"Quindi dovrei smettere di vivere?"
+No. Ma una cosa è sceglierle, un'altra è non sapere quanto ti costano.
+
+Da dove partire:
+1. Fai il conto delle tue: prendi le righe in cui ti ritrovi e somma.
+2. Tieni quelle che ti fanno stare davvero bene.
+3. Per le altre, decidi un tetto al mese. Quello che risparmi spostalo subito su un conto a parte.
+
+Tu quante ne hai? Scrivi il numero nei commenti 👇
+Salvalo e mandalo a chi dice che a fine mese non sa dove finiscono i soldi.
+Segui @mentalita.capitale: ogni giorno i numeri che nessuno ti spiega.
+
+Calcoli nostri, stime indicative: sigarette 6,80 € a pacchetto (Marlboro, gennaio 2026); colazione 3 € tra cappuccino e cornetto (Altroconsumo); iPhone 18 Pro 256 GB 1.489 € (listino Apple Italia); 3 abbonamenti streaming 27,50 € al mese (Facile.it, 2026); conto corrente 101 € l'anno (Banca d'Italia, costo medio di un conto tradizionale). Delivery 13 € a ordine, serata fuori 40 €, padel 10 € a testa, acqua 2 casse a settimana a 2,50 €: stime nostre.
+
+[abitudini costose, come risparmiare, spese inutili, risparmio, quanto spendo in un anno, budget, finanza personale, soldi]
+#risparmio #abitudini #soldi #finanzapersonale #mentalitacapitale
+```
+
+Primo commento da fissare:
+
+```
+Quale di queste ti ha sorpreso di più? 🫣
+E quale non toglieresti per nessuna cifra al mondo? Scrivilo qui sotto 👇
+```
+
+---
+
 ## OGGI venerdì 20/11 – 3 Reel (esecuzione di recupero: la prima fascia slitta alle 13:30)
 - **13:30 – Real time (formato A) "Taglio IRPEF 2027: quanto prendi tu?"** – sfrutta la meccanica di Inflazione A (domanda + tabella per fascia), la vincitrice del test T1. Sfondo: cascata.
 - **16:30 – B animato "Stesso stipendio, due scelte"** – test: un confronto in cui ci si riconosce porta i primi invii?
