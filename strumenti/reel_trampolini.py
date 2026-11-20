@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Reel tipo B "Chi ci pensa / Chi lo fa" (trampolini) - Mentalità Capitale.
+"""Reel tipo B "Overthinker / Founder" (trampolini) - Mentalità Capitale.
 
-Due omini su due trampolini sopra l'acqua, sfondo nero. Chi lo fa si tuffa in continuazione e risale
-dalla scaletta; chi ci pensa va sul bordo, si ferma, torna indietro, ci pensa. Il trampolino di chi ci pensa
-non ha la scaletta. Video in loop: l'ultimo fotogramma si raccorda con il primo.
+Due omini su due trampolini sopra l'acqua, sfondo nero, scena grande che riempie lo schermo.
+A destra chi lo fa: tre tuffi che migliorano (spanciata, tuffo a braccia tese, capriola perfetta),
+risale veloce dalla scaletta. A sinistra l'overthinker: va sul bordo, guarda giù, torna indietro, ci pensa.
+Il trampolino dell'overthinker non ha la scaletta. Video in loop.
 Uso: python3 reel_trampolini.py contenuto.json uscita.mp4 [secondo]
-contenuto.json: {"etichetta_sx": "CHI CI PENSA", "etichetta_dx": "CHI LO FA"}
+contenuto.json: {"etichetta_sx": "OVERTHINKER", "etichetta_dx": "FOUNDER"}
 """
 import json, math, random, subprocess, sys
 import numpy as np
@@ -14,21 +15,27 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 W, H, FPS = 1080, 1920, 30
 DUR = 12.0
 WHITE, BLUE, BG = (240, 240, 240), (77, 163, 255), (6, 6, 9)
-YW = 1170                       # linea dell'acqua
-YB = 900                        # piano dei trampolini (piedi)
-LEG = 88                        # coscia + stinco
-SEG = dict(torso=62, neck=8, head=17, ua=34, fa=32, th=44, sh=44)
+K = 1.75                                     # scala degli omini
+YB = 900                                     # piano dei trampolini (piedi)
+YW = 1290                                    # linea dell'acqua
+SEG = {k: v * K for k, v in dict(torso=62, neck=8, head=17, ua=34, fa=32, th=44, sh=44).items()}
+LW = int(9 * K)
 FONT = "/usr/share/fonts/opentype/inter/Inter-Bold.otf"
+# geometria: torri ai bordi, trampolini verso il centro
+TL = (0, 120); BL = (120, 455)               # torre e trampolino di sinistra (x)
+TR = (960, 1080); BR = (625, 960)            # torre e trampolino di destra (x)
+LADDER = (918, 950)                          # scaletta sul lato interno della torre di destra
+TIP_R, START_R, SPLASH_X = 640, 905, 540
 
-# ---------- pose (angoli assoluti in gradi: 0 = verso il basso, positivo = in avanti) ----------
 def P(**k):
     base = dict(torso=180, head=180, ua_l=8, fa_l=8, ua_r=-8, fa_r=-8, th_l=3, sh_l=3, th_r=-3, sh_r=-3)
     base.update(k); return base
 STAND = P()
 CROUCH = P(torso=150, head=160, ua_l=-50, fa_l=-30, ua_r=-60, fa_r=-40, th_l=75, sh_l=-15, th_r=70, sh_r=-20)
 DIVE = P(torso=180, head=180, ua_l=178, fa_l=180, ua_r=182, fa_r=180, th_l=2, sh_l=0, th_r=-2, sh_r=0)
-TUCK = P(torso=155, head=150, ua_l=70, fa_l=130, ua_r=80, fa_r=140, th_l=110, sh_l=0, th_r=105, sh_r=-5)
-PENCIL = P(torso=180, head=180, ua_l=2, fa_l=0, ua_r=-2, fa_r=0, th_l=1, sh_l=0, th_r=-1, sh_r=0)
+TUCK = P(torso=150, head=145, ua_l=70, fa_l=135, ua_r=80, fa_r=145, th_l=115, sh_l=0, th_r=110, sh_r=-5)
+FLAIL = P(torso=175, head=200, ua_l=150, fa_l=200, ua_r=-130, fa_r=-170, th_l=40, sh_l=-40, th_r=-30, sh_r=-60)
+FLAT = P(torso=180, head=200, ua_l=90, fa_l=90, ua_r=-90, fa_r=-90, th_l=0, sh_l=-20, th_r=0, sh_r=-25)
 LOOK = P(torso=158, head=135, ua_l=12, fa_l=20, ua_r=-5, fa_r=10, th_l=4, sh_l=2, th_r=-4, sh_r=-2)
 THINK = P(torso=180, head=172, ua_r=28, fa_r=168, ua_l=22, fa_l=95)
 ALMOST = P(torso=165, head=150, ua_l=-30, fa_l=-20, ua_r=-35, fa_r=-25, th_l=35, sh_l=-10, th_r=30, sh_r=-12)
@@ -52,185 +59,171 @@ def mix(a, b, k):
     k = max(0.0, min(1.0, k)); k = k * k * (3 - 2 * k)
     return {n: a[n] + (b[n] - a[n]) * k for n in a}
 
-def d(a, f):  # direzione di un segmento
+def dvec(a, f):
     r = math.radians(a); return (math.sin(r) * f, math.cos(r))
 
 def skeleton(hip, pose, f, rot):
-    hx, hy = hip
-    pts = {}
-    def add(p, a, L): v = d(a, f); return (p[0] + v[0] * L, p[1] + v[1] * L)
-    S = add((0, 0), pose["torso"], SEG["torso"])
-    N = add(S, pose["head"], SEG["neck"] + SEG["head"])
+    hx, hy = hip; pts = {}
+    def add(p, a, L): v = dvec(a, f); return (p[0] + v[0] * L, p[1] + v[1] * L)
+    S = add((0, 0), pose["torso"], SEG["torso"]); N = add(S, pose["head"], SEG["neck"] + SEG["head"])
     pts["S"], pts["N"], pts["H"] = S, N, (0, 0)
-    for side in "lr":
-        e = add(S, pose["ua_" + side], SEG["ua"]); h = add(e, pose["fa_" + side], SEG["fa"])
-        k = add((0, 0), pose["th_" + side], SEG["th"]); fo = add(k, pose["sh_" + side], SEG["sh"])
-        pts["e" + side], pts["h" + side], pts["k" + side], pts["f" + side] = e, h, k, fo
-    t = math.radians(rot) * f
-    c, s = math.cos(t), math.sin(t)
-    return {n: (hx + x * c - y * s, hy + x * s + y * c) for n, (x, y) in pts.items()}
+    for s in "lr":
+        e = add(S, pose["ua_" + s], SEG["ua"]); h = add(e, pose["fa_" + s], SEG["fa"])
+        k = add((0, 0), pose["th_" + s], SEG["th"]); fo = add(k, pose["sh_" + s], SEG["sh"])
+        pts["e" + s], pts["h" + s], pts["k" + s], pts["f" + s] = e, h, k, fo
+    t = math.radians(rot) * f; c, s_ = math.cos(t), math.sin(t)
+    return {n: (hx + x * c - y * s_, hy + x * s_ + y * c) for n, (x, y) in pts.items()}
 
-def grounded_hip(x, ground, pose, f):
+def ground(x, pose, f, gy=YB):
     sk = skeleton((0, 0), pose, f, 0)
-    low = max(sk["fl"][1], sk["fr"][1])
-    return (x, ground - low)
+    return (x, gy - max(sk["fl"][1], sk["fr"][1]))
 
-def draw_fig(dr, sk, col, w=9):
-    lines = [("H", "S"), ("S", "el"), ("el", "hl"), ("S", "er"), ("er", "hr"),
-             ("H", "kl"), ("kl", "fl"), ("H", "kr"), ("kr", "fr")]
-    for a, b in lines:
-        dr.line([sk[a], sk[b]], fill=col, width=w)
+def draw_fig(dr, sk, col):
+    for a, b in [("H", "S"), ("S", "el"), ("el", "hl"), ("S", "er"), ("er", "hr"), ("H", "kl"), ("kl", "fl"), ("H", "kr"), ("kr", "fr")]:
+        dr.line([sk[a], sk[b]], fill=col, width=LW)
     for p in sk.values():
-        dr.ellipse([p[0] - w / 2, p[1] - w / 2, p[0] + w / 2, p[1] + w / 2], fill=col)
-    n = sk["N"]; r = SEG["head"]
-    dr.ellipse([n[0] - r, n[1] - r, n[0] + r, n[1] + r], fill=col)
+        dr.ellipse([p[0] - LW / 2, p[1] - LW / 2, p[0] + LW / 2, p[1] + LW / 2], fill=col)
+    n = sk["N"]; r = SEG["head"]; dr.ellipse([n[0] - r, n[1] - r, n[0] + r, n[1] + r], fill=col)
 
-# ---------- chi lo fa: 3 cicli da 4 s (camminata, carica, tuffo, nuoto, scaletta) ----------
-LADDER_X, TIP_R, START_R = 905, 668, 900
-DIVES = ["swan", "flip", "pencil"]
+# ---------- chi lo fa: 3 tuffi da 4 s che migliorano ----------
+DIVES = ["spanciata", "braccia", "capriola"]
+T_WALK, T_CROUCH, T_FLY, T_SWIM, T_CLIMB = 0.6, 0.25, 1.0, 1.55, 0.45      # totale 3,85 s + 0,15 fermo
 
 def doer(t):
-    cyc, u = int(t // 4) % 3, t % 4
-    kind = DIVES[cyc]; f = -1
-    if u < 0.6:
-        k = u / 0.6; x = START_R + (TIP_R - START_R) * k
-        pose = walk(k * 2 * math.pi * 1.5)
-        return grounded_hip(x, YB, pose, f), pose, f, 0, None
-    if u < 0.85:
-        pose = mix(STAND, CROUCH, (u - 0.6) / 0.15)
-        return grounded_hip(TIP_R, YB, pose, f), pose, f, 0, None
-    if u < 1.85:
-        k = (u - 0.85) / 1.0
-        x0, x1 = TIP_R - 10, 530
-        h0 = grounded_hip(TIP_R, YB, CROUCH, f)[1]
-        x = x0 + (x1 - x0) * k
-        y = h0 + (YW + 70 - h0) * k * k - 260 * k * (1 - k) * 1.6
-        if kind == "swan":
-            pose = mix(CROUCH, DIVE, k / 0.3); rot = -170 * k ** 1.3 * -1
-        elif kind == "flip":
-            pose = mix(CROUCH, TUCK, k / 0.2) if k < 0.7 else mix(TUCK, PENCIL, (k - 0.7) / 0.2)
-            rot = 360 * min(1, k / 0.8)
-        else:
-            pose = mix(CROUCH, PENCIL, k / 0.25); rot = 0
-        return (x, y), pose, f, rot, ("entry", 1.85) if k > 0.97 else None
-    if u < 3.0:
-        k = (u - 1.85) / 1.15
-        x = 530 + (LADDER_X - 40 - 530) * k
-        pose = swim(k * 2 * math.pi * 2.5)
-        return (x, YW + 12), pose, 1, 82, None
-    k = (u - 3.0) / 1.0
-    pose = climb(k * 2 * math.pi * 2)
-    hy = (YW + 40) + (grounded_hip(0, YB, STAND, 1)[1] - (YW + 40)) * k
-    if k > 0.85:
-        pose = mix(pose, STAND, (k - 0.85) / 0.15)
-    return (LADDER_X - 6 * (1 - k), hy), pose, 1, 0, None
+    cyc, u = int(t // 4) % 3, t % 4; kind = DIVES[cyc]; f = -1
+    t1 = T_WALK; t2 = t1 + T_CROUCH; t3 = t2 + T_FLY; t4 = t3 + T_SWIM; t5 = t4 + T_CLIMB
+    if u < t1:
+        k = u / T_WALK; pose = walk(k * 2 * math.pi * 1.5)
+        return ground(START_R + (TIP_R - START_R) * k, pose, f), pose, f, 0
+    if u < t2:
+        pose = mix(STAND, CROUCH, (u - t1) / 0.15); return ground(TIP_R, pose, f), pose, f, 0
+    if u < t3:
+        k = (u - t2) / T_FLY
+        h0 = ground(TIP_R, CROUCH, f)[1]; x = TIP_R - 10 + (SPLASH_X - TIP_R + 10) * k
+        if kind == "spanciata":                       # sale poco, sbilancia, cade piatto di pancia
+            y = h0 + (YW - 10 - h0) * k * k - 160 * k * (1 - k)
+            pose = mix(CROUCH, FLAIL, k / 0.3) if k < 0.75 else mix(FLAIL, FLAT, (k - 0.75) / 0.2)
+            rot = 95 * min(1, k / 0.9) ** 1.5
+        elif kind == "braccia":                       # tuffo di testa, un po' rigido
+            y = h0 + (YW + 90 - h0) * k * k - 420 * k * (1 - k)
+            pose = mix(CROUCH, DIVE, k / 0.3); rot = 165 * k ** 1.3
+        else:                                         # capriola raccolta e ingresso pulito in verticale
+            y = h0 + (YW + 120 - h0) * k * k - 620 * k * (1 - k)
+            pose = mix(CROUCH, TUCK, k / 0.15) if k < 0.62 else mix(TUCK, DIVE, (k - 0.62) / 0.18)
+            rot = 540 * min(1, k / 0.82) ** 1.1
+        return (x, y), pose, f, rot
+    if u < t4:
+        k = (u - t3) / T_SWIM
+        if kind == "spanciata" and k < 0.25:          # resta a galla stordito un attimo
+            return (SPLASH_X + 10, YW + 8), mix(FLAT, swim(0), k / 0.25), -1, 90
+        x = SPLASH_X + (LADDER[0] - 50 - SPLASH_X) * k
+        return (x, YW + 14), swim(k * 2 * math.pi * 3), 1, 82
+    if u < t5:
+        k = (u - t4) / T_CLIMB
+        hy = (YW + 40) + (ground(0, STAND, 1)[1] - (YW + 40)) * k
+        return (LADDER[0] - 30 + 10 * k, hy), climb(k * 2 * math.pi * 2.5), 1, 0
+    return ground(START_R, STAND, f), mix(climb(0), STAND, (u - t5) / 0.12), f, 0
 
-# ---------- chi ci pensa ----------
+# ---------- overthinker ----------
 def thinker(t):
     f = 1
-    def at(x, pose): return grounded_hip(x, YB, pose, f), pose, f, 0, None
+    def at(x, pose): return ground(x, pose, f), pose, f, 0
     def wk(x0, x1, t0, t1, back=False):
-        k = (t - t0) / (t1 - t0); x = x0 + (x1 - x0) * k
-        return at(x, walk(k * 2 * math.pi * 2 * (-1 if back else 1)))
+        k = (t - t0) / (t1 - t0); return at(x0 + (x1 - x0) * k, walk(k * 2 * math.pi * 2 * (-1 if back else 1)))
     if t < 1.2: return at(250, STAND)
-    if t < 2.4: return wk(250, 398, 1.2, 2.4)
-    if t < 3.6: return at(398, mix(STAND, LOOK, (t - 2.4) / 0.35))
-    if t < 4.4: return wk(398, 330, 3.6, 4.4, back=True)
+    if t < 2.4: return wk(250, 418, 1.2, 2.4)
+    if t < 3.6: return at(418, mix(STAND, LOOK, (t - 2.4) / 0.35))
+    if t < 4.4: return wk(418, 330, 3.6, 4.4, back=True)
     if t < 6.0: return at(330, mix(STAND, THINK, (t - 4.4) / 0.35))
-    if t < 7.0: return wk(330, 404, 6.0, 7.0)
-    if t < 7.6: return at(404, mix(STAND, ALMOST, (t - 7.0) / 0.3))
-    if t < 8.2: return at(404, mix(ALMOST, LOOK, (t - 7.6) / 0.3))
-    if t < 9.2: return wk(404, 300, 8.2, 9.2, back=True)
+    if t < 7.0: return wk(330, 424, 6.0, 7.0)
+    if t < 7.6: return at(424, mix(STAND, ALMOST, (t - 7.0) / 0.3))
+    if t < 8.2: return at(424, mix(ALMOST, LOOK, (t - 7.6) / 0.3))
+    if t < 9.2: return wk(424, 300, 8.2, 9.2, back=True)
     if t < 10.8: return at(300, mix(STAND, THINK, (t - 9.2) / 0.35))
     return wk(300, 250, 10.8, 12.0, back=True)
 
-# ---------- scena fissa ----------
-def tower(dr, x0, x1, top, bottom, rail=True):
-    c = (200, 200, 205)
-    dr.line([(x0, top), (x0, bottom)], fill=c, width=5); dr.line([(x1, top), (x1, bottom)], fill=c, width=5)
+# ---------- scena ----------
+def tower(dr, x0, x1, top, bottom):
+    c = (205, 205, 210); step = 80
+    dr.line([(x0, top), (x0, bottom)], fill=c, width=7); dr.line([(x1, top), (x1, bottom)], fill=c, width=7)
     y = top
     while y < bottom:
-        dr.line([(x0, y), (x1, y + 60)], fill=c, width=2); dr.line([(x1, y), (x0, y + 60)], fill=c, width=2)
-        dr.line([(x0, y), (x1, y)], fill=c, width=2); y += 60
-    if rail:
-        dr.line([(x0, top - 50), (x1, top - 50)], fill=c, width=4)
-        for xx in range(x0, x1 + 1, (x1 - x0) // 4): dr.line([(xx, top - 50), (xx, top)], fill=c, width=3)
+        dr.line([(x0, y), (x1, y + step)], fill=c, width=3); dr.line([(x1, y), (x0, y + step)], fill=c, width=3)
+        dr.line([(x0, y), (x1, y)], fill=c, width=3); y += step
+    dr.line([(x0, top - 70), (x1, top - 70)], fill=c, width=5)
+    for xx in range(x0, x1 + 1, (x1 - x0) // 4): dr.line([(xx, top - 70), (xx, top)], fill=c, width=4)
 
 def scene_static(lab_l, lab_r):
     im = Image.new("RGBA", (W, H), (0, 0, 0, 0)); dr = ImageDraw.Draw(im)
-    tower(dr, 30, 130, YB + 8, YW + 40)
-    dr.rectangle([130, YB, 430, YB + 10], fill=(225, 225, 230)); dr.rectangle([415, YB, 432, YB + 10], fill=BLUE)
-    tower(dr, 950, 1050, YB + 8, YW + 40)
-    dr.rectangle([650, YB, 950, YB + 10], fill=(225, 225, 230)); dr.rectangle([648, YB, 665, YB + 10], fill=BLUE)
-    lx0, lx1 = LADDER_X + 18, LADDER_X + 40         # scaletta solo sul trampolino di destra
-    dr.line([(lx0, YB - 40), (lx0, YW + 20)], fill=(210, 210, 215), width=4)
-    dr.line([(lx1, YB - 40), (lx1, YW + 20)], fill=(210, 210, 215), width=4)
-    for y in range(YB + 20, YW + 20, 34): dr.line([(lx0, y), (lx1, y)], fill=(210, 210, 215), width=3)
-    fnt = ImageFont.truetype(FONT, 34)
+    tower(dr, TL[0] + 4, TL[1], YB + 14, YW + 60)
+    dr.rectangle([BL[0], YB, BL[1], YB + 16], fill=(225, 225, 230)); dr.rectangle([BL[1] - 24, YB, BL[1], YB + 16], fill=BLUE)
+    tower(dr, TR[0], TR[1] - 4, YB + 14, YW + 60)
+    dr.rectangle([BR[0], YB, BR[1], YB + 16], fill=(225, 225, 230)); dr.rectangle([BR[0], YB, BR[0] + 24, YB + 16], fill=BLUE)
+    c = (210, 210, 215)
+    dr.line([(LADDER[0], YB - 60), (LADDER[0], YW + 30)], fill=c, width=6); dr.line([(LADDER[1], YB - 60), (LADDER[1], YW + 30)], fill=c, width=6)
+    for y in range(YB + 30, YW + 30, 46): dr.line([(LADDER[0], y), (LADDER[1], y)], fill=c, width=4)
+    fnt = ImageFont.truetype(FONT, 40)
     def label(s, cx, y):
-        sp = 6; ws = [dr.textlength(ch, font=fnt) for ch in s]; tw = sum(ws) + sp * (len(s) - 1); x = cx - tw / 2
+        sp = 7; ws = [dr.textlength(ch, font=fnt) for ch in s]; x = cx - (sum(ws) + sp * (len(s) - 1)) / 2
         for ch, wch in zip(s, ws): dr.text((x, y), ch, font=fnt, fill=WHITE); x += wch + sp
-    label(lab_l, 290, 610); label(lab_r, 760, 650)
+    label(lab_l, 290, 470); label(lab_r, 770, 470)
     return im
 
-def ripple(arr, t, amp=6):
+def ripple(arr, t, amp=7):
     out = np.empty_like(arr)
     for y in range(arr.shape[0]):
-        s = int(amp * math.sin(y * 0.09 + t * 6) * (0.4 + y / arr.shape[0]))
-        out[y] = np.roll(arr[y], s, axis=0)
+        out[y] = np.roll(arr[y], int(amp * math.sin(y * 0.08 + t * 6) * (0.4 + y / arr.shape[0])), axis=0)
     return out
 
 class Splash:
-    def __init__(s, x, t0, n=46):
-        rnd = random.Random(int(x * 10 + t0 * 100))
-        s.x, s.t0 = x, t0
-        s.p = [(rnd.uniform(-260, 260), rnd.uniform(-820, -260), rnd.uniform(2.5, 6)) for _ in range(n)]
+    def __init__(s, x, t0, size):
+        rnd = random.Random(int(x * 10 + t0 * 100)); s.x, s.t0, s.k = x, t0, size
+        n = int(18 + 60 * size)
+        s.p = [(rnd.uniform(-330, 330) * (0.5 + size), rnd.uniform(-950, -300) * (0.4 + 0.7 * size), rnd.uniform(3, 8)) for _ in range(n)]
     def draw(s, dr, t):
         a = t - s.t0
         if a < 0 or a > 1.6: return
         for vx, vy, r in s.p:
             if a > 0.9: break
-            x = s.x + vx * a; y = YW + vy * a + 1500 * a * a
+            x = s.x + vx * a; y = YW + vy * a + 1700 * a * a
             if y > YW + 4: continue
-            al = int(255 * (1 - a / 0.9)); dr.ellipse([x - r, y - r, x + r, y + r], fill=(235, 235, 240, al))
+            dr.ellipse([x - r, y - r, x + r, y + r], fill=(235, 235, 240, int(255 * (1 - a / 0.9))))
         for i in range(3):
             b = a - i * 0.2
             if 0 < b < 1.2:
-                rw, rh = 40 + 260 * b, 8 + 26 * b; al = int(160 * (1 - b / 1.2))
-                dr.ellipse([s.x - rw, YW + 6 - rh, s.x + rw, YW + 6 + rh], outline=(220, 220, 225, al), width=3)
+                rw, rh = (40 + 300 * b) * (0.5 + s.k * 0.7), 10 + 30 * b; al = int(160 * (1 - b / 1.2))
+                dr.ellipse([s.x - rw, YW + 8 - rh, s.x + rw, YW + 8 + rh], outline=(220, 220, 225, al), width=4)
 
-def render(c, t, static, splashes):
+def render(t, static, splashes):
     fig = Image.new("RGBA", (W, H), (0, 0, 0, 0)); dr = ImageDraw.Draw(fig)
-    for fn, col in ((thinker, WHITE), (doer, WHITE)):
-        hip, pose, f, rot, _ = fn(t % DUR)
-        draw_fig(dr, skeleton(hip, pose, f, rot), col + (255,))
-    # sotto l'acqua l'omino si vede appena
+    for fn in (thinker, doer):
+        hip, pose, f, rot = fn(t % DUR); draw_fig(dr, skeleton(hip, pose, f, rot), WHITE + (255,))
     a = np.array(fig); a[YW + 4:, :, 3] = (a[YW + 4:, :, 3] * 0.28).astype(np.uint8); fig = Image.fromarray(a)
     fx = Image.new("RGBA", (W, H), (0, 0, 0, 0)); dfx = ImageDraw.Draw(fx)
     for sp in splashes:
-        for k in (-DUR, 0, DUR): sp.t0 += k; sp.draw(dfx, t); sp.t0 -= k
-    top = Image.alpha_composite(static, fig); top = Image.alpha_composite(top, fx)
-    # riflesso nell'acqua
-    band = np.array(top.crop((0, YW - 460, W, YW)).transpose(Image.FLIP_TOP_BOTTOM))
+        for off in (-DUR, 0, DUR): sp.t0 += off; sp.draw(dfx, t); sp.t0 -= off
+    top = Image.alpha_composite(Image.alpha_composite(static, fig), fx)
+    band = np.array(top.crop((0, 560, W, YW)).transpose(Image.FLIP_TOP_BOTTOM))
     band = ripple(band, t); band[..., 3] = (band[..., 3] * 0.22).astype(np.uint8)
     refl = Image.new("RGBA", (W, H), (0, 0, 0, 0)); refl.paste(Image.fromarray(band), (0, YW))
-    bg = Image.new("RGBA", (W, H), BG + (255,))
-    bd = ImageDraw.Draw(bg); bd.rectangle([0, YW, W, H], fill=(10, 10, 15, 255)); bd.line([(0, YW), (W, YW)], fill=(40, 40, 48, 255), width=2)
+    bg = Image.new("RGBA", (W, H), BG + (255,)); bd = ImageDraw.Draw(bg)
+    bd.rectangle([0, YW, W, H], fill=(10, 10, 15, 255)); bd.line([(0, YW), (W, YW)], fill=(40, 40, 48, 255), width=2)
     out = Image.alpha_composite(bg, refl)
-    glow = top.filter(ImageFilter.GaussianBlur(9)); g = np.array(glow); g[..., 3] = (g[..., 3] * 0.55).astype(np.uint8)
-    out = Image.alpha_composite(out, Image.fromarray(g)); out = Image.alpha_composite(out, top)
+    g = np.array(top.filter(ImageFilter.GaussianBlur(10))); g[..., 3] = (g[..., 3] * 0.55).astype(np.uint8)
+    out = Image.alpha_composite(Image.alpha_composite(out, Image.fromarray(g)), top)
     return out.convert("RGB")
 
 def main():
     c = json.load(open(sys.argv[1])); out = sys.argv[2]
-    static = scene_static(c.get("etichetta_sx", "CHI CI PENSA"), c.get("etichetta_dx", "CHI LO FA"))
-    splashes = [Splash(530, 1.85 + 4 * i) for i in range(3)]
+    static = scene_static(c.get("etichetta_sx", "OVERTHINKER"), c.get("etichetta_dx", "FOUNDER"))
+    te = T_WALK + T_CROUCH + T_FLY
+    splashes = [Splash(SPLASH_X, te, 1.4), Splash(SPLASH_X, te + 4, 0.7), Splash(SPLASH_X, te + 8, 0.15)]
     if len(sys.argv) > 3:
-        render(c, float(sys.argv[3]), static, splashes).save(out); return
+        render(float(sys.argv[3]), static, splashes).save(out); return
     p = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
                           "-i", "-", "-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo", "-shortest", "-c:v", "libx264", "-preset", "veryfast",
                           "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", out], stdin=subprocess.PIPE)
-    for i in range(int(DUR * FPS)): p.stdin.write(render(c, i / FPS, static, splashes).tobytes())
+    for i in range(int(DUR * FPS)): p.stdin.write(render(i / FPS, static, splashes).tobytes())
     p.stdin.close(); p.wait()
 
 if __name__ == "__main__":

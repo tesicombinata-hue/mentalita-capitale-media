@@ -9,8 +9,8 @@ Come si fa, per ogni Reel:
 
 ---
 
-## NUOVO 20/11 – "Chi ci pensa / Chi lo fa" (trampolini, orario da decidere)
-Copia in italiano del Reel di @neuronvisuals "Overthinker vs Doer" (107.000 invii). Nessun testo in video oltre alle due etichette, video in loop.
+## NUOVO 20/11 – "Overthinker / Founder" (trampolini, orario da decidere)
+Copia in italiano del Reel di @neuronvisuals "Overthinker vs Doer" (107.000 invii). Nessun testo in video oltre alle due etichette, video in loop. Il founder fa tre tuffi che migliorano: spanciata, tuffo a braccia tese, capriola perfetta.
 
 Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-20/reel_trampolini.mp4
 
@@ -26,7 +26,7 @@ Ma ci si sente pronti dopo aver iniziato, quasi mai prima.
 
 Con i soldi è uguale: il primo euro messo da parte, l'aumento che non chiedi, il lavoro che vuoi cambiare da due anni, il progetto che rimandi a "quando sarà il momento".
 
-Chi lo fa non ha meno paura. Ha solo accettato che il primo tentativo venga male, e che ogni tuffo renda il prossimo più facile.
+Il founder non ha meno paura dell'overthinker. Ha solo accettato che il primo tuffo sia una spanciata, e che ogni tuffo renda il prossimo più facile.
 
 Scegli la cosa su cui giri intorno da mesi. Fai il primo passo questa settimana, anche storto. Poi rifallo.
 
