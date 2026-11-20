@@ -9,6 +9,34 @@ Come si fa, per ogni Reel:
 
 ---
 
+## NUOVO 20/11 – "Chi ci pensa / Chi lo fa" (trampolini, orario da decidere)
+Copia in italiano del Reel di @neuronvisuals "Overthinker vs Doer" (107.000 invii). Nessun testo in video oltre alle due etichette, video in loop.
+
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-20/reel_trampolini.mp4
+
+Audio: di tendenza, malinconico o motivazionale (nell'originale un brano lento e d'atmosfera).
+
+Didascalia:
+
+```
+Ogni volta che torni indietro dal bordo, il salto sembra un po' più alto.
+
+Pensarci troppo sembra prudenza. Immagini tutto quello che può andare storto e aspetti di sentirti pronto.
+Ma ci si sente pronti dopo aver iniziato, quasi mai prima.
+
+Con i soldi è uguale: il primo euro messo da parte, l'aumento che non chiedi, il lavoro che vuoi cambiare da due anni, il progetto che rimandi a "quando sarà il momento".
+
+Chi lo fa non ha meno paura. Ha solo accettato che il primo tentativo venga male, e che ogni tuffo renda il prossimo più facile.
+
+Scegli la cosa su cui giri intorno da mesi. Fai il primo passo questa settimana, anche storto. Poi rifallo.
+
+Segui @mentalita.capitale se sei stanco di restare sul bordo.
+
+#mentalita #crescitapersonale #soldi #disciplina #mentalitacapitale
+```
+
+---
+
 ## NUOVO 20/11 – "Quanto ti costano le tue abitudini?" (orario da decidere con il titolare)
 Replica della tecnica del Reel "Piccole abitudini" di @monetikafinanza (1,5 Mln di views, 3.045 invii), con le abitudini più commentate sotto l'originale più padel e iPhone.
 
