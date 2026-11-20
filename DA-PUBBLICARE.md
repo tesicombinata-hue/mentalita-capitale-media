@@ -37,7 +37,6 @@ Da dove partire:
 2. Tieni quelle che ti fanno stare davvero bene.
 3. Per le altre, decidi un tetto al mese. Quello che risparmi spostalo subito su un conto a parte.
 
-Tu quante ne hai? Scrivi il numero nei commenti 👇
 Salvalo e mandalo a chi dice che a fine mese non sa dove finiscono i soldi.
 Segui @mentalita.capitale: ogni giorno i numeri che nessuno ti spiega.
 

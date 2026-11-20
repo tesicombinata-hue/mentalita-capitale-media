@@ -2,7 +2,7 @@
  "sfondo": "src/sfondo_04.mp4",
  "inizio_video": 0,
  "durata": 7,
- "y_inizio": 250,
+ "y_inizio": 270,
  "titolo": [
   "QUANTO TI COSTANO",
   "LE TUE ABITUDINI?"
@@ -49,12 +49,9 @@
    "101 €"
   ]
  ],
- "invito": [
-  "Tu quante ne hai? Scrivi il numero"
- ],
  "f_titolo": 76,
  "f_intestazioni": 46,
  "f_righe": 40,
  "f_invito": 48,
- "spazio_righe": 26
+ "spazio_righe": 32
 }
