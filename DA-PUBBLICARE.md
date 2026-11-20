@@ -19,20 +19,22 @@ Audio: di tendenza, malinconico o motivazionale (nell'originale un brano lento e
 Didascalia:
 
 ```
-Ogni volta che torni indietro dal bordo, il salto sembra un po' più alto.
+Ogni passo indietro dal bordo rende il salto un po' più alto.
 
-Pensarci troppo sembra prudenza. Immagini tutto quello che può andare storto e aspetti di sentirti pronto.
-Ma ci si sente pronti dopo aver iniziato, quasi mai prima.
+Pensarci troppo sembra prudenza. Immagini tutti i modi in cui può andare male e aspetti di sentirti pronto.
+Ma quella sensazione di essere pronti di solito arriva dopo che hai iniziato, non prima.
 
-Con i soldi è uguale: il primo euro messo da parte, l'aumento che non chiedi, il lavoro che vuoi cambiare da due anni, il progetto che rimandi a "quando sarà il momento".
+In psicologia questo tirarsi indietro ha un nome: evitamento. L'American Psychological Association lo spiega così: evitare ciò che ti fa paura la calma per un po', ma col tempo la fa crescere. Ogni volta che torni indietro, il cervello si convince che il salto era davvero pericoloso.
 
-Il founder non ha meno paura dell'overthinker. Ha solo accettato che il primo tuffo sia una spanciata, e che ogni tuffo renda il prossimo più facile.
+Chi lo fa non è senza paura. Ha solo accettato di fare una figuraccia al primo tentativo come prezzo per diventare bravo. E ogni tentativo rende più facile il successivo.
 
-Scegli la cosa su cui giri intorno da mesi. Fai il primo passo questa settimana, anche storto. Poi rifallo.
+Scegli la cosa su cui giri intorno da mesi. Questa settimana fai il primo tentativo, anche goffo. Poi rifallo.
 
 Segui @mentalita.capitale se sei stanco di restare sul bordo.
 
-#mentalita #crescitapersonale #soldi #disciplina #mentalitacapitale
+Fonte: American Psychological Association, "What Is Exposure Therapy?".
+
+#overthinking #mentalita #crescitapersonale #disciplina #mentalitacapitale
 ```
 
 ---
