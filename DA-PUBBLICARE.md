@@ -10,7 +10,7 @@ Come si fa, per ogni Reel:
 ---
 
 ## NUOVO 20/11 – "Overthinker / Founder" (trampolini, orario da decidere)
-Copia in italiano del Reel di @neuronvisuals "Overthinker vs Doer" (107.000 invii). Nessun testo in video oltre alle due etichette, video in loop. Il founder fa tre tuffi che migliorano: spanciata, tuffo a braccia tese, capriola perfetta.
+Copia in italiano del Reel di @neuronvisuals "Overthinker vs Doer" (107.000 invii). Nessun testo in video oltre alle due etichette, video in loop. Il founder fa cinque tuffi che migliorano piano piano: spanciata, di piedi goffo, di testa storto, di testa pulito, capriola perfetta. Watermark @mentalita.capitale.
 
 Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-20/reel_trampolini.mp4
 
