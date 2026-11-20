@@ -36,7 +36,7 @@ def keyed(t, keys):                 # keys: [(t, value_tuple)], interpolazione c
     return keys[-1][1]
 
 FULL = (620, 2008, 0.82)            # vista intera: si vedono insieme la coppa in cima e la madre in fondo
-CAM = [(0, (430, 2470, 2.0)), (1.2, (430, 2470, 2.0)), (2.3, FULL), (6.3, FULL),
+CAM = [(0, (430, 2470, 2.0)), (0.45, (430, 2470, 2.0)), (1.3, FULL), (6.3, FULL),
        (7.0, (770, 1230, 1.65)), (9.7, (770, 1230, 1.65)), (10.3, (450, 2440, 1.5)), (11.6, (450, 2440, 1.5)),
        (11.9, (680, 1280, 1.65)), (12.3, (680, 1280, 1.65)), (12.6, FULL), (13.25, FULL),
        (13.6, (740, 1230, 1.65)), (DUR, (740, 1230, 1.65))]
@@ -169,8 +169,8 @@ def draw_signs(dr, cam, t):
 def LIT(t, y):
     """quanto è accesa una targa: si accende al passaggio, brilla di più tra 2,8 e 4,6 s, poi resta accesa piano"""
     if t >= 7: return 1.0
-    yf = lerp(GROUND - 250, TOPY + 30, min(1, t / 5.0))
-    on = 1.0 if yf < y + 200 else 0.0
+    yf = son_feet(t)
+    on = 1.0 if yf < y + 110 else 0.0
     pulse = ease((t - 2.8) / 0.4) * (1 - ease((t - 4.6) / 0.6))
     return on * (0.55 + 0.45 * pulse) if pulse > 0 or t > 4.6 else on * 0.55
 
@@ -208,13 +208,16 @@ def bubble(dr, cam, x, y, txt, fnt):
 
 BUB = [(0.2, 1.4, "mom", "Ti tengo io."), (1.5, 2.6, "son", "Grazie, mà!"), (2.7, 3.8, "son", "Tienila ferma!"),
        (4.0, 5.2, "mom", "Ho le mani gelate..."), (5.3, 6.4, "son", "Ce l'ho fatta!"), (7.1, 8.3, "cam", "Come ci sei riuscito?"),
-       (8.4, 9.8, "son", "Mi sono fatto da solo."), (10.2, 11.6, "mom", "...tutto bene lassù?"), (14.2, DUR, "son", "Lei teneva la scala.")]
+       (8.4, 9.8, "son", "Mi sono fatto da solo."), (10.2, 11.6, "mom", "...tutto bene lassù?"), (14.75, DUR, "son", "Lei teneva la scala.")]
 
 # ---------- personaggi nel tempo ----------
+def son_feet(t):
+    return lerp(GROUND - 150, TOPY + 30, min(1, t / 5.0) ** 1.4)
+
 def son_state(t):
     f = 1
     if t < 5.0:
-        k = t / 5.0; yf = lerp(GROUND - 250, TOPY + 30, k)
+        yf = son_feet(t)
         return hip_on(505 - 30, yf, climb(t * 7), f), climb(t * 7), f, None
     if t < 5.6:
         k = (t - 5.0) / 0.6; return hip_on(lerp(505, 650, k), TOPY, walk(k * 6), f), walk(k * 6), f, None
@@ -234,10 +237,16 @@ def son_state(t):
         k = (t - 12.3) / 0.35; return hip_on(505 - 30, lerp(TOPY + 30, GROUND - 50, ease(k)), climb(0.5), f), climb(0.5), f, None
     if t < 13.3:                                    # la porta su
         k = (t - 12.65) / 0.65; return hip_on(505 - 30, lerp(GROUND - 250, TOPY + 30, ease(k)), climb(t * 18), f), climb(t * 18), f, None
-    if t < 13.8: return hip_on(620, TOPY, STAND, f), STAND, f, None
-    if t < 14.3:
-        k = (t - 13.8) / 0.5; return hip_on(620, TOPY, mix(STAND, GIVE, k), f), mix(STAND, GIVE, k), f, None
-    return hip_on(620, TOPY, mix(GIVE, STAND, (t - 14.6) / 0.4), f), mix(GIVE, STAND, (t - 14.6) / 0.4), f, None
+    if t < 13.6:                                    # arrivano in cima: lui va verso la coppa
+        k = (t - 13.3) / 0.3; return hip_on(lerp(505, 735, ease(k)), TOPY, walk(k * 5), f), walk(k * 5), f, None
+    if t < 13.9:                                    # la prende
+        pose = mix(STAND, GIVE, (t - 13.6) / 0.15); return hip_on(735, TOPY, pose, f), pose, f, None
+    if t < 14.2:                                    # torna da lei
+        k = (t - 13.9) / 0.3; pose = walk(k * 4); pose.update(ua_l=80, fa_l=85)
+        return hip_on(lerp(735, 690, ease(k)), TOPY, pose, -1), pose, -1, None
+    if t < 14.7:                                    # gliela consegna
+        pose = mix(STAND, GIVE, (t - 14.2) / 0.2); return hip_on(690, TOPY, pose, -1), pose, -1, None
+    pose = mix(GIVE, STAND, (t - 14.7) / 0.3); return hip_on(690, TOPY, pose, -1), pose, -1, None
 
 def mom_state(t):
     f = 1; age = ease((t - 3.0) / 8.0)
@@ -246,15 +255,23 @@ def mom_state(t):
         return hip_on(392, GROUND, pose, f), pose, f, age, None
     if t < 13.3:
         k = (t - 12.65) / 0.65; return hip_on(505 - 30, lerp(GROUND - 50, TOPY + 30, ease(k)), climb(t * 18), f), climb(t * 18), f, 1, None
-    pose = mix(STAND, RAISE, (t - 14.5) / 0.5) if t > 14.5 else STAND
-    return hip_on(720, TOPY, pose, f), pose, f, 1, ("hand" if t > 14.3 else None)
+    if t < 13.6:
+        k = (t - 13.3) / 0.3; return hip_on(lerp(505, 595, ease(k)), TOPY, walk(k * 4), f), walk(k * 4), f, 1, None
+    if t < 14.75: pose = mix(STAND, GIVE, (t - 14.3) / 0.25) if t > 14.3 else STAND
+    else: pose = mix(GIVE, RAISE, (t - 14.75) / 0.45)
+    return hip_on(595, TOPY, pose, f), pose, f, 1, None
 
 def trophy_pos(t, son_sk, mom_sk):
-    if t < 7.6 or 11.5 <= t < 14.0: return PED[0], PED[1] - 70
-    if t < 11.5: return son_sk["hl"][0], son_sk["hl"][1] + 30
-    if t < 14.3:
-        k = (t - 14.0) / 0.3; return lerp(PED[0], mom_sk["hl"][0], k), lerp(PED[1] - 70, mom_sk["hl"][1] + 30, k)
-    return mom_sk["hl"][0], mom_sk["hl"][1] + 30
+    sh = (son_sk["hl"][0], son_sk["hl"][1] + 30); mh = (mom_sk["hl"][0], mom_sk["hl"][1] + 30)
+    if t < 7.6 or 11.5 <= t < 13.75: return PED[0], PED[1] - 70
+    if t < 11.5 or t < 14.4: return sh
+    if t < 14.65:
+        k = ease((t - 14.4) / 0.25); return lerp(sh[0], mh[0], k), lerp(sh[1], mh[1], k)
+    return mh
+
+FLASHES = [5.9, 7.35, 8.55, 8.85, 9.4, 14.85, 15.25, 15.9]
+def flash(t):
+    return max([max(0.0, 1 - (t - f0) / 0.16) for f0 in FLASHES if 0 <= t - f0 < 0.16] + [0.0])
 
 def render(t, rnd_rain, rnd_snow, fnt):
     cam = Cam(t)
@@ -274,8 +291,21 @@ def render(t, rnd_rain, rnd_snow, fnt):
     camera_rig(dr, cam, CAMX, TOPY)
     s_hip, s_pose, s_f, _ = son_state(t); s_sk = skel(s_hip, s_pose, s_f)
     m_hip, m_pose, m_f, age, _ = mom_state(t); m_sk = skel(m_hip, m_pose, m_f)
-    c_pose = FILM; c_sk = skel(hip_on(CAMX + 70, TOPY, c_pose, -1), c_pose, -1)
+    c_pose = dict(FILM); sw = math.sin(t * 2.3)
+    c_pose.update(torso=180 + 6 * sw, ua_l=60 + 8 * math.sin(t * 3.1), ua_r=70 + 8 * math.sin(t * 2.7), th_l=3 + 6 * sw, th_r=-3 + 6 * sw)
+    cx_ = CAMX + 70 + 14 * math.sin(t * 0.9)
+    c_sk = skel(hip_on(cx_, TOPY, c_pose, -1), c_pose, -1)
     draw_person(dr, cam, c_sk, body=(200, 200, 206))
+    hx_, hy_ = c_sk["hl"]                            # macchina fotografica in mano
+    dr.rectangle([*cam.p(hx_ - 26, hy_ - 18), *cam.p(hx_ + 12, hy_ + 8)], fill=(40, 40, 46), outline=(170, 170, 178), width=cam.w(3))
+    fl = flash(t)
+    if fl > 0:
+        fx_, fy_ = cam.p(hx_ - 30, hy_ - 6); r = 70 * cam.s * (0.5 + fl)
+        gl = Image.new("RGBA", (W, H), (0, 0, 0, 0)); gd = ImageDraw.Draw(gl)
+        gd.ellipse([fx_ - r, fy_ - r, fx_ + r, fy_ + r], fill=(255, 255, 255, int(230 * fl)))
+        gd.rectangle([0, 0, W, H], fill=(255, 255, 255, int(70 * fl)))
+        from PIL import ImageFilter
+        img = Image.alpha_composite(img, gl.filter(ImageFilter.GaussianBlur(12))); dr = ImageDraw.Draw(img)
     hair = tuple(int(lerp(a, b, age)) for a, b in zip((70, 45, 30), (150, 150, 158)))
     draw_person(dr, cam, m_sk, skirt=(196, 84, 128), hair=hair)
     draw_person(dr, cam, s_sk, tie=True)
