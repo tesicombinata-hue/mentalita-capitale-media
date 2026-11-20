@@ -170,7 +170,7 @@ def LIT(t, y):
     """quanto è accesa una targa: si accende al passaggio, brilla di più tra 2,8 e 4,6 s, poi resta accesa piano"""
     if t >= 7: return 1.0
     yf = lerp(GROUND - 250, TOPY + 30, min(1, t / 5.0))
-    on = 1.0 if yf < y - 40 else 0.0
+    on = 1.0 if yf < y + 200 else 0.0
     pulse = ease((t - 2.8) / 0.4) * (1 - ease((t - 4.6) / 0.6))
     return on * (0.55 + 0.45 * pulse) if pulse > 0 or t > 4.6 else on * 0.55
 
