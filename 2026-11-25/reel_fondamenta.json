@@ -1,0 +1,19 @@
+{
+ "durata": 12.0,
+ "frase1": "CHI ARRIVA PIÙ IN ALTO?",
+ "frase2": [
+  "GLI APPLAUSI NON REGGONO IL PESO.",
+  "LE FONDAMENTA SÌ."
+ ],
+ "fumetti": [
+  "GRANDE!",
+  "STA SCAVANDO UNA BUCA?"
+ ],
+ "crisi": "CRISI",
+ "applausi": 12480,
+ "invito": [
+  "Mandalo a chi sta costruendo",
+  "in silenzio."
+ ],
+ "velocita": 1.26
+}

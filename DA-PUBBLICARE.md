@@ -9,6 +9,77 @@ Come si fa, per ogni Reel:
 
 ---
 
+## NUOVO 25/11 – 3 Reel animati di mentalità (ricerca R11, nuovo tema deciso dal titolare il 24/11)
+Copertina personalizzata: usa il file `_copertina.jpg` di ogni Reel. Niente parola chiave: si chiude con una domanda personale, come i virali di R11.
+
+### 12:30 – "Chi resta acceso?" (9,4 s)
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-25/reel_acceso.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-25/reel_acceso_copertina.jpg
+Audio: brano lento e notturno (lo-fi o piano) che cresce nel finale, versione slowed + reverb.
+
+```
+La motivazione si spegne. Il perché no. 💡
+
+L'hype dura una sera. La voglia arriva fino a mezzanotte. La motivazione resiste un po' di più, poi un giorno non c'è.
+Quello che ti tiene sveglio quando nessuno guarda è il motivo per cui hai iniziato.
+
+Chi ha un perché chiaro non aspetta di sentirsi motivato: si siede e lavora. Giorno 1, giorno 100, giorno 365.
+
+Mandalo a chi lavora mentre gli altri dormono.
+
+Qual è il tuo perché? Scrivilo qui sotto 👇
+
+Segui @mentalita.capitale se anche tu stai costruendo qualcosa.
+
+#mentalita #disciplina #motivazione #obiettivi #mentalitacapitale
+```
+
+### 16:30 – "Applausi o fondamenta" (9,5 s)
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-25/reel_fondamenta.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-25/reel_fondamenta_copertina.jpg
+Audio: cinematografico che sale (archi o percussioni), con il picco sul crollo e sul palazzo che sale.
+
+```
+Gli applausi non reggono il peso. Le fondamenta sì. 🏗️
+
+C'è chi costruisce per farsi vedere: risultati veloci, tanti complimenti, una torre che sale in fretta.
+E c'è chi passa mesi sotto terra, dove nessuno guarda: studia, impara, mette da parte, sbaglia in silenzio.
+
+All'inizio sembra che il primo stia vincendo. Poi arriva la prima crisi, e si vede su cosa avevi costruito.
+
+Mandalo a chi sta costruendo in silenzio.
+
+Tu adesso stai scavando o stai impilando scatoloni? 👇
+
+Segui @mentalita.capitale se anche tu stai costruendo qualcosa.
+
+#mentalita #successo #costanza #crescitapersonale #mentalitacapitale
+```
+
+### 20:30 – "Il ponte" (9,4 s)
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-25/reel_ponte.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-25/reel_ponte_copertina.jpg
+Audio: emozionante e lento (piano o archi), versione slowed + reverb, che cresce quando arrivano dall'altra parte.
+
+```
+Ti diranno che è impossibile. Poi useranno il tuo ponte. 🌉
+
+Quando inizi qualcosa di nuovo, la prima reazione degli altri è quasi sempre "sei pazzo", "cadrai", "torna indietro".
+Non lo dicono perché sanno qualcosa che tu non sai. Lo dicono perché stai facendo quello che loro non hanno il coraggio di fare.
+
+Poi un'asse cede. E lì scopri chi ti tiene la mano.
+
+Mandalo a chi ti ha tenuto la mano quando tutti ridevano.
+
+Chi è stata la prima persona a credere in te? 👇
+
+Segui @mentalita.capitale se anche tu stai costruendo qualcosa.
+
+#mentalita #successo #amicizia #crescitapersonale #mentalitacapitale
+```
+
+---
+
 ## NUOVO 20/11 – "Chi teneva la scala" (B animato, orario da decidere)
 Ricreazione in italiano del Reel di @visualhustles (madre che tiene la scala, "self-made"). 16 s.
 
