@@ -20,17 +20,10 @@ Audio: drammatico e lento (archi o piano), slowed + reverb, con il picco quando 
 ```
 La motivazione è un fiammifero. Il perché è un fuoco. 🔥
 
-L'hype si spegne alla prima difficoltà. La voglia ti lascia in ginocchio dopo qualche settimana. La motivazione resiste un po' di più, poi un giorno ti trova a terra.
-
-Anche chi ce la fa cade. La differenza è che si piega sopra quella brace e la protegge, finché non torna fuoco.
-
-Se oggi la tua fiamma è piccola, non è il momento di mollare. È il momento di proteggerla.
+Tutti cadono. Chi ce la fa protegge la brace finché non torna fuoco.
 
 Mandalo a chi sta tenendo duro.
-
-Qual è il tuo perché? Scrivilo qui sotto 👇
-
-Segui @mentalita.capitale se anche tu stai costruendo qualcosa.
+Qual è il tuo perché? 👇
 
 #mentalita #disciplina #motivazione #resilienza #mentalitacapitale
 ```
@@ -43,16 +36,10 @@ Audio: cinematografico che sale (archi o percussioni), con il picco sul crollo d
 ```
 Apparire ti fa applaudire. Essere ti tiene in piedi. 🏗️
 
-C'è chi costruisce per farsi vedere: risultati in fretta, foto, complimenti, una facciata che brilla.
-E c'è chi passa mesi sotto terra dove nessuno guarda: sbatte contro la roccia, cade, si rialza, porta pesi che nessuno applaude.
-
-All'inizio sembra che il primo stia vincendo. Poi arriva la prima crisi, e si vede cosa c'era dietro la facciata.
+La facciata brilla subito. Le fondamenta non le vede nessuno, finché non arriva la crisi.
 
 Mandalo a chi costruisce senza farsi vedere.
-
-Tu oggi stai costruendo per apparire o per essere? 👇
-
-Segui @mentalita.capitale se anche tu stai costruendo qualcosa.
+Tu stai costruendo per apparire o per essere? 👇
 
 #mentalita #successo #costanza #crescitapersonale #mentalitacapitale
 ```
@@ -65,18 +52,10 @@ Audio: emozionante e lento (piano o archi), slowed + reverb, che cresce quando a
 ```
 Prima criticano quello che costruisci. Poi ci camminano sopra. 🌉
 
-"Sei pazzo." "E tu gli credi?" "Te l'avevo detto."
-Quando inizi qualcosa, la gente ride di te. E spesso ride anche di chi ti sta accanto.
-
-Poi arriva il giorno in cui un'asse cede. E scopri chi si butta a terra per tenerti la mano.
-
-Nessuno costruisce da solo. Dietro chi ce l'ha fatta c'è quasi sempre qualcuno che ci ha creduto quando non ci credeva nessuno.
+Nessuno costruisce da solo. Quando un'asse cede, scopri chi ti tiene la mano.
 
 Mandalo a chi ti è rimasta accanto quando tutti ridevano. ❤️
-
 Chi ha creduto in te per prima? 👇
-
-Segui @mentalita.capitale se anche tu stai costruendo qualcosa.
 
 #mentalita #amore #coppia #successo #mentalitacapitale
 ```
