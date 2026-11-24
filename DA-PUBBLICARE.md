@@ -9,73 +9,76 @@ Come si fa, per ogni Reel:
 
 ---
 
-## NUOVO 25/11 – 3 Reel animati di mentalità (ricerca R11, nuovo tema deciso dal titolare il 24/11)
+## NUOVO 25/11 – 3 Reel animati di mentalità (v2 dopo le note del titolare del 24/11)
 Copertina personalizzata: usa il file `_copertina.jpg` di ogni Reel. Niente parola chiave: si chiude con una domanda personale, come i virali di R11.
 
-### 12:30 – "Chi resta acceso?" (9,4 s)
+### 12:30 – "Chi resta acceso?" (9,5 s)
 Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-25/reel_acceso.mp4
 Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-25/reel_acceso_copertina.jpg
-Audio: brano lento e notturno (lo-fi o piano) che cresce nel finale, versione slowed + reverb.
+Audio: drammatico e lento (archi o piano), slowed + reverb, con il picco quando la brace torna fuoco.
 
 ```
-La motivazione si spegne. Il perché no. 💡
+La motivazione è un fiammifero. Il perché è un fuoco. 🔥
 
-L'hype dura una sera. La voglia arriva fino a mezzanotte. La motivazione resiste un po' di più, poi un giorno non c'è.
-Quello che ti tiene sveglio quando nessuno guarda è il motivo per cui hai iniziato.
+L'hype si spegne alla prima difficoltà. La voglia ti lascia in ginocchio dopo qualche settimana. La motivazione resiste un po' di più, poi un giorno ti trova a terra.
 
-Chi ha un perché chiaro non aspetta di sentirsi motivato: si siede e lavora. Giorno 1, giorno 100, giorno 365.
+Anche chi ce la fa cade. La differenza è che si piega sopra quella brace e la protegge, finché non torna fuoco.
 
-Mandalo a chi lavora mentre gli altri dormono.
+Se oggi la tua fiamma è piccola, non è il momento di mollare. È il momento di proteggerla.
+
+Mandalo a chi sta tenendo duro.
 
 Qual è il tuo perché? Scrivilo qui sotto 👇
 
 Segui @mentalita.capitale se anche tu stai costruendo qualcosa.
 
-#mentalita #disciplina #motivazione #obiettivi #mentalitacapitale
+#mentalita #disciplina #motivazione #resilienza #mentalitacapitale
 ```
 
-### 16:30 – "Applausi o fondamenta" (9,5 s)
+### 16:30 – "Apparire o essere" (9,4 s)
 Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-25/reel_fondamenta.mp4
 Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-25/reel_fondamenta_copertina.jpg
-Audio: cinematografico che sale (archi o percussioni), con il picco sul crollo e sul palazzo che sale.
+Audio: cinematografico che sale (archi o percussioni), con il picco sul crollo della facciata e sul palazzo che sale.
 
 ```
-Gli applausi non reggono il peso. Le fondamenta sì. 🏗️
+Apparire ti fa applaudire. Essere ti tiene in piedi. 🏗️
 
-C'è chi costruisce per farsi vedere: risultati veloci, tanti complimenti, una torre che sale in fretta.
-E c'è chi passa mesi sotto terra, dove nessuno guarda: studia, impara, mette da parte, sbaglia in silenzio.
+C'è chi costruisce per farsi vedere: risultati in fretta, foto, complimenti, una facciata che brilla.
+E c'è chi passa mesi sotto terra dove nessuno guarda: sbatte contro la roccia, cade, si rialza, porta pesi che nessuno applaude.
 
-All'inizio sembra che il primo stia vincendo. Poi arriva la prima crisi, e si vede su cosa avevi costruito.
+All'inizio sembra che il primo stia vincendo. Poi arriva la prima crisi, e si vede cosa c'era dietro la facciata.
 
-Mandalo a chi sta costruendo in silenzio.
+Mandalo a chi costruisce senza farsi vedere.
 
-Tu adesso stai scavando o stai impilando scatoloni? 👇
+Tu oggi stai costruendo per apparire o per essere? 👇
 
 Segui @mentalita.capitale se anche tu stai costruendo qualcosa.
 
 #mentalita #successo #costanza #crescitapersonale #mentalitacapitale
 ```
 
-### 20:30 – "Il ponte" (9,4 s)
+### 20:30 – "Il ponte" (9,3 s)
 Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-25/reel_ponte.mp4
 Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-25/reel_ponte_copertina.jpg
-Audio: emozionante e lento (piano o archi), versione slowed + reverb, che cresce quando arrivano dall'altra parte.
+Audio: emozionante e lento (piano o archi), slowed + reverb, che cresce quando arrivano dall'altra parte.
 
 ```
-Ti diranno che è impossibile. Poi useranno il tuo ponte. 🌉
+Prima criticano quello che costruisci. Poi ci camminano sopra. 🌉
 
-Quando inizi qualcosa di nuovo, la prima reazione degli altri è quasi sempre "sei pazzo", "cadrai", "torna indietro".
-Non lo dicono perché sanno qualcosa che tu non sai. Lo dicono perché stai facendo quello che loro non hanno il coraggio di fare.
+"Sei pazzo." "E tu gli credi?" "Te l'avevo detto."
+Quando inizi qualcosa, la gente ride di te. E spesso ride anche di chi ti sta accanto.
 
-Poi un'asse cede. E lì scopri chi ti tiene la mano.
+Poi arriva il giorno in cui un'asse cede. E scopri chi si butta a terra per tenerti la mano.
 
-Mandalo a chi ti ha tenuto la mano quando tutti ridevano.
+Nessuno costruisce da solo. Dietro chi ce l'ha fatta c'è quasi sempre qualcuno che ci ha creduto quando non ci credeva nessuno.
 
-Chi è stata la prima persona a credere in te? 👇
+Mandalo a chi ti è rimasta accanto quando tutti ridevano. ❤️
+
+Chi ha creduto in te per prima? 👇
 
 Segui @mentalita.capitale se anche tu stai costruendo qualcosa.
 
-#mentalita #successo #amicizia #crescitapersonale #mentalitacapitale
+#mentalita #amore #coppia #successo #mentalitacapitale
 ```
 
 ---

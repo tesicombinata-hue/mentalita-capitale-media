@@ -1,19 +1,4 @@
-{
- "durata": 11.8,
- "frase1": "CHI RESTA ACCESO?",
- "frase2": [
-  "LA MOTIVAZIONE SI SPEGNE.",
-  "IL PERCHÉ NO."
- ],
- "etichette": [
-  "HYPE",
-  "VOGLIA",
-  "MOTIVAZIONE",
-  "IL TUO PERCHÉ"
- ],
- "invito": [
-  "Mandalo a chi lavora",
-  "mentre gli altri dormono."
- ],
- "velocita": 1.26
-}
+{"durata": 9.5,
+ "frase": ["LA MOTIVAZIONE È UN FIAMMIFERO.", "IL PERCHÉ È UN FUOCO."],
+ "etichette": ["HYPE", "VOGLIA", "MOTIVAZIONE", "IL TUO PERCHÉ"],
+ "invito": "Mandalo a chi sta tenendo duro."}

@@ -1,13 +1,37 @@
 {
- "durata": 11.8,
+ "durata": 10.4,
  "frase1": [
   "TI DIRANNO",
   "CHE È IMPOSSIBILE."
  ],
  "frase2": [
-  "POI USERANNO",
-  "IL TUO PONTE."
+  "PRIMA CRITICANO QUELLO CHE COSTRUISCI.",
+  "POI CI CAMMINANO SOPRA."
  ],
- "invito": "Mandalo a chi ti ha tenuto la mano.",
- "velocita": 1.26
+ "size2": 42,
+ "fumetti": [
+  [
+   "SEI PAZZO",
+   0.9,
+   2.0,
+   170
+  ],
+  [
+   "E TU GLI CREDI?",
+   2.0,
+   3.2,
+   215
+  ],
+  [
+   "TE L'AVEVO DETTO",
+   4.5,
+   5.9,
+   235
+  ]
+ ],
+ "invito": [
+  "Mandalo a chi ti è rimasta accanto",
+  "quando tutti ridevano."
+ ],
+ "velocita": 1.12
 }

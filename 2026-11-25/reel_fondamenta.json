@@ -1,19 +1,30 @@
 {
- "durata": 12.0,
- "frase1": "CHI ARRIVA PIÙ IN ALTO?",
+ "durata": 9.4,
+ "etichette": [
+  "APPARIRE",
+  "ESSERE"
+ ],
  "frase2": [
-  "GLI APPLAUSI NON REGGONO IL PESO.",
-  "LE FONDAMENTA SÌ."
+  "APPARIRE TI FA APPLAUDIRE.",
+  "ESSERE TI TIENE IN PIEDI."
  ],
  "fumetti": [
-  "GRANDE!",
-  "STA SCAVANDO UNA BUCA?"
+  [
+   "PERDI TEMPO!",
+   2.2,
+   3.4,
+   200
+  ],
+  [
+   "DOVE SEI? NON TI VEDE NESSUNO",
+   4.0,
+   5.3,
+   560
+  ]
  ],
  "crisi": "CRISI",
- "applausi": 12480,
  "invito": [
-  "Mandalo a chi sta costruendo",
-  "in silenzio."
- ],
- "velocita": 1.26
+  "Mandalo a chi costruisce",
+  "senza farsi vedere."
+ ]
 }
