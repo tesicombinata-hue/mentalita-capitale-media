@@ -1,0 +1,13 @@
+{
+ "durata": 8.6,
+ "frase1": ["STESSO STIPENDIO.", "PERCHÉ IL SUO SI SVUOTA?"],
+ "frase2": ["NON TI SVUOTANO LE SPESE GRANDI.", "TI SVUOTANO I BUCHI PICCOLI."],
+ "size2": 46,
+ "buchi": [["CAFFÈ", 0.7, -55, -30], ["DELIVERY", 1.5, 50, -10], ["ABBONAMENTI", 2.3, -45, 20], ["APERITIVO", 3.0, 45, 30], ["SIGARETTE", 3.6, -30, 50]],
+ "fumetti": [
+  ["SONO SOLO 2 EURO", 2.0, 3.4, 380, 690],
+  ["ASPETTA", 4.2, 5.2, 780, 690]
+ ],
+ "invito": ["Mandalo all'amico", "con il secchio bucato."],
+ "velocita": 1.0
+}

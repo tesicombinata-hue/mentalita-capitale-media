@@ -1,0 +1,16 @@
+{
+ "durata": 8.9,
+ "frase1": ["IN SALITA", "SCENDONO TUTTI."],
+ "frase2": ["IN SALITA SCOPRI", "CHI PEDALA CON TE."],
+ "size2": 62,
+ "fumetti_altri": [
+  ["NON NE VALE LA PENA", 1.0, 2.2, 700, 760],
+  ["SCENDETE, DAI", 2.3, 3.5, 330, 1000]
+ ],
+ "fumetti_tandem": [
+  ["NON CE LA FACCIO", 2.75, 3.85, 40, -250],
+  ["CI SONO IO", 3.95, 5.2, -40, -250]
+ ],
+ "invito": ["Mandalo a chi pedala con te", "quando è dura."],
+ "velocita": 1.0
+}

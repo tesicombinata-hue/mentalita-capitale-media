@@ -9,6 +9,67 @@ Come si fa, per ogni Reel:
 
 ---
 
+## NUOVO 26/11 – 3 Reel B: 2 con i soldi al centro + 1 di sola mentalità (confronto)
+Copertina personalizzata: usa il file `_copertina.jpg` di ogni Reel. Niente parola chiave: si chiude con una domanda personale.
+
+### 12:30 – "Chi arriva a dicembre?" (Black Week, serie Stesso stipendio, 8,8 s)
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-26/reel_tredicesima.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-26/reel_tredicesima_copertina.jpg
+Audio: tendenza tesa e veloce all'inizio, che si apre in un drop emozionale quando arriva la busta.
+
+```
+La tredicesima si spende una volta sola. 🎁
+
+Questa settimana gli italiani spenderanno online 4,3 miliardi di euro (stima Netcomm – Politecnico di Milano per la Black Week). Il carrello si riempie il 27 novembre. La tredicesima, per molti, arriva a metà dicembre.
+
+Chi la spende prima di averla, a dicembre non la vede.
+
+Mandalo a chi ha già il carrello pieno.
+Tu la tredicesima ce l'hai ancora o è già nel carrello? 👇
+
+Fonte: Netcomm – Osservatorio eCommerce B2c, Politecnico di Milano.
+
+#blackfriday #tredicesima #risparmio #mentalita #mentalitacapitale
+```
+
+### 16:30 – "La salita" (mentalità, tandem, 8,9 s)
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-26/reel_salita.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-26/reel_salita_copertina.jpg
+Audio: lento ed emozionante (piano o archi, slowed + reverb) con lo stacco in cima alla salita.
+
+```
+In salita scopri chi pedala con te. 🚲
+
+Quando la strada sale, quasi tutti scendono e tornano indietro. "Non ne vale la pena."
+C'è un momento in cui anche tu smetti di pedalare. Lì conta chi hai dietro.
+
+Mandalo a chi pedala con te quando è dura.
+Chi pedala con te? Taggalo 👇
+
+#mentalita #amicizia #disciplina #successo #mentalitacapitale
+```
+
+### 20:30 – "Il secchio bucato" (piccole spese, serie Stesso stipendio, 8,6 s)
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-26/reel_secchio.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-26/reel_secchio_copertina.jpg
+Audio: leggero e ritmato (lo-fi o piano pizzicato) che diventa caldo quando l'amico tappa i buchi.
+
+```
+Non ti svuotano le spese grandi. Ti svuotano i buchi piccoli. 🪣
+
+Caffè, delivery, abbonamenti, aperitivo, sigarette. Nessuno sembra grande.
+Esempio: 2 € al giorno sono 730 € in un anno. Cinque buchi così sono 3.650 €.
+
+Il primo passo non è guadagnare di più. È tappare i buchi.
+
+Mandalo all'amico con il secchio bucato.
+Qual è il tuo buco più grande? 👇
+
+#risparmio #soldi #educazionefinanziaria #mentalita #mentalitacapitale
+```
+
+---
+
 ## NUOVO 25/11 – 3 Reel animati di mentalità (v2 dopo le note del titolare del 24/11)
 Copertina personalizzata: usa il file `_copertina.jpg` di ogni Reel. Niente parola chiave: si chiude con una domanda personale, come i virali di R11.
 
