@@ -46,7 +46,7 @@ def lerp(a, b, k): return a + (b - a) * k
 
 # ---------------- camera 2D ----------------
 CAM_KEYS = [  # (t, cx, cy, zoom)
-    (0.0, 540, 1010, 1.0), (T["zoom0"], 540, 1010, 1.0),
+    (0.0, 540, 1030, 0.95), (T["zoom0"], 470, 960, 1.55),
     (T["zoom0"] + 0.9, XS[0] + 20, 930, 1.9), (T["pan1"], XS[3] - 20, 930, 1.9),
     (T["mot0"], 360, 960, 1.75), (T["mot_fall"], 360, 960, 1.75), (T["mot_fall"] + 0.6, 330, 1080, 1.55),
     (T["dis0"], 400, 980, 1.75), (T["dis_move"], 400, 980, 1.75), (T["dis_drop"] - 0.8, 250, 1000, 1.6), (T["dis_drop"] + 1.2, 290, 1020, 1.5),
@@ -155,7 +155,7 @@ def standing(d, v, x, gy, face_kind, col=WHITE):
     return head
 
 # ---------------- coccodrilli ----------------
-def croc(d, v, x, t, phase, attack=None, facing=1):
+def croc(d, v, x, t, phase, attack=None, facing=1, height=330):
     """Coccodrillo nel fossato. attack = k 0..1 dell'assalto (sale, apre, chiude, torna giù)."""
     bob = 6 * math.sin(t * 1.6 + phase)
     if attack is None or attack <= 0 or attack >= 1:
@@ -172,7 +172,7 @@ def croc(d, v, x, t, phase, attack=None, facing=1):
     # assalto: il muso esce verticale dall'acqua, le fauci si aprono e si chiudono
     rise = math.sin(min(1, attack / 0.35) * math.pi / 2) if attack < 0.7 else 1 - ease((attack - 0.7) / 0.3)
     opening = ease(attack / 0.3) * (1 - ease((attack - 0.42) / 0.08))
-    top = WATER_Y - 330 * rise
+    top = WATER_Y - height * rise
     P = lambda dx, dy: v.p(x + dx, dy)
     d.polygon([P(-55, WATER_Y + 10), P(-42, top + 60), P(42, top + 60), P(55, WATER_Y + 10)], fill=CROC)        # collo
     ang = 0.55 * opening
@@ -209,6 +209,13 @@ def splash(d, v, x, t, t0):
         d.ellipse([A[0], A[1], B[0], B[1]], outline=WATER_HI, width=max(1, int(v.s(3))))
 
 # ---------------- scena ----------------
+def dodge(i, t):
+    """Quanto l'omino i alza le gambe per schivare un salto."""
+    m = 0.0
+    for t0, j in C.get("salti", []):
+        if j == i: m = max(m, ease(seg(t, t0 + 0.05, t0 + 0.3)) * (1 - ease(seg(t, t0 + 0.75, t0 + 1.1))))
+    return m
+
 def scene(t):
     img = Image.new("RGB", (W, H), BG); d = ImageDraw.Draw(img)
     v = V(camera(t))
@@ -242,6 +249,9 @@ def scene(t):
             a0 = snap_oss[0]; att = (t - a0) / 1.6
             x_draw = lerp(cx_, XS[3], ease((t - (a0 - 1.5)) / 1.2)) if t < a0 + 2 else lerp(XS[3], cx_, ease((t - a0 - 2) / 2))
         croc(d, v, x_draw, t, ph, att, f)
+    for t0, i in C.get("salti", []):                     # salti a vuoto: tutti alzano le gambe e lo schivano
+        a = (t - t0) / 1.2
+        if 0 < a < 1: croc(d, v, XS[i] + 10, t, 0, a, 1, 250)
     # gli omini
     heads = {}
     # MOTIVAZIONE
@@ -254,7 +264,7 @@ def scene(t):
         elif t >= T["mot_pull1"]:
             fk = "tired"
         sway = 4 * math.sin(t * 2) if t < T["mot_pull1"] else 6 * math.sin(t * 7) * seg(t, mf - 1.2, mf)
-        heads[0] = hanging(d, v, XS[0], fk, pull, sway)
+        heads[0] = hanging(d, v, XS[0], fk if dodge(0, t) < 0.3 else "scared", pull, sway, legs_up=dodge(0, t))
     else:
         k = t - mf; dy = 1200 * k * k
         if T["mot_fall"] + 0.45 + 0.35 > t:
@@ -265,7 +275,7 @@ def scene(t):
         pull = 0.0
         if T["dis_pull0"] <= t < T["dis_pull1"]:
             pull = ease(1 - abs(((t - T["dis_pull0"]) / (T["dis_pull1"] - T["dis_pull0"])) * 2 - 1))
-        heads[1] = hanging(d, v, XS[1], "neutral", pull, 2 * math.sin(t * 2))
+        heads[1] = hanging(d, v, XS[1], "neutral" if dodge(1, t) < 0.3 else "worried", pull, 2 * math.sin(t * 2), legs_up=dodge(1, t))
     elif t < dd_:
         k = (t - dm) / (dd_ - dm); x = lerp(XS[1], BAR_X0 + 60, k)
         stp = math.sin(k * math.pi * 7)
@@ -283,7 +293,7 @@ def scene(t):
         fk = "smug"
         if T["ego_look"] <= t < ef: fk = "worried"
         sway = 2 * math.sin(t * 2)
-        hh = hanging(d, v, XS[2], fk, 0.15 if t < T["ego_look"] else 0, sway)
+        hh = hanging(d, v, XS[2], fk if dodge(2, t) < 0.3 else "scared", 0.15 if t < T["ego_look"] else 0, sway, legs_up=dodge(2, t))
         heads[2] = hh
     else:
         k = t - ef; dy = 1200 * k * k
@@ -291,7 +301,7 @@ def scene(t):
             hanging(d, v, XS[2], "scared", 0, 0, dy=dy, legs_up=0.3, arms_up=True, hands=(XS[2] - 46, XS[2] + 46))
     # OSSESSIONE
     red = ease(seg(t, T["oss0"] + 1.5, T["oss_close"] + 3.0))
-    legs = ease(seg(t, T["oss_snap"] - 0.2, T["oss_snap"] + 0.2)) * (1 - ease(seg(t, T["oss_snap"] + 1.2, T["oss_snap"] + 1.8)))
+    legs = max(dodge(3, t), ease(seg(t, T["oss_snap"] - 0.2, T["oss_snap"] + 0.2)) * (1 - ease(seg(t, T["oss_snap"] + 1.2, T["oss_snap"] + 1.8))))
     shake = 3 * math.sin(t * 40) * red
     heads[3] = hanging(d, v, XS[3], "angry" if red < 0.5 else "strain", 0, shake, red=red, legs_up=legs)
     if T["oss0"] + 2.5 <= t < T["fin0"] + 6:                                               # freccia verso il braccio
@@ -307,6 +317,8 @@ def scene(t):
     d.polygon([v.p(MOAT_X0 + 2, WATER_Y + 4), v.p(MOAT_X1 - 2, WATER_Y + 4), v.p(MOAT_X1 - 20, WATER_Y + 600), v.p(MOAT_X0 + 20, WATER_Y + 600)], fill=WATER)
     d.line([v.p(MOAT_X0, WATER_Y + 3), v.p(MOAT_X1, WATER_Y + 3)], fill=WATER_HI, width=max(1, int(v.s(3))))
     # schizzi
+    for t0, i in C.get("salti", []):
+        splash(d, v, XS[i] + 10, t, t0 + 0.85)
     splash(d, v, XS[0], t, mf + 0.42)
     splash(d, v, XS[2], t, ef + 0.42)
     # etichette sotto la riva
@@ -383,6 +395,8 @@ if __name__ == "__main__":
     k = T["dis_move"]
     while k < T["dis_drop"]: ev.append((k, mc.s_tok(300, 0.05, 0.25))); k += (T["dis_drop"] - T["dis_move"]) / 7
     ev += [(T["dis_drop"] + 0.45, mc.s_thud(0.5, 110))]
+    for t0, i in C.get("salti", []):
+        ev += [(t0, mc.s_whoosh(0.4, 0.35)), (t0 + 0.45, mc.s_crack(0.8)), (t0 + 0.9, mc.s_thud(0.4, 60))]
     ev += [(T["oss_snap"] + 0.4, mc.s_crack(0.9)), (T["oss_snap"] + 0.3, mc.s_whoosh(0.5, 0.3))]
     for k in range(12): ev.append((T["oss_close"] + k * 0.55, mc.s_thud(0.25 + 0.02 * k, 55)))   # battito
     ev += [(T["fin0"], mc.s_rise(2.6, 0.4)), (T["end0"], mc.s_chime(0.4))]
