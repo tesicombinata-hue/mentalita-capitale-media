@@ -9,6 +9,27 @@ Come si fa, per ogni Reel:
 
 ---
 
+## NUOVO – "Chi resiste più a lungo?" (59 s, la sbarra sul fossato dei coccodrilli)
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/reel_sbarra.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/reel_sbarra_copertina.jpg
+Audio: piano lento ed emotivo, crescente nel finale.
+
+```
+Chi resiste di più non è sempre il più forte. 💭
+
+La motivazione si accende e si spegne.
+L'ego regge finché qualcuno guarda.
+L'ossessione non ascolta il corpo.
+La disciplina sa quando fermarsi, e dove scendere.
+
+Tu oggi chi sei? Scrivilo qui sotto 👇
+
+#mentalita #disciplina #motivazione #crescitapersonale #mentalitacapitale
+```
+Primo commento da fissare: "Io oggi sono ___. Domani voglio essere DISCIPLINA. Tu?"
+
+---
+
 ## NUOVO 27/11 (Black Friday) – "Il precipizio" v3 (12,5 s, stile 3D: dubbio, inquadratura laterale, piastrelle d'oro)
 Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-27/reel_precipizio.mp4
 Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-27/reel_precipizio_copertina.jpg

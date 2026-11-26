@@ -1,0 +1,21 @@
+{
+ "durata": 59.0,
+ "nomi": ["MOTIVAZIONE", "DISCIPLINA", "EGO", "OSSESSIONE"],
+ "parole": ["Entusiasmo.", "Metodo.", "Orgoglio.", "Testa dura."],
+ "tempi_parole": [5.9, 7.3, 8.7, 10.1],
+ "tempi": {"zoom0": 5.0, "pan1": 10.8, "mot0": 11.6, "mot_pull0": 13.3, "mot_pull1": 15.3, "mot_fall": 17.4,
+           "dis0": 20.0, "dis_pull0": 22.3, "dis_pull1": 23.8, "dis_move": 25.0, "dis_drop": 28.0,
+           "ego0": 30.5, "ego_look": 34.4, "ego_fall": 36.8,
+           "oss0": 40.0, "oss_close": 43.0, "oss_snap": 46.5, "fin0": 50.5, "end0": 55.5},
+ "testi": [
+  ["Chi resiste|più a lungo?", 0.2, 5.0],
+  ["Entusiasmo.·Metodo.|Orgoglio.·Testa dura.", 5.3, 11.4, [5.9, 7.3, 8.7, 10.1]],
+  ["Motivazione:|si accende in un attimo,|si spegne in un attimo.", 12.2, 19.8],
+  ["Disciplina:|sa quando fermarsi.|E dove scendere.", 20.5, 30.3],
+  ["Ego:|è forte solo finché|qualcuno lo guarda.", 31.0, 40.2],
+  ["Ossessione:|il corpo gli dice basta…|lui non molla.", 41.0, 50.3],
+  ["Chi resiste più a lungo|non è sempre il più forte.", 51.0, 55.4]
+ ],
+ "domanda": ["Tu oggi", "chi sei?"],
+ "invito": ["Mandalo a chi tiene duro", "da troppo tempo."]
+}
