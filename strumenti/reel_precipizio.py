@@ -31,37 +31,49 @@ CROWD = [(cx + random.uniform(-0.05, 0.05), FRONT_Z + j * GAPZ + random.uniform(
          for j in range(-4, ROWS) for cx in COLS if not (cx == HX0 and j <= 0)]
 
 T_OUT0, T_OUT1 = 4.15, 4.95               # esce di lato dalla fila rallentando
-T_LOOK1 = 5.9                             # guarda la massa che cade
-T_TURN = 6.1                              # si gira
-T_ANS = 9.0
+T_LOOKL = 5.5                             # guarda a sinistra: la massa che cade
+T_LOOKR = 6.0                             # guarda indietro la fila: dubbio
+T_BACKSTEP = 6.45                         # mezzo passo verso la fila
+T_TURN = 6.95                             # decide: si gira (stacco sull'inquadratura laterale)
+T_WALK = 7.1
+T_ANS = 9.6
 X_OUT = HX0 + 1.5
 TILE = 0.62
-
-def he_state(t):
-    """(x, z, posa) di lui."""
-    if t < T_OUT0:
-        return HX0, HE_Z0 - V * t, dict(facing="front", tie=BLUE, **walk_pose(t * 6.5))
-    z_out0 = HE_Z0 - V * T_OUT0
-    if t < T_OUT1:
-        k = (t - T_OUT0) / (T_OUT1 - T_OUT0)
-        z = z_out0 - V * (T_OUT1 - T_OUT0) * (k - k * k / 2)     # rallenta fino a fermarsi
-        x = HX0 + (X_OUT - HX0) * ease(k)
-        return x, z, dict(facing="front", tie=BLUE, **walk_pose(t * 6.5))
-    z_stop = z_out0 - V * (T_OUT1 - T_OUT0) * 0.5
-    if t < T_TURN:
-        look = -0.9 if t < T_LOOK1 else 0.0
-        return X_OUT, z_stop, dict(facing="front", tie=BLUE, look=look, mouth=1 if t < T_LOOK1 else 0, arml=14.0, armr=14.0)
-    tw = t - T_TURN - 0.15
-    if tw < 0:
-        return X_OUT, z_stop, dict(facing="back", arml=8.0, armr=8.0)
-    return X_OUT, z_stop + 1.05 * tw, dict(facing="back", **walk_pose(tw * 6.5 + 1.57))
+SPEED = 1.05
 
 def z_stop():
     return HE_Z0 - V * T_OUT0 - V * (T_OUT1 - T_OUT0) * 0.5
 
-KEYS = None
+def he_state(t):
+    """(x, z, direzione del corpo (hx, hz), posa senza facing)."""
+    if t < T_OUT0:
+        return HX0, HE_Z0 - V * t, (0, -1), dict(tie=BLUE, **walk_pose(t * 6.5))
+    z_out0 = HE_Z0 - V * T_OUT0
+    zs = z_stop()
+    if t < T_OUT1:
+        k = (t - T_OUT0) / (T_OUT1 - T_OUT0)
+        z = z_out0 - V * (T_OUT1 - T_OUT0) * (k - k * k / 2)
+        x = HX0 + (X_OUT - HX0) * ease(k)
+        return x, z, (0, -1), dict(tie=BLUE, look=0.4, **walk_pose(t * 6.5))
+    if t < T_LOOKL:                                       # guarda la massa che cade, spaventato
+        return X_OUT, zs, (0, -1), dict(tie=BLUE, look=-0.9, mouth=1, arml=22.0, armr=22.0)
+    if t < T_LOOKR:                                       # si volta verso la fila: e se avessero ragione?
+        return X_OUT, zs, (0, -1), dict(tie=BLUE, look=0.9, arml=12.0, armr=12.0)
+    if t < T_BACKSTEP:                                    # mezzo passo verso la fila, incerto
+        k = ease((t - T_LOOKR) / (T_BACKSTEP - T_LOOKR))
+        pose = walk_pose((t - T_LOOKR) * 7) if k < 0.95 else {}
+        return X_OUT - 0.5 * k, zs, (0, -1), dict(tie=BLUE, look=0.6, **pose)
+    if t < T_TURN:                                        # si ferma, scuote la testa
+        lk = round(0.8 * math.sin((t - T_BACKSTEP) * 22), 1)
+        return X_OUT - 0.5, zs, (0, -1), dict(tie=BLUE, look=lk, arml=10.0, armr=10.0)
+    tw = t - T_WALK
+    if tw < 0:
+        return X_OUT - 0.5, zs, (0, 1), dict(tie=BLUE)
+    x = X_OUT - 0.5 + 0.5 * ease(tw / 0.6)                # torna sul suo lato e cammina
+    return x, zs + SPEED * tw, (0, 1), dict(tie=BLUE, **walk_pose(tw * 6.5 + 1.57))
+
 def camera(t):
-    hx, hz, _ = he_state(t)
+    hx, hz, _, _ = he_state(t)
     zs = z_stop()
     keys = [
         (0.0, HX0 + 0.5, 1.2, HE_Z0 - 4.0, 1040),
@@ -70,26 +82,34 @@ def camera(t):
         (3.0, 0.4, 7.8, -2.4, 320),
         (3.9, HX0 + 0.9, 1.5, HE_Z0 - V * 3.9 - 3.6, 1000),   # di nuovo su di lui, dal lato esterno
         (4.6, HX0 + 0.6, 2.6, -4.6, 820),              # si apre: il precipizio
-        (5.8, 1.6, 5.2, -8.0, 560),
-        (T_TURN + 0.3, X_OUT - 0.8, 2.0, zs - 3.4, 900),  # alle sue spalle
+        (5.2, X_OUT - 0.4, 1.6, zs - 2.8, 1010),       # primo piano: il dubbio
+        (T_TURN, X_OUT - 0.5, 1.6, zs - 2.6, 1010),
     ]
-    if t < T_TURN + 0.3:
+    if t < T_TURN:
         return cam_keys(t, keys)
-    hzz = hz
-    if t < T_ANS - 0.4:
-        return Cam(X_OUT - 0.8, 2.0, hzz - 3.4, 900)
-    k = ease((t - (T_ANS - 0.4)) / 2.2)                # gru finale: la fila nel vuoto e lui sulla strada d'oro
-    return Cam(lerp(X_OUT - 0.8, 1.0, k), lerp(2.0, 10.0, k), lerp(hzz - 3.4, -11.0, k), lerp(900, 420, k))
+    # inquadratura laterale da destra: lo si vede di profilo che va nella direzione opposta alla massa
+    cz = hz - 0.4
+    if t < T_ANS - 0.3:
+        return Cam(X_OUT + 4.2, 1.45, cz, 1020, yaw=-90)
+    k = ease((t - (T_ANS - 0.3)) / 2.2)
+    return Cam(X_OUT + lerp(4.2, 6.0, k), lerp(1.45, 3.6, k), cz + 0.5 * k, lerp(1020, 820, k), yaw=-90)
 
 def background(cam):
     img = Image.new("RGBA", (W, H), (10, 10, 13, 255)); d = ImageDraw.Draw(img)
-    zs = [0] + [0.5 * 1.25 ** i for i in range(30)]
-    for za, zb in zip(zs if cam.y > 0 else [], zs[1:]):
-        a = cam.proj(0, 0, max(za, cam.z + 0.7)); b = cam.proj(0, 0, zb)
-        if a is None or b is None: continue
-        fog = math.exp(-(za + zb) / 60)
-        c = int(18 + 52 * fog)
-        d.rectangle([0, min(a[1], b[1]), W, max(a[1], b[1])], fill=(c, c, c + 4, 255))
+    if cam.y > 0:                                       # pavimento: fasce di profondità (vale per ogni direzione)
+        ds = [0.7 * 1.22 ** i for i in range(34)]
+        for da, db in zip(ds, ds[1:]):
+            ya = cam.hz + cam.f * cam.y / da; yb = cam.hz + cam.f * cam.y / db
+            fog = math.exp(-(da + db) / 60)
+            c = int(18 + 52 * fog)
+            d.rectangle([0, min(ya, yb), W, max(ya, yb)], fill=(c, c, c + 4, 255))
+    if cam.yaw != 0:
+        xn, xf = cam.x - 1.0, cam.x - 120
+        pts = [cam.proj(xn, 0, 0), cam.proj(xf, 0, 0), cam.proj(xf, 0, -150), cam.proj(xn, 0, -150)]
+        if all(pts):
+            d.polygon([(p[0], p[1]) for p in pts], fill=(9, 9, 11, 255))
+            d.line([(pts[0][0], pts[0][1]), (pts[1][0], pts[1][1])], fill=(165, 165, 172, 255), width=4)
+        return img
     if cam.z + 0.7 > 0:                                 # la camera è sopra la strada: niente bordo davanti
         return img
     e = cam.proj(0, 0, 0)
@@ -117,13 +137,13 @@ def bill(d, cam, s, x, z):
 
 def tiles(d, lit, cam, t):
     """Piastrelle d'oro sotto i suoi passi dopo che si è girato."""
-    if t < T_TURN + 0.15: return
-    hx, hz, _ = he_state(t)
+    if t < T_WALK: return
+    hx, hz, _, _ = he_state(t)
     z0 = z_stop() - TILE / 2
     n = int((hz - z0) / TILE) + 2
     for i in range(n):
         zc = z0 + i * TILE
-        born = T_TURN + 0.15 + (zc - z0) / 1.05 - 0.1
+        born = T_WALK + (zc - z0) / SPEED - 0.1
         k = ease((t - born) / 0.35)
         if k <= 0: continue
         s = TILE * 0.47 * (0.6 + 0.4 * k)
@@ -142,7 +162,9 @@ def frame(t):
     img = background(cam); d = ImageDraw.Draw(img)
     glow = Image.new("RGB", (W, H), (0, 0, 0)); dg = ImageDraw.Draw(glow)
     tiles(d, dg, cam, t)
-    hx, hz, hpose = he_state(t)
+    hx, hz, hdir, hpose = he_state(t)
+    hpose = dict(hpose, facing=cam.facing(*hdir))
+    cf = cam.facing(0, -1)
     items = []
     for (x0, z0, ph) in CROWD:
         z = z0 - V * t
@@ -150,21 +172,21 @@ def frame(t):
             tf = -z / V
             y = -4.9 * tf * tf; zz = -0.45 * tf
             if y < -30: continue
-            items.append((zz, "fall", (x0, y, zz, min(50, tf * 100), ph)))
+            items.append((cam.depth(x0, zz), "fall", (x0, y, zz, min(50, tf * 100), ph)))
         else:
-            items.append((z, "man", (x0, z, ph)))
-    for s, bx, bz in C["cartelloni"]: items.append((bz, "bill", (s, bx, bz)))
-    items.append((hz, "he", None))
+            items.append((cam.depth(x0, z), "man", (x0, z, ph)))
+    for s, bx, bz in C["cartelloni"]: items.append((cam.depth(bx, bz), "bill", (s, bx, bz)))
+    items.append((cam.depth(hx, hz), "he", None))
     items.sort(key=lambda it: -it[0])
     hhead = None
     for z, kind, data in items:
         if kind == "man":
             x, zz, ph = data
             shadow(d, cam, x, zz)
-            place(img, cam, x, 0, zz, dict(facing="front", **walk_pose(t * 6.5 + ph)))
+            place(img, cam, x, 0, zz, dict(facing=cf, **walk_pose(t * 6.5 + ph)))
         elif kind == "fall":
             x, y, zz, rot, ph = data
-            place(img, cam, x, y, zz, dict(facing="front", arml=150.0, armr=150.0, mouth=1), rot=-rot if ph > 3.14 else rot)
+            place(img, cam, x, y, zz, dict(facing=cf, arml=150.0, armr=150.0, mouth=1), rot=-rot if ph > 3.14 else rot)
         elif kind == "bill":
             bill(d, cam, *data)
         else:
@@ -210,10 +232,11 @@ if __name__ == "__main__":
     ev += [(0.0, mc.s_pop(0.35, 900)), (0.8, mc.s_whoosh(1.2, 0.45)), (3.0, mc.s_whoosh(0.9, 0.35, False)),
            (3.9, mc.s_rise(1.5, 0.25, 110, 160)), (4.4, mc.s_whoosh(1.2, 0.45))]
     for k in range(8): ev.append((4.5 + k * 0.55, mc.s_whoosh(0.45, 0.22, False)))
-    ev += [(T_OUT1, mc.s_thud(0.6, 80))]
+    ev += [(T_OUT1, mc.s_thud(0.6, 80)), (T_LOOKR, mc.s_whoosh(0.4, 0.2)), (T_TURN, mc.s_whoosh(0.6, 0.4))]
+    for k in range(4): ev.append((T_BACKSTEP + k * 0.12, mc.s_click(0.12)))
     tw = 0.0
-    while T_TURN + 0.15 + tw < DUR - 0.3:                 # ogni piastrella d'oro: un rintocco
-        ev.append((T_TURN + 0.15 + tw, mc.s_chime(0.18, 1320 + 60 * int(tw / TILE * 1.05) % 400)))
+    while T_WALK + tw < DUR - 0.3:                 # ogni piastrella d'oro: un rintocco
+        ev.append((T_WALK + tw, mc.s_chime(0.18, 1320 + 60 * int(tw / TILE * 1.05) % 400)))
         tw += TILE / 1.05
     ev += [(T_ANS - 0.3, mc.s_rise(2.4, 0.45)), (T_ANS + 0.05, mc.s_chime(0.4))]
     for k in range(len(C["frase2"][0] + C["frase2"][1])): ev.append((T_ANS + k / 50, mc.s_type(0.1)))

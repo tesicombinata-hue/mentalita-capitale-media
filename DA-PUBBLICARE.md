@@ -9,13 +9,13 @@ Come si fa, per ogni Reel:
 
 ---
 
-## NUOVO 27/11 (Black Friday) – "Il precipizio" v2 (12 s, stile 3D: lui sul lato esterno, piastrelle d oro)
+## NUOVO 27/11 (Black Friday) – "Il precipizio" v3 (12,5 s, stile 3D: dubbio, inquadratura laterale, piastrelle d'oro)
 Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-27/reel_precipizio.mp4
 Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-27/reel_precipizio_copertina.jpg
 Audio: cupo e incalzante (percussioni, archi bassi) che sale fino al bordo e si apre in qualcosa di emozionante quando lui esce dalla fila.
 
 ```
-Seguire la massa è comodo. Finché non finisce la strada. 🛒
+Se segui tutti, arrivi dove arrivano tutti. 🛒
 
 "-50%", "Rata 0%", "Compra ora". Oggi è Black Friday e la fila è lunghissima.
 Nessuno guarda dove porta: si guarda chi c'è davanti, e lo si segue.
@@ -23,7 +23,7 @@ Nessuno guarda dove porta: si guarda chi c'è davanti, e lo si segue.
 Fermarsi costa. Ti spingono, ti dicono "cammina, fanno tutti così".
 Ma uscire dalla fila è l'unico modo per vedere dove sta andando.
 
-Mandalo a chi segue sempre la fila.
+Mandalo a chi ha il coraggio di uscire dalla fila.
 Tu oggi in che fila sei? 👇
 
 #blackfriday #mentalita #soldi #risparmio #mentalitacapitale

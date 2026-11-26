@@ -21,12 +21,24 @@ SKIN_HI, SKIN_LO = (252, 252, 252), (170, 172, 180)
 
 # ---------------- camera ----------------
 class Cam:
-    def __init__(self, x, y, z, hz, f=1100):
-        self.x, self.y, self.z, self.hz, self.f = x, y, z, hz, f
+    """Camera prospettica. yaw in gradi: 0 guarda verso +z, -90 guarda verso -x (inquadratura laterale da destra)."""
+    def __init__(self, x, y, z, hz, f=1100, yaw=0.0):
+        self.x, self.y, self.z, self.hz, self.f, self.yaw = x, y, z, hz, f, yaw
+        a = math.radians(yaw); self.c, self.s = math.cos(a), math.sin(a)
+    def depth(self, x, z):
+        return (x - self.x) * self.s + (z - self.z) * self.c
     def proj(self, x, y, z):
-        d = z - self.z
+        dx, dz = x - self.x, z - self.z
+        d = dx * self.s + dz * self.c
         if d <= 0.6: return None
-        return (W / 2 + self.f * (x - self.x) / d, self.hz - self.f * (y - self.y) / d, self.f / d)
+        rx = dx * self.c - dz * self.s
+        return (W / 2 + self.f * rx / d, self.hz - self.f * (y - self.y) / d, self.f / d)
+    def facing(self, hx, hz):
+        """Come appare chi cammina nella direzione (hx, hz): front, back, side_r, side_l."""
+        fw = hx * self.s + hz * self.c; rt = hx * self.c - hz * self.s
+        if fw < -0.5: return "front"
+        if fw > 0.5: return "back"
+        return "side_r" if rt > 0 else "side_l"
 
 def lerp(a, b, k): return a + (b - a) * k
 def ease(k):
@@ -68,9 +80,12 @@ def _limb(d, a, b, w, col):
         d.ellipse([p[0] - w / 2, p[1] - w / 2, p[0] + w / 2, p[1] + w / 2], fill=col)
 
 @lru_cache(maxsize=4096)
-def sprite(facing="front", legl=0.0, legr=0.0, arml=8.0, armr=8.0, look=0.0, tie=(60, 60, 66), lean=0.0, mouth=0):
+def sprite(facing="front", sw=0.0, legl=0.0, legr=0.0, arml=8.0, armr=8.0, look=0.0, tie=(60, 60, 66), lean=0.0, mouth=0):
     """facing: front/back. legl/legr: sollevamento del piede (m). arml/armr: angolo del braccio dal basso (gradi, + verso
     l'esterno/alto). look: -1..1 sposta gli occhi. lean: inclinazione del busto (gradi)."""
+    if facing in ("side_r", "side_l"):
+        im = _side(sw, tie, look, mouth, arml)
+        return im if facing == "side_r" else im.transpose(Image.FLIP_LEFT_RIGHT)
     im = Image.new("RGBA", (SPR_W, SPR_H), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
     front = facing == "front"
     # gambe
@@ -130,7 +145,49 @@ def sprite(facing="front", legl=0.0, legr=0.0, arml=8.0, armr=8.0, look=0.0, tie
 def walk_pose(p, swing=1.0):
     s = math.sin(p)
     return dict(legl=round(max(0, s) * 0.13, 3), legr=round(max(0, -s) * 0.13, 3),
-                arml=round(8 + 10 * s * swing, 1), armr=round(8 - 10 * s * swing, 1))
+                arml=round(8 + 10 * s * swing, 1), armr=round(8 - 10 * s * swing, 1), sw=round(s, 1))
+
+def _side(sw, tie, look, mouth, arm_up):
+    """Omino di profilo rivolto a destra. sw: -1..1 fase del passo (0 = fermo)."""
+    im = Image.new("RGBA", (SPR_W, SPR_H), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+    def L(hip, ang, length, w, col):
+        a = math.radians(ang)
+        end = (hip[0] + math.sin(a) * length * PM, hip[1] + math.cos(a) * length * PM)
+        _limb(d, hip, end, w * PM, col); return end
+    hip = _pt(0, 0.95)
+    # gamba e braccio lontani (più scuri)
+    for k, col_l, col_a in ((-1, (72, 72, 80), SUIT_D), ):
+        knee = L(hip, -24 * sw, 0.44, 0.15, col_l)
+        foot = L(knee, -24 * sw - 14 * max(0, sw), 0.42, 0.14, col_l)
+        d.ellipse([foot[0] - 12, foot[1] - 8, foot[0] + 0.16 * PM, foot[1] + 14], fill=SHOE, outline=OUTL, width=3)
+    sh = _pt(0.0, 1.4)
+    if arm_up < 60:
+        el = L(sh, 22 * sw, 0.27, 0.11, SUIT_D); h_ = L(el, 30 * sw, 0.25, 0.1, SUIT_D)
+        d.ellipse([h_[0] - 12, h_[1] - 12, h_[0] + 12, h_[1] + 12], fill=(220, 220, 222), outline=OUTL, width=3)
+    # busto di profilo
+    poly = [_pt(-0.16, 1.46), _pt(0.13, 1.46), _pt(0.17, 1.2), _pt(0.16, 0.86), _pt(-0.16, 0.86)]
+    d.polygon(poly, fill=SUIT_M, outline=OUTL, width=4)
+    d.polygon([_pt(0.0, 1.46), _pt(0.13, 1.46), _pt(0.17, 1.2), _pt(0.16, 0.86), _pt(0.03, 0.86)], fill=SUIT_L)
+    d.line([_pt(0.13, 1.44), _pt(0.17, 1.12)], fill=tie, width=10)
+    # gamba vicina
+    knee = L(hip, 24 * sw, 0.44, 0.16, PANTS)
+    foot = L(knee, 24 * sw - 14 * max(0, -sw), 0.42, 0.15, PANTS)
+    d.ellipse([foot[0] - 12, foot[1] - 8, foot[0] + 0.17 * PM, foot[1] + 14], fill=SHOE, outline=OUTL, width=3)
+    # braccio vicino
+    if arm_up >= 60:
+        el = L(sh, 150, 0.27, 0.12, SUIT_M); h_ = L(el, 165, 0.25, 0.11, SUIT_M)
+    else:
+        el = L(sh, -22 * sw, 0.27, 0.12, SUIT_M); h_ = L(el, -30 * sw + 10, 0.25, 0.11, SUIT_M)
+    d.ellipse([h_[0] - 13, h_[1] - 13, h_[0] + 13, h_[1] + 13], fill=(245, 245, 245), outline=OUTL, width=3)
+    # testa
+    hc = _pt(0.02, 1.68); r = int(0.2 * PM)
+    d.ellipse([hc[0] - r - 3, hc[1] - r - 3, hc[0] + r + 3, hc[1] + r + 3], fill=OUTL)
+    sp = _sphere(r); im.alpha_composite(sp, (int(hc[0] - sp.width / 2), int(hc[1] - sp.height / 2)))
+    e = (hc[0] + 0.12 * PM, hc[1] - 0.01 * PM); er = 0.024 * PM
+    d.ellipse([e[0] - er, e[1] - er * 1.25, e[0] + er, e[1] + er * 1.25], fill=OUTL)
+    if mouth:
+        d.ellipse([hc[0] + 0.14 * PM, hc[1] + 0.07 * PM, hc[0] + 0.18 * PM, hc[1] + 0.13 * PM], fill=OUTL)
+    return im
 
 _scaled = {}
 def scaled(spr, h):
@@ -168,7 +225,8 @@ def place(canvas, cam, x, y, z, pose, rot=0.0):
     return sx, sy - 1.9 * sc, sc
 
 def shadow(d, cam, x, z, r=0.32, y=0.0):
-    a = cam.proj(x - r, y, z); b = cam.proj(x + r, y, z)
-    if a is None or b is None: return
-    hh = max(1, (b[0] - a[0]) * 0.22)
-    d.ellipse([a[0], a[1] - hh, b[0], a[1] + hh], fill=(30, 30, 36))
+    p = cam.proj(x, y, z)
+    if p is None: return
+    w = r * p[2]; hh = max(1, w * 0.22)
+    if w > 1500: return
+    d.ellipse([p[0] - w, p[1] - hh, p[0] + w, p[1] + hh], fill=(30, 30, 36))

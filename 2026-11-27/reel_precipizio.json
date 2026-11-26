@@ -1,14 +1,15 @@
 {
- "durata": 12.0,
+ "durata": 12.5,
  "frase1": ["TUTTI FANNO COSÌ.", "DOVE PORTA LA FILA?"],
  "size1": 60,
- "frase2": ["SEGUIRE LA MASSA È COMODO.", "FINCHÉ NON FINISCE LA STRADA."],
- "size2": 48,
+ "frase2": ["SE SEGUI TUTTI,", "ARRIVI DOVE ARRIVANO TUTTI."],
+ "size2": 54,
  "cartelloni": [["-50%", -6.4, 14], ["RATA 0%", 6.4, 19], ["COMPRA ORA", -6.4, 25], ["TUTTI LO FANNO", 6.4, 31], ["-70%", -6.4, 38]],
  "fumetti": [
   ["FANNO TUTTI COSÌ", 1.2, 2.2, [540, 1000]],
   ["CAMMINA!", 4.2, 5.0, [420, 980]],
-  ["NO…", 5.1, 6.0, "lui"]
+  ["E SE AVESSERO RAGIONE LORO?", 5.55, 6.45, "lui"],
+  ["NO.", 6.5, 6.95, "lui"]
  ],
- "invito": ["Mandalo a chi segue sempre la fila."]
+ "invito": ["Mandalo a chi ha il coraggio", "di uscire dalla fila."]
 }
