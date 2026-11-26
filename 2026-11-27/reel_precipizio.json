@@ -4,12 +4,11 @@
  "size1": 60,
  "frase2": ["SEGUIRE LA MASSA È COMODO.", "FINCHÉ NON FINISCE LA STRADA."],
  "size2": 48,
- "cartelloni": [["-50%", -4.6, 13], ["RATA 0%", 4.6, 18], ["COMPRA ORA", -4.6, 24], ["TUTTI LO FANNO", 4.6, 30], ["-70%", -4.6, 37]],
+ "cartelloni": [["-50%", -6.4, 14], ["RATA 0%", 6.4, 19], ["COMPRA ORA", -6.4, 25], ["TUTTI LO FANNO", 6.4, 31], ["-70%", -6.4, 38]],
  "fumetti": [
-  ["CAMMINA!", 2.0, 2.9, [780, 900]],
-  ["FANNO TUTTI COSÌ", 2.8, 3.6, [300, 980]],
-  ["NO… NO…", 5.4, 6.3, "lui"],
-  ["SCUSATE", 7.6, 8.5, "lui"]
+  ["FANNO TUTTI COSÌ", 1.2, 2.2, [540, 1000]],
+  ["CAMMINA!", 4.2, 5.0, [420, 980]],
+  ["NO…", 5.1, 6.0, "lui"]
  ],
  "invito": ["Mandalo a chi segue sempre la fila."]
 }

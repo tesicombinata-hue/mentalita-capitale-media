@@ -9,7 +9,7 @@ Come si fa, per ogni Reel:
 
 ---
 
-## NUOVO 27/11 (Black Friday) – "Il precipizio" (12 s, nuovo stile 3D con camera in movimento)
+## NUOVO 27/11 (Black Friday) – "Il precipizio" v2 (12 s, stile 3D: lui sul lato esterno, piastrelle d oro)
 Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-27/reel_precipizio.mp4
 Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-27/reel_precipizio_copertina.jpg
 Audio: cupo e incalzante (percussioni, archi bassi) che sale fino al bordo e si apre in qualcosa di emozionante quando lui esce dalla fila.

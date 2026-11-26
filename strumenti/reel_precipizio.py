@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Reel B "Il precipizio" (stile 3D, camera in movimento) – Mentalità Capitale, 26/11.
+"""Reel B "Il precipizio" v2 (stile 3D, camera in movimento) – Mentalità Capitale, 26/11.
 
-Una massa in giacca e cravatta cammina verso la camera, tra cartelloni "-50%", "RATA 0%", "COMPRA ORA". Lui (cravatta
-blu, "TU") si ferma; gli altri lo superano. La camera si alza e arretra: la strada finisce in un precipizio e la massa
-ci cade dentro, una fila dopo l'altra. Chi spinge da dietro trascina lui fino al bordo: barcolla. Si gira, risale
-controcorrente in mezzo alla folla, esce di lato. Dall'alto: la fila che si getta nel vuoto e lui, da solo, su un
-sentiero che porta alla città accesa.
+Una massa ordinata in giacca e cravatta cammina verso la camera tra cartelloni "-50%", "RATA 0%", "COMPRA ORA".
+Lui (cravatta blu, "TU") cammina nella colonna più esterna a destra. Entro 2 s la camera sale e mostra tutta la folla.
+Torna su di lui; davanti la strada finisce: la massa cade nel precipizio, fila dopo fila. Lui esce di lato dalla fila
+(è sul bordo esterno: non attraversa nessuno), si ferma a un passo dal vuoto, si gira e cammina nella direzione
+opposta: sotto i suoi piedi compaiono piastrelle d'oro, la strada giusta.
 Uso: python3 reel_precipizio.py contenuto.json uscita.mp4 [secondo -> png]
 """
 import json, math, sys, os, random
@@ -18,104 +18,95 @@ import motore_mc as mc
 C = json.load(open(sys.argv[1])); OUT = sys.argv[2]
 DUR = C.get("durata", 12.0)
 BLUE = (77, 163, 255)
-V = 1.0                                   # velocità della massa (m/s), verso la camera (z che diminuisce)
-COLS = [-2.7, -1.8, -0.9, 0.0, 0.9, 1.8, 2.7]
-ROWS = 46
+GOLD, GOLD_HI, GOLD_LO = (225, 178, 55), (255, 222, 120), (150, 108, 25)
+V = 1.3                                   # velocità della massa (m/s), verso la camera
+GAPX, GAPZ = 0.95, 1.15
+COLS = [round(-3 * GAPX + i * GAPX, 2) for i in range(7)]      # -2.85 … 2.85
+HX0 = COLS[-1]                            # lui: colonna esterna a destra
+HE_Z0 = 8.0                               # lui è in testa alla sua colonna (la più esterna)
+FRONT_Z = HE_Z0
+ROWS = 60
 random.seed(21)
-HE_Z0 = 5.0                               # lui parte a 5 m dal bordo, colonna centrale, prima fila
-CROWD = [(cx + random.uniform(-0.18, 0.18), HE_Z0 + j * 1.05 + random.uniform(-0.15, 0.25), random.uniform(0, 6.28), random.uniform(0.93, 1.07))
-         for j in range(ROWS) for cx in COLS if not (j == 0 and cx == 0.0)]
-T_STOP = 1.9
-T_REV0, T_REV1 = 3.2, 5.0                 # la camera si alza: il precipizio
-T_PUSH0, T_PUSH1 = 5.0, 6.2               # la folla lo spinge fino al bordo
-T_EDGE0, T_EDGE1 = 6.2, 7.3               # barcolla sul bordo (primo piano)
-T_BACK0, T_BACK1 = 7.3, 8.6               # risale controcorrente
-T_SIDE0, T_SIDE1 = 8.6, 9.3               # esce di lato
-T_ANS = 9.4
-BILLS = C["cartelloni"]                   # [testo, x, z]
+CROWD = [(cx + random.uniform(-0.05, 0.05), FRONT_Z + j * GAPZ + random.uniform(-0.05, 0.05), random.uniform(0, 6.28))
+         for j in range(-4, ROWS) for cx in COLS if not (cx == HX0 and j <= 0)]
+
+T_OUT0, T_OUT1 = 4.15, 4.95               # esce di lato dalla fila rallentando
+T_LOOK1 = 5.9                             # guarda la massa che cade
+T_TURN = 6.1                              # si gira
+T_ANS = 9.0
+X_OUT = HX0 + 1.5
+TILE = 0.62
 
 def he_state(t):
-    """posizione (x, z), posa, rotazione di lui."""
-    zs = HE_Z0 - V * min(t, T_STOP)
-    if t < T_STOP:
-        return 0.0, zs, dict(facing="front", tie=BLUE, **walk_pose(t * 6.5))
-    if t < T_PUSH0:
-        look = math.sin((t - T_STOP) * 3) * 0.8
-        return 0.0, zs, dict(facing="front", tie=BLUE, look=round(look, 1))
-    if t < T_PUSH1:
-        k = ease((t - T_PUSH0) / (T_PUSH1 - T_PUSH0))
-        z = zs + (0.25 - zs) * k
-        return 0.0, z, dict(facing="front", tie=BLUE, arml=35.0, armr=35.0, mouth=1, legl=round(0.05 * (math.sin(t * 14) > 0), 2))
-    if t < T_EDGE1:
-        p = (t - T_EDGE0) * 9
-        return 0.0, 0.25, dict(facing="front", tie=BLUE, arml=round(110 + 50 * math.sin(p), 0), armr=round(110 - 50 * math.sin(p), 0), mouth=1)
-    if t < T_BACK1:
-        k = ease((t - T_BACK0) / (T_BACK1 - T_BACK0))
-        return 0.0, 0.25 + 3.2 * k, dict(facing="back", **walk_pose(t * 7))
-    if t < T_SIDE1:
-        k = ease((t - T_SIDE0) / (T_SIDE1 - T_SIDE0))
-        return -4.8 * k, 3.45, dict(facing="back", **walk_pose(t * 7))
-    k = min(1.0, (t - T_SIDE1) / 2.5)
-    return -4.8 - 1.6 * k, 3.45 + 3.0 * k, dict(facing="back", **walk_pose(t * 6))
+    """(x, z, posa) di lui."""
+    if t < T_OUT0:
+        return HX0, HE_Z0 - V * t, dict(facing="front", tie=BLUE, **walk_pose(t * 6.5))
+    z_out0 = HE_Z0 - V * T_OUT0
+    if t < T_OUT1:
+        k = (t - T_OUT0) / (T_OUT1 - T_OUT0)
+        z = z_out0 - V * (T_OUT1 - T_OUT0) * (k - k * k / 2)     # rallenta fino a fermarsi
+        x = HX0 + (X_OUT - HX0) * ease(k)
+        return x, z, dict(facing="front", tie=BLUE, **walk_pose(t * 6.5))
+    z_stop = z_out0 - V * (T_OUT1 - T_OUT0) * 0.5
+    if t < T_TURN:
+        look = -0.9 if t < T_LOOK1 else 0.0
+        return X_OUT, z_stop, dict(facing="front", tie=BLUE, look=look, mouth=1 if t < T_LOOK1 else 0, arml=14.0, armr=14.0)
+    tw = t - T_TURN - 0.15
+    if tw < 0:
+        return X_OUT, z_stop, dict(facing="back", arml=8.0, armr=8.0)
+    return X_OUT, z_stop + 1.05 * tw, dict(facing="back", **walk_pose(tw * 6.5 + 1.57))
 
+def z_stop():
+    return HE_Z0 - V * T_OUT0 - V * (T_OUT1 - T_OUT0) * 0.5
+
+KEYS = None
 def camera(t):
     hx, hz, _ = he_state(t)
-    if t < T_STOP:
-        return Cam(0.0, 1.1, hz - 4.0, 1040)
-    if t < T_REV0:
-        k = ease((t - T_STOP) / (T_REV0 - T_STOP))
-        z0 = HE_Z0 - V * T_STOP
-        return Cam(0.0, 1.1 + 0.25 * k, z0 - 4.0 + 0.8 * k, lerp(1040, 860, k))
-    if t < T_PUSH1:
-        k = ease((t - T_REV0) / (T_REV1 - T_REV0))
-        z0 = HE_Z0 - V * T_STOP
-        return Cam(0.0, lerp(1.35, 6.5, k), lerp(z0 - 3.2, -8.5, k), lerp(860, 560, k))
-    if t < T_EDGE1:                                    # stacco: primo piano dal basso, dal vuoto
-        k = (t - T_EDGE0) / (T_EDGE1 - T_EDGE0)
-        return Cam(0.15 * math.sin(t * 2), lerp(0.55, 0.45, k), lerp(-2.6, -2.3, k), 1260)
-    if t < T_SIDE1:                                    # lo segue alle spalle
-        return Cam(lerp(0, hx, 0.85), 1.7, hz - 3.6 - (0 if t < T_SIDE0 else 0.8 * ease((t - T_SIDE0) / 0.7)), 880)
-    k = ease((t - T_SIDE1) / 2.0)                      # gru: vista dall'alto
-    return Cam(lerp(hx * 0.85, -3.0, k), lerp(1.7, 13.0, k), lerp(hz - 4.4, -13.0, k), lerp(880, 430, k))
-
-def crowd_pos(t, x0, z0, ph, sp):
-    """La massa: cammina verso z=0, poi cade. Chi è dietro a lui lo aggira dopo che si è fermato."""
-    z = z0 - V * sp * t
-    x = x0
-    if t >= T_STOP and abs(x0) < 0.3:
-        hx, hz, _ = he_state(t)
-        if hz < z < hz + 1.4 and t < T_BACK0:              # lo aggirano
-            x = x0 + (0.55 if (int(z0 * 7) % 2) else -0.55)
-        if T_BACK0 <= t < T_SIDE0 and abs(z - hz) < 0.8:
-            x = x0 + (0.6 if (int(z0 * 7) % 2) else -0.6)
-    return x, z
+    zs = z_stop()
+    keys = [
+        (0.0, HX0 + 0.5, 1.2, HE_Z0 - 4.0, 1040),
+        (0.8, HX0 + 0.5, 1.4, HE_Z0 - V * 0.8 - 4.0, 1010),
+        (2.0, 0.6, 7.5, -2.2, 330),                    # gru: tutta la folla
+        (3.0, 0.4, 7.8, -2.4, 320),
+        (3.9, HX0 + 0.9, 1.5, HE_Z0 - V * 3.9 - 3.6, 1000),   # di nuovo su di lui, dal lato esterno
+        (4.6, HX0 + 0.6, 2.6, -4.6, 820),              # si apre: il precipizio
+        (5.8, 1.6, 5.2, -8.0, 560),
+        (T_TURN + 0.3, X_OUT - 0.8, 2.0, zs - 3.4, 900),  # alle sue spalle
+    ]
+    if t < T_TURN + 0.3:
+        return cam_keys(t, keys)
+    hzz = hz
+    if t < T_ANS - 0.4:
+        return Cam(X_OUT - 0.8, 2.0, hzz - 3.4, 900)
+    k = ease((t - (T_ANS - 0.4)) / 2.2)                # gru finale: la fila nel vuoto e lui sulla strada d'oro
+    return Cam(lerp(X_OUT - 0.8, 1.0, k), lerp(2.0, 10.0, k), lerp(hzz - 3.4, -11.0, k), lerp(900, 420, k))
 
 def background(cam):
     img = Image.new("RGBA", (W, H), (10, 10, 13, 255)); d = ImageDraw.Draw(img)
-    # pavimento: fasce di profondità, più chiare vicino (luce dall'alto), nebbia lontano
     zs = [0] + [0.5 * 1.25 ** i for i in range(30)]
     for za, zb in zip(zs if cam.y > 0 else [], zs[1:]):
-        a = cam.proj(0, 0, max(za, cam.z + 0.2)); b = cam.proj(0, 0, zb)
+        a = cam.proj(0, 0, max(za, cam.z + 0.7)); b = cam.proj(0, 0, zb)
         if a is None or b is None: continue
-        zm = (za + zb) / 2; fog = math.exp(-zm / 30)
+        fog = math.exp(-(za + zb) / 60)
         c = int(18 + 52 * fog)
         d.rectangle([0, min(a[1], b[1]), W, max(a[1], b[1])], fill=(c, c, c + 4, 255))
+    if cam.z + 0.7 > 0:                                 # la camera è sopra la strada: niente bordo davanti
+        return img
     e = cam.proj(0, 0, 0)
     if e is not None:
-        d.line([(0, e[1]), (W, e[1])], fill=(150, 150, 158, 255), width=max(2, int(e[2] * 0.03)))
-        # parete del precipizio
         e2 = cam.proj(0, -8, 0)
         if e2 and e2[1] > e[1] + 2:
-            for i in range(12):                    # parete di roccia che sfuma nel buio
+            for i in range(12):
                 y0 = e[1] + 2 + (e2[1] - e[1]) * i / 12; y1 = e[1] + 2 + (e2[1] - e[1]) * (i + 1) / 12
-                c = int(46 - 3 * i); d.rectangle([0, y0, W, y1], fill=(c, c, c + 3, 255))
-    # luce dall'alto sulla strada (alone)
+                c = int(44 - 3 * i); d.rectangle([0, y0, W, y1], fill=(c, c, c + 3, 255))
+        d.line([(0, e[1]), (W, e[1])], fill=(165, 165, 172, 255), width=max(2, int(e[2] * 0.03)))
     return img
 
 def bill(d, cam, s, x, z):
     p0 = cam.proj(x, 0, z); p1 = cam.proj(x, 3.4, z)
     if not p0 or not p1: return
     sc = p0[2]; w = 2.4 * sc; h = 1.0 * sc
+    if w > 2000: return
     d.line([(p0[0], p0[1]), (p1[0], p1[1])], fill=(70, 70, 78), width=max(2, int(0.12 * sc)))
     x0, y0 = p1[0] - w / 2, p1[1] - h
     d.rectangle([x0, y0, x0 + w, y0 + h], fill=(235, 235, 238), outline=(40, 40, 46), width=max(1, int(0.05 * sc)))
@@ -124,33 +115,51 @@ def bill(d, cam, s, x, z):
         fnt = mc.font(fs, mc.INTER)
         d.text((p1[0] - mc.text_w(s, fnt) / 2, y0 + h * 0.16), s, font=fnt, fill=(20, 20, 24))
 
+def tiles(d, lit, cam, t):
+    """Piastrelle d'oro sotto i suoi passi dopo che si è girato."""
+    if t < T_TURN + 0.15: return
+    hx, hz, _ = he_state(t)
+    z0 = z_stop() - TILE / 2
+    n = int((hz - z0) / TILE) + 2
+    for i in range(n):
+        zc = z0 + i * TILE
+        born = T_TURN + 0.15 + (zc - z0) / 1.05 - 0.1
+        k = ease((t - born) / 0.35)
+        if k <= 0: continue
+        s = TILE * 0.47 * (0.6 + 0.4 * k)
+        pts = [cam.proj(X_OUT + dx, 0.005, zc + dz) for dx, dz in ((-s, -s), (s, -s), (s, s), (-s, s))]
+        if any(p is None for p in pts): continue
+        q = [(p[0], p[1]) for p in pts]
+        col = tuple(int(c * k + 30 * (1 - k)) for c in GOLD)
+        d.polygon(q, fill=col + (255,), outline=GOLD_LO + (255,))
+        # riflesso
+        hi = [q[3], q[2], ((q[2][0] + q[1][0]) / 2, (q[2][1] + q[1][1]) / 2), ((q[3][0] + q[0][0]) / 2, (q[3][1] + q[0][1]) / 2)]
+        d.polygon(hi, fill=tuple(int(c * k + 30 * (1 - k)) for c in GOLD_HI) + (255,))
+        lit.polygon(q, fill=tuple(int(c * 0.35 * k) for c in GOLD))
+
 def frame(t):
     cam = camera(t)
     img = background(cam); d = ImageDraw.Draw(img)
+    glow = Image.new("RGB", (W, H), (0, 0, 0)); dg = ImageDraw.Draw(glow)
+    tiles(d, dg, cam, t)
     hx, hz, hpose = he_state(t)
-    items = []                                         # (z, tipo, dati)
-    for (x0, z0, ph, sp) in CROWD:
-        x, z = crowd_pos(t, x0, z0, ph, sp)
-        if z < 0:                                      # cade
-            tf = -z / (V * sp)
-            y = -4.9 * tf * tf; zz = -0.5 * tf
-            if y < -25: continue
-            if T_EDGE0 <= t < T_EDGE1 and abs(x) < 1.4: continue
-            items.append((zz, "fall", (x, y, zz, min(55, tf * 110), ph)))
+    items = []
+    for (x0, z0, ph) in CROWD:
+        z = z0 - V * t
+        if z < 0:
+            tf = -z / V
+            y = -4.9 * tf * tf; zz = -0.45 * tf
+            if y < -30: continue
+            items.append((zz, "fall", (x0, y, zz, min(50, tf * 100), ph)))
         else:
-            items.append((z, "man", (x, z, ph)))
-    for s, bx, bz in BILLS: items.append((bz, "bill", (s, bx, bz)))
+            items.append((z, "man", (x0, z, ph)))
+    for s, bx, bz in C["cartelloni"]: items.append((bz, "bill", (s, bx, bz)))
     items.append((hz, "he", None))
-    if t >= T_SIDE1 - 0.3:                             # sentiero illuminato verso la città
-        for i in range(30):
-            pz = 3.6 + i * 1.6; px = -5.2 - i * 0.55
-            items.append((pz, "lamp", (px, pz)))
     items.sort(key=lambda it: -it[0])
     hhead = None
     for z, kind, data in items:
         if kind == "man":
             x, zz, ph = data
-            if T_EDGE0 <= t < T_EDGE1 and zz < hz + 0.6 and abs(x) < 1.0: continue
             shadow(d, cam, x, zz)
             place(img, cam, x, 0, zz, dict(facing="front", **walk_pose(t * 6.5 + ph)))
         elif kind == "fall":
@@ -158,47 +167,25 @@ def frame(t):
             place(img, cam, x, y, zz, dict(facing="front", arml=150.0, armr=150.0, mouth=1), rot=-rot if ph > 3.14 else rot)
         elif kind == "bill":
             bill(d, cam, *data)
-        elif kind == "lamp":
-            px, pz = data; p = cam.proj(px, 0, pz)
-            if p:
-                r = max(2, 0.12 * p[2]); a = ease((t - T_SIDE1 + 0.3) / 1.5)
-                d.ellipse([p[0] - r, p[1] - r * 0.5, p[0] + r, p[1] + r * 0.5], fill=tuple(int(v * a + 20 * (1 - a)) for v in BLUE) + (255,))
         else:
             shadow(d, cam, hx, hz)
-            if t >= T_EDGE1:                                # alone blu sotto di lui: si riconosce anche di spalle
-                a_ = cam.proj(hx - 0.6, 0, hz); b_ = cam.proj(hx + 0.6, 0, hz)
-                if a_ and b_:
-                    hh = (b_[0] - a_[0]) * 0.25
-                    d.ellipse([a_[0], a_[1] - hh, b_[0], a_[1] + hh], fill=(40, 90, 150, 255))
-            rot = 9 * math.sin((t - T_EDGE0) * 7) if T_EDGE0 <= t < T_EDGE1 else 0
-            r = place(img, cam, hx, 0, hz, hpose, rot=rot)
+            r = place(img, cam, hx, 0, hz, hpose)
             if r: hhead = r
-    # città accesa in fondo a sinistra (finale)
-    if t >= T_SIDE1:
-        a = ease((t - T_SIDE1) / 1.5)
-        rng = random.Random(3)
-        for i in range(90):
-            bx, bz, bh = -28 + rng.uniform(-8, 8), 52 + rng.uniform(-4, 6), rng.uniform(1, 9)
-            p = cam.proj(bx, bh, bz)
-            if p and rng.random() < a:
-                s = max(2, 0.4 * p[2]); col = BLUE if rng.random() < 0.6 else (220, 225, 240)
-                d.rectangle([p[0], p[1], p[0] + s, p[1] + s * 1.3], fill=col + (255,))
     out = img.convert("RGB")
-    # luce: vignetta e bagliore dei blu
     arr = np.asarray(out).astype(np.float32)
     yy, xx = np.mgrid[0:H, 0:W]
-    vig = 1 - 0.55 * np.clip(((xx - W / 2) / (W * 0.75)) ** 2 + ((yy - H * 0.55) / (H * 0.7)) ** 2, 0, 1)
+    vig = 1 - 0.5 * np.clip(((xx - W / 2) / (W * 0.75)) ** 2 + ((yy - H * 0.55) / (H * 0.7)) ** 2, 0, 1)
     out = Image.fromarray(np.clip(arr * vig[..., None], 0, 255).astype(np.uint8))
+    if t >= T_TURN: out = mc.glow(out, glow, 26, 1.2)
     dd = ImageDraw.Draw(out)
-    # "TU" sopra di lui
-    if hhead and (t < T_REV0 or T_PUSH0 <= t < T_EDGE0):
-        al = ease(t / 0.2) * (1 - ease((t - (T_REV0 - 0.3)) / 0.3)) if t < T_REV0 else ease((t - T_PUSH0) / 0.2) * (1 - ease((t - T_EDGE0 + 0.2) / 0.2))
-        mc.bubble(dd, hhead[0], hhead[1] - 40, "TU", 34, al)
-    for s, a, b, kind in C["fumetti"]:
+    if hhead and t < 1.0:
+        mc.bubble(dd, hhead[0], hhead[1] - 40, "TU", 34, ease(t / 0.2) * (1 - ease((t - 0.8) / 0.2)))
+    for s, a, b, where in C["fumetti"]:
         al = ease((t - a) / 0.15) * (1 - ease((t - (b - 0.15)) / 0.15))
         if al <= 0: continue
-        if kind == "lui" and hhead: mc.bubble(dd, hhead[0], hhead[1] - 40, s, 36, al)
-        elif kind != "lui": mc.bubble(dd, kind[0], kind[1], s, 36, al)
+        if where == "lui":
+            if hhead: mc.bubble(dd, hhead[0], hhead[1] - 40, s, 36, al)
+        else: mc.bubble(dd, where[0], where[1], s, 36, al)
     if t < T_ANS:
         mc.phrase(dd, [(C["frase1"][0], (240, 240, 240)), (C["frase1"][1], BLUE)], size=C.get("size1", 58))
     else:
@@ -209,8 +196,6 @@ def frame(t):
             for n, s in enumerate(C["invito"]):
                 fnt = mc.font(38); dd.text(((W - mc.text_w(s, fnt)) / 2, 470 + n * 48), s, font=fnt, fill=c)
     mc.watermark(dd)
-    if T_EDGE0 - 0.06 <= t < T_EDGE0 + 0.06 or T_EDGE1 - 0.06 <= t < T_EDGE1 + 0.06:      # stacchi
-        out = Image.blend(out, Image.new("RGB", (W, H), (0, 0, 0)), 0.6)
     return out
 
 if __name__ == "__main__":
@@ -219,14 +204,18 @@ if __name__ == "__main__":
     mc.render(OUT, DUR, frame)
     ev = [(0.0, mc.s_hum(DUR, 0.04))]
     k = 0.0
-    while k < T_EDGE0:                                  # passi della massa
-        ev.append((k, mc.s_thud(0.3, 55))); k += math.pi / 6.5
-    for s, a, b, kind in C["fumetti"]: ev.append((a, mc.s_pop(0.3)))
-    ev += [(T_STOP, mc.s_thud(0.6, 90)), (T_REV0, mc.s_whoosh(1.6, 0.5)), (T_REV0 + 0.9, mc.s_rise(1.6, 0.25, 110, 160))]
-    for k in range(6): ev.append((T_REV0 + 0.8 + k * 0.6, mc.s_whoosh(0.5, 0.25, False)))
-    ev += [(T_PUSH0, mc.s_crack(0.4)), (T_EDGE0, mc.s_thud(0.8, 70)), (T_EDGE0 + 0.2, mc.s_crack(0.6))]
-    for k in range(4): ev.append((T_EDGE0 + 0.1 + k * 0.28, mc.s_thud(0.35, 60)))
-    ev += [(T_BACK0, mc.s_whoosh(0.6, 0.4)), (T_SIDE0, mc.s_whoosh(0.5, 0.3)), (T_ANS - 0.3, mc.s_rise(2.4, 0.45)), (T_ANS + 0.05, mc.s_chime(0.4))]
+    while k < DUR:                                       # passi della massa
+        ev.append((k, mc.s_thud(0.25 if k < T_TURN else 0.12, 55))); k += math.pi / 6.5
+    for s, a, b, where in C["fumetti"]: ev.append((a, mc.s_pop(0.3)))
+    ev += [(0.0, mc.s_pop(0.35, 900)), (0.8, mc.s_whoosh(1.2, 0.45)), (3.0, mc.s_whoosh(0.9, 0.35, False)),
+           (3.9, mc.s_rise(1.5, 0.25, 110, 160)), (4.4, mc.s_whoosh(1.2, 0.45))]
+    for k in range(8): ev.append((4.5 + k * 0.55, mc.s_whoosh(0.45, 0.22, False)))
+    ev += [(T_OUT1, mc.s_thud(0.6, 80))]
+    tw = 0.0
+    while T_TURN + 0.15 + tw < DUR - 0.3:                 # ogni piastrella d'oro: un rintocco
+        ev.append((T_TURN + 0.15 + tw, mc.s_chime(0.18, 1320 + 60 * int(tw / TILE * 1.05) % 400)))
+        tw += TILE / 1.05
+    ev += [(T_ANS - 0.3, mc.s_rise(2.4, 0.45)), (T_ANS + 0.05, mc.s_chime(0.4))]
     for k in range(len(C["frase2"][0] + C["frase2"][1])): ev.append((T_ANS + k / 50, mc.s_type(0.1)))
     wav = OUT.replace(".mp4", "_audio.wav"); tmp = OUT.replace(".mp4", "_muto.mp4")
     os.rename(OUT, tmp); mc.mixdown(DUR, ev, wav); mc.mux(tmp, wav, OUT); os.remove(tmp); os.remove(wav)
