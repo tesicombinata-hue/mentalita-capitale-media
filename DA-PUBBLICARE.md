@@ -9,6 +9,28 @@ Come si fa, per ogni Reel:
 
 ---
 
+## NUOVO 27/11 (Black Friday) – "Il precipizio" (12 s, nuovo stile 3D con camera in movimento)
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-27/reel_precipizio.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-27/reel_precipizio_copertina.jpg
+Audio: cupo e incalzante (percussioni, archi bassi) che sale fino al bordo e si apre in qualcosa di emozionante quando lui esce dalla fila.
+
+```
+Seguire la massa è comodo. Finché non finisce la strada. 🛒
+
+"-50%", "Rata 0%", "Compra ora". Oggi è Black Friday e la fila è lunghissima.
+Nessuno guarda dove porta: si guarda chi c'è davanti, e lo si segue.
+
+Fermarsi costa. Ti spingono, ti dicono "cammina, fanno tutti così".
+Ma uscire dalla fila è l'unico modo per vedere dove sta andando.
+
+Mandalo a chi segue sempre la fila.
+Tu oggi in che fila sei? 👇
+
+#blackfriday #mentalita #soldi #risparmio #mentalitacapitale
+```
+
+---
+
 ## NUOVO 26/11 (richiesta del titolare) – "Il giro" (11 s)
 Massa che marcia sotto i cartelli STIPENDIO · RATE · SPESE · ZERO; lui esce dalla fila, porta via anche lei; dall'alto la massa gira in tondo.
 Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-26/reel_giro.mp4
