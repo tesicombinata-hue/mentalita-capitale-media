@@ -9,6 +9,28 @@ Come si fa, per ogni Reel:
 
 ---
 
+## NUOVO 26/11 (richiesta del titolare) – "Il giro" (11 s)
+Massa che marcia sotto i cartelli STIPENDIO · RATE · SPESE · ZERO; lui esce dalla fila, porta via anche lei; dall'alto la massa gira in tondo.
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-26/reel_giro.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-26/reel_giro_copertina.jpg
+Audio: cupo e ritmato (passi, percussioni) che si apre in qualcosa di emozionante quando si vede il cerchio dall'alto.
+
+```
+Tutti vanno dalla stessa parte. Nessuno chiede dove. 🔁
+
+Stipendio, rate, spese, zero. E il mese dopo si ricomincia.
+Da dentro la fila sembra di andare avanti. Da fuori si vede che è un cerchio.
+
+Uscire fa paura: ti dicono "torna in fila". Ma basta che uno esca perché qualcun altro si chieda: "e se ha ragione?"
+
+Mandalo a chi uscirebbe dal giro con te.
+Tu in che punto del giro sei? 👇
+
+#mentalita #soldi #libertafinanziaria #crescitapersonale #mentalitacapitale
+```
+
+---
+
 ## NUOVO 26/11 – 3 Reel B: 2 con i soldi al centro + 1 di sola mentalità (confronto)
 Copertina personalizzata: usa il file `_copertina.jpg` di ogni Reel. Niente parola chiave: si chiude con una domanda personale.
 

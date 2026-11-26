@@ -1,0 +1,16 @@
+{
+ "durata": 11.0,
+ "frase1": ["TUTTI VANNO DALLA STESSA PARTE.", "NESSUNO CHIEDE DOVE."],
+ "size1": 50,
+ "frase2": ["LA MASSA NON VA DA NESSUNA PARTE.", "GIRA IN TONDO."],
+ "size2": 46,
+ "cartelli": ["STIPENDIO", "RATE", "SPESE", "ZERO"],
+ "fumetti": [
+  ["CAMMINA!", 2.0, 2.9, 700, 820],
+  ["DOVE VAI?", 3.1, 4.0, 300, 820],
+  ["TORNA IN FILA", 4.0, 5.0, 820, 860],
+  ["E SE HA RAGIONE?", 5.0, 6.2, 600, 800]
+ ],
+ "invito": ["Mandalo a chi uscirebbe", "dal giro con te."],
+ "velocita": 1.0
+}
