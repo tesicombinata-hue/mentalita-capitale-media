@@ -9,6 +9,28 @@ Come si fa, per ogni Reel:
 
 ---
 
+## PROVA IN INGLESE (27/11) – "Who holds on the longest?" (59 s, la sbarra in inglese)
+Su quale account pubblicarla lo decide il titolare (consigliato: un account a parte in inglese, per non confondere il pubblico italiano).
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_hold_en.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_hold_en_copertina.jpg
+Audio: piano lento ed emotivo, crescente nel finale.
+
+```
+4 stickmen. 1 bar. A river full of crocodiles. 🐊
+
+Motivation burns out first.
+Ego only holds on while someone is watching.
+Obsession never lets go, even when his body says stop.
+Discipline knew when to stop, and where to step down.
+
+So who really won: Discipline or Obsession? 👇
+
+#mindset #discipline #motivation #selfimprovement #stickfigure
+```
+Primo commento da fissare: "Obsession held on the longest. Discipline is the one still standing. Which one are you?"
+
+---
+
 ## NUOVO 28/11 (sabato) – 3 Reel B: due con i soldi al centro + "Il giro"
 Sono i Reel già pronti e mai usciti (26/11), riprogrammati. Copertina personalizzata: il file `_copertina.jpg` di ognuno. Niente parola chiave: si chiude con una domanda personale.
 

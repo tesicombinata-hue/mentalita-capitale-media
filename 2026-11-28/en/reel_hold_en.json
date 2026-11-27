@@ -1,0 +1,119 @@
+{
+ "durata": 59.0,
+ "nomi": [
+  "MOTIVATION",
+  "DISCIPLINE",
+  "EGO",
+  "OBSESSION"
+ ],
+ "parole": [
+  "Excitement.",
+  "Method.",
+  "Pride.",
+  "Grit."
+ ],
+ "tempi_parole": [
+  5.9,
+  7.3,
+  8.7,
+  10.1
+ ],
+ "tempi": {
+  "zoom0": 5.0,
+  "pan1": 10.8,
+  "mot0": 11.6,
+  "mot_pull0": 13.3,
+  "mot_pull1": 15.3,
+  "mot_fall": 17.4,
+  "dis0": 20.0,
+  "dis_pull0": 22.3,
+  "dis_pull1": 23.8,
+  "dis_move": 25.0,
+  "dis_drop": 28.0,
+  "ego0": 30.5,
+  "ego_look": 34.4,
+  "ego_fall": 36.8,
+  "oss0": 40.0,
+  "oss_close": 43.0,
+  "oss_snap": 46.5,
+  "fin0": 50.5,
+  "end0": 55.5
+ },
+ "testi": [
+  [
+   "Who holds on|the longest?",
+   0.0,
+   5.0
+  ],
+  [
+   "Excitement.·Method.|Pride.·Grit.",
+   5.3,
+   11.4,
+   [
+    5.9,
+    7.3,
+    8.7,
+    10.1
+   ]
+  ],
+  [
+   "Motivation:|lights up in a second,|burns out in a second.",
+   12.2,
+   19.8
+  ],
+  [
+   "Discipline:|knows when to stop.|And where to step down.",
+   20.5,
+   30.3
+  ],
+  [
+   "Ego:|is only strong while|someone is watching.",
+   31.0,
+   40.2
+  ],
+  [
+   "Obsession:|his body says stop…|he won't let go.",
+   41.0,
+   50.3
+  ],
+  [
+   "Holding on the longest|doesn't make you the strongest.",
+   51.0,
+   55.4
+  ]
+ ],
+ "domanda": [
+  "Which one",
+  "are you?"
+ ],
+ "invito": [
+  "Send this to someone who's been",
+  "holding on for too long."
+ ],
+ "salti": [
+  [
+   0.25,
+   3
+  ],
+  [
+   1.25,
+   0
+  ],
+  [
+   2.2,
+   2
+  ],
+  [
+   3.15,
+   1
+  ],
+  [
+   4.1,
+   3
+  ],
+  [
+   7.6,
+   2
+  ]
+ ]
+}
