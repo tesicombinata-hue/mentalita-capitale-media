@@ -1,0 +1,102 @@
+{
+ "durata": 22.6,
+ "t_giorno1": 1.0,
+ "durata_giorno": 0.63,
+ "fine0": 19.5,
+ "domanda_t": 20.4,
+ "nomi": [
+  "MOTIVATION",
+  "EGO",
+  "OBSESSION",
+  "DISCIPLINE"
+ ],
+ "testi": [
+  [
+   "Same paycheck. 30 days.|Who's still standing?",
+   0.0,
+   3.5
+  ],
+  [
+   "Ego:|spends to be seen.",
+   3.6,
+   7.6
+  ],
+  [
+   "Motivation:|saves on Monday,|spends by Friday.",
+   7.7,
+   11.7
+  ],
+  [
+   "Obsession:|never spends a cent.|Never lives either.",
+   11.8,
+   15.6
+  ],
+  [
+   "Discipline:|pays himself first.|Lives on the rest.",
+   15.7,
+   19.4
+  ],
+  [
+   "One has the most money.|One still has a life.",
+   19.5,
+   22.6
+  ]
+ ],
+ "domanda": "Who really won?",
+ "fumetti": [
+  [
+   3,
+   "ME FIRST",
+   1.1,
+   2.4
+  ],
+  [
+   0,
+   "NEW ME!",
+   1.5,
+   3.0
+  ],
+  [
+   1,
+   "NEW WATCH",
+   2.4,
+   3.9
+  ],
+  [
+   1,
+   "TABLE FOR 10",
+   4.0,
+   5.3
+  ],
+  [
+   0,
+   "I DESERVE IT",
+   6.0,
+   7.6
+  ],
+  [
+   0,
+   "JUST THIS ONCE",
+   8.0,
+   9.4
+  ],
+  [
+   2,
+   "NO DINNER. NO FRIENDS.",
+   12.4,
+   14.4
+  ],
+  [
+   3,
+   "PIZZA NIGHT",
+   16.6,
+   18.0
+  ],
+  [
+   2,
+   "KEEP GOING...",
+   17.2,
+   18.8
+  ]
+ ]
+}

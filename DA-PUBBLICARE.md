@@ -9,25 +9,26 @@ Come si fa, per ogni Reel:
 
 ---
 
-## PROVA IN INGLESE (27/11) – "Who holds on the longest?" (59 s, la sbarra in inglese)
-Su quale account pubblicarla lo decide il titolare (consigliato: un account a parte in inglese, per non confondere il pubblico italiano).
-Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_hold_en.mp4
-Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_hold_en_copertina.jpg
-Audio: piano lento ed emotivo, crescente nel finale.
+## PROVA IN INGLESE (27/11, v2) – "Same paycheck. 30 days. Who's still standing?" (22,6 s)
+Reel nuovo (non è la sbarra tradotta): quattro omini su colonne di monete sopra i coccodrilli, contatore dei giorni, finale sulla scena senza schermata nera. Su quale account pubblicarlo lo decide il titolare (consigliato: un account a parte in inglese).
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_paycheck.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_paycheck_copertina.jpg
+Audio: teso e ritmato, che si apre in qualcosa di emozionante sul finale.
 
 ```
-4 stickmen. 1 bar. A river full of crocodiles. 🐊
+Same paycheck. 30 days. 🐊
 
-Motivation burns out first.
-Ego only holds on while someone is watching.
-Obsession never lets go, even when his body says stop.
-Discipline knew when to stop, and where to step down.
+Ego spent it to be seen.
+Motivation saved on Monday and spent it by Friday.
+Obsession never spent a cent, and never lived either.
+Discipline paid himself first, then lived on the rest.
 
-So who really won: Discipline or Obsession? 👇
+One ended with the most money. One still has a life.
+Who really won? 👇
 
-#mindset #discipline #motivation #selfimprovement #stickfigure
+#money #mindset #discipline #personalfinance #stickfigure
 ```
-Primo commento da fissare: "Obsession held on the longest. Discipline is the one still standing. Which one are you?"
+Primo commento da fissare: "Obsession or Discipline? Which one are you?"
 
 ---
 
