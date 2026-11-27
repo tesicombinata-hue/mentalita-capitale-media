@@ -9,6 +9,69 @@ Come si fa, per ogni Reel:
 
 ---
 
+## NUOVO 28/11 (sabato) – 3 Reel B: due con i soldi al centro + "Il giro"
+Sono i Reel già pronti e mai usciti (26/11), riprogrammati. Copertina personalizzata: il file `_copertina.jpg` di ognuno. Niente parola chiave: si chiude con una domanda personale.
+
+### 12:30 – "Chi arriva a dicembre?" (Black Week, serie Stesso stipendio, 8,8 s)
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/reel_tredicesima.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/reel_tredicesima_copertina.jpg
+Audio: tendenza tesa e veloce all'inizio, che si apre in un drop emozionale quando arriva la busta.
+
+```
+La tredicesima si spende una volta sola. 🎁
+
+In questa Black Week gli italiani spenderanno online 4,3 miliardi di euro (stima Netcomm – Politecnico di Milano). Le offerte restano aperte fino al Cyber Monday, lunedì 30 novembre. La tredicesima, per molti, arriva a metà dicembre.
+
+Chi la spende prima di averla, a dicembre non la vede.
+
+Mandalo a chi ha già il carrello pieno.
+Tu la tredicesima ce l'hai ancora o è già nel carrello? 👇
+
+Fonte: Netcomm – Osservatorio eCommerce B2c, Politecnico di Milano.
+
+#blackfriday #tredicesima #risparmio #mentalita #mentalitacapitale
+```
+
+### 16:30 – "Il giro" (stipendio, rate, spese, zero, 11 s)
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/reel_giro.mp4 (versione 28/11: i cartelli compaiono a 0,9 s, così nel primo secondo c'è solo la frase in alto)
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/reel_giro_copertina.jpg
+Audio: cupo e ritmato (passi, percussioni) che si apre in qualcosa di emozionante quando si vede il cerchio dall'alto.
+
+```
+Tutti vanno dalla stessa parte. Nessuno chiede dove. 🔁
+
+Stipendio, rate, spese, zero. E il mese dopo si ricomincia.
+Da dentro la fila sembra di andare avanti. Da fuori si vede che è un cerchio.
+
+Uscire fa paura: ti dicono "torna in fila". Ma basta che uno esca perché qualcun altro si chieda: "e se ha ragione?"
+
+Mandalo a chi uscirebbe dal giro con te.
+Tu in che punto del giro sei? 👇
+
+#mentalita #soldi #libertafinanziaria #crescitapersonale #mentalitacapitale
+```
+
+### 20:30 – "Il secchio bucato" (piccole spese, serie Stesso stipendio, 8,6 s)
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/reel_secchio.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/reel_secchio_copertina.jpg
+Audio: leggero e ritmato (lo-fi o piano pizzicato) che diventa caldo quando l'amico tappa i buchi.
+
+```
+Non ti svuotano le spese grandi. Ti svuotano i buchi piccoli. 🪣
+
+Caffè, delivery, abbonamenti, aperitivo, sigarette. Nessuno sembra grande.
+Esempio: 2 € al giorno sono 730 € in un anno. Cinque buchi così sono 3.650 €.
+
+Il primo passo non è guadagnare di più. È tappare i buchi.
+
+Mandalo all'amico con il secchio bucato.
+Qual è il tuo buco più grande? 👇
+
+#risparmio #soldi #educazionefinanziaria #mentalita #mentalitacapitale
+```
+
+---
+
 ## NUOVO – "Chi resiste più a lungo?" (59 s, la sbarra sul fossato dei coccodrilli)
 Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/reel_sbarra.mp4
 Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/reel_sbarra_copertina.jpg

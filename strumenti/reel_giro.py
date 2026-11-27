@@ -33,6 +33,7 @@ FRONT = 2
 FRIEND_I = 3                              # l'amica: la quarta della fila davanti, dietro di lui
 LEI = (125, 185, 255)
 SIGNS = C["cartelli"]
+T_SIGNS = C.get("t_cartelli", 0.0)
 random.seed(4)
 
 def cam(t):
@@ -48,12 +49,14 @@ def frame_side(t, d, dl, late):
     for k in range(-2, 40):
         wx = k * 420
         sx = wx - cx + 100
-        if -300 < sx < W + 300:
-            d.line([(sx, 1000), (sx, 700)], fill=(60, 60, 70), width=6)
+        a_s = min(1.0, max(0.0, (t - T_SIGNS) / 0.3))     # M3: i cartelli compaiono dopo il primo secondo
+        if -300 < sx < W + 300 and a_s > 0:
+            mix = lambda c: tuple(int(18 + (v - 18) * a_s) for v in c)
+            d.line([(sx, 1000), (sx, 700)], fill=mix((60, 60, 70)), width=6)
             s = SIGNS[k % len(SIGNS)]
             fnt = font(40); tw = text_w(s, fnt)
-            d.rectangle([sx - tw / 2 - 18, 630, sx + tw / 2 + 18, 700], fill=(36, 36, 44), outline=(90, 90, 100), width=3)
-            d.text((sx - tw / 2, 645), s, font=fnt, fill=(200, 200, 210))
+            d.rectangle([sx - tw / 2 - 18, 630, sx + tw / 2 + 18, 700], fill=mix((36, 36, 44)), outline=mix((90, 90, 100)), width=3)
+            d.text((sx - tw / 2, 645), s, font=fnt, fill=mix((200, 200, 210)))
     for x in range(-200, W + 200, 160):
         xx = x - (cx * 1.0) % 160
         d.line([(xx, 1340), (xx + 70, 1340)], fill=(40, 40, 48), width=4)

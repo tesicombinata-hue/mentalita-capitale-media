@@ -1,0 +1,13 @@
+{
+ "durata": 8.8,
+ "frase1": ["STESSO STIPENDIO.", "CHI ARRIVA A DICEMBRE?"],
+ "frase2": ["LA TREDICESIMA SI SPENDE", "UNA VOLTA SOLA."],
+ "size2": 56,
+ "fumetti": [
+  ["GIÀ CHE CI SONO", 1.25, 2.3, 400, 745],
+  ["TANTO ARRIVA LA TREDICESIMA", 2.4, 3.65, 470, 745]
+ ],
+ "etichetta_pacchi": "GIÀ SPESA",
+ "invito": ["Mandalo a chi ha già", "il carrello pieno."],
+ "velocita": 1.0
+}
