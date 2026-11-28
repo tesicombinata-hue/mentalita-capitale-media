@@ -9,6 +9,71 @@ Come si fa, per ogni Reel:
 
 ---
 
+## NUOVO 28/11 – 3 Reel in inglese sulla mentalità (ognuno con un elemento che fa commentare)
+Orari consigliati: 12:30 · 16:30 · 20:30 ("Same paycheck" è uscito alle 17:26). Copertina personalizzata dal file `_copertina.jpg`.
+
+### 1 – "4 builders. 1 idea. 100 days." (21,4 s)
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_builders.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_builders_copertina.jpg
+Audio: epica e tesa (percussioni), che esplode sulla tempesta
+
+```
+4 builders. 1 idea. 100 days. 🧱
+
+Ego built what people could see.
+Action Taker built fast, fell, and built again.
+Overthinker is still planning.
+Perfectionist placed one brick at a time.
+
+Then the storm came.
+
+Team Perfectionist or Team Action Taker? 👇
+
+#mindset #discipline #perfectionism #selfimprovement #stickfigure
+```
+Primo commento da fissare: "Action Taker built 3 towers. Perfectionist built 1. Who really won?"
+
+### 2 – "4 climbers. 1 mountain." (20,8 s)
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_climbers.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_climbers_copertina.jpg
+Audio: cinematografica e lenta, che si fa silenziosa quando la folla se ne va e si apre in cima
+
+```
+4 climbers. 1 mountain. 🏔️
+
+Motivation stopped when it got hard.
+Ego was the fastest... while the crowd was watching.
+Then the lights went off.
+
+Obsession and Discipline kept climbing in the dark.
+
+Ego never quits. Or does it? 👇
+
+#mindset #ego #discipline #motivation #selfimprovement
+```
+Primo commento da fissare: "Ego accepts death but not defeat? Not when nobody's watching."
+
+### 3 – "Life hits everyone. Who gets back up?" (20,6 s)
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_backup.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_backup_copertina.jpg
+Audio: drammatica e potente (colpi sui pugni), con un cambio ironico sul selfie finale
+
+```
+Life hits everyone. 👊
+
+Motivation stayed down.
+Ego hit back. Bad idea.
+Obsession got up until his body said stop.
+Discipline got up. Every single time.
+
+Which one are you? 👇
+
+#mindset #discipline #resilience #motivation #stickfigure
+```
+Primo commento da fissare: "Discipline wins... and then posts it 😭 Which one are you?"
+
+---
+
 ## PROVA IN INGLESE (27/11, v2) – "Same paycheck. 30 days. Who's still standing?" (22,6 s)
 Reel nuovo (non è la sbarra tradotta): quattro omini su colonne di monete sopra i coccodrilli, contatore dei giorni, finale sulla scena senza schermata nera. Su quale account pubblicarlo lo decide il titolare (consigliato: un account a parte in inglese).
 Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_paycheck.mp4

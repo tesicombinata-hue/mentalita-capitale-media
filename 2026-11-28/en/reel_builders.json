@@ -1,0 +1,107 @@
+{
+ "durata": 21.4,
+ "tempesta": 15.8,
+ "crolli": [
+  5.5,
+  9.9
+ ],
+ "fine0": 18.4,
+ "domanda_t": 19.2,
+ "nomi": [
+  "PERFECTIONIST",
+  "OVERTHINKER",
+  "EGO",
+  "ACTION TAKER"
+ ],
+ "testi": [
+  [
+   "4 builders. 1 idea.|100 days.",
+   0.0,
+   3.4
+  ],
+  [
+   "Ego:|builds what people can see.",
+   3.5,
+   7.0
+  ],
+  [
+   "Action Taker:|builds fast. Falls. Again.",
+   7.1,
+   10.5
+  ],
+  [
+   "Perfectionist:|one brick. Fix it. Again.",
+   10.6,
+   14.0
+  ],
+  [
+   "Overthinker:|still planning.",
+   14.1,
+   15.7
+  ],
+  [
+   "Day 100.|Then the storm came.",
+   15.8,
+   18.3
+  ],
+  [
+   "The slowest one|is the only one standing.",
+   18.4,
+   21.4
+  ]
+ ],
+ "domanda": [
+  "Team Perfectionist",
+  "or Team Action Taker?"
+ ],
+ "fumetti": [
+  [
+   2,
+   "LOOK AT IT!",
+   3.0,
+   4.6
+  ],
+  [
+   1,
+   "WHAT IF IT FAILS?",
+   2.2,
+   3.6
+  ],
+  [
+   3,
+   "OOPS",
+   5.6,
+   6.6
+  ],
+  [
+   3,
+   "AGAIN.",
+   7.0,
+   8.0
+  ],
+  [
+   3,
+   "OOPS",
+   10.0,
+   10.9
+  ],
+  [
+   0,
+   "NOT PERFECT",
+   11.0,
+   12.4
+  ],
+  [
+   1,
+   "ONE MORE PLAN",
+   14.2,
+   15.6
+  ],
+  [
+   3,
+   "AGAIN.",
+   11.2,
+   12.2
+  ]
+ ]
+}
