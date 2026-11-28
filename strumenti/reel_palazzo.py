@@ -5,7 +5,8 @@ EGO tira su in fretta un palazzo bellissimo (colonne, timpano, cupola) ma senza 
 Arrabbiato, distrugge con un pugno la casetta di ACTION TAKER. ACTION TAKER raccoglie i pezzi del palazzo
 dell'Ego e ricostruisce la sua casa, più grande e più bella (luci accese, bandiera blu).
 L'Ego prova a colpire ancora: il palazzo non si muove, lui rimbalza e finisce KO sulle sue macerie.
-PERFECTIONIST per tutto il video lucida lo stesso mattone; alla fine lo alza fiero: "ALMOST READY".
+PERFECTIONIST misura ogni mattone e lo mette in una griglia perfetta, lentissimo: a fine video ha fatto 3 file su un progetto
+molto più grande (sagoma tratteggiata); alza fiero il mattone successivo: "ALMOST READY".
 Uso: python3 reel_palazzo.py contenuto.json uscita.mp4 [secondo -> png]
 """
 import json, math, sys, os, random
@@ -18,8 +19,10 @@ from motore_arch import W, H, WHITE, BLUE, RED, ease, lin, keys
 C = json.load(open(sys.argv[1])); OUT = sys.argv[2]
 DUR = C["durata"]; T = C["tempi"]
 GY = 1300
-EX, PX, AX = 195, 560, 872
-EGO0 = 365            # dove sta l'Ego
+EX, PX, AX = 195, 480, 872
+SX = 608                # muretto del Perfectionist
+PB = [0.8 + 1.38 * k for k in range(12)]   # quando posa ogni mattone (12 = 3 file da 4)
+EGO0 = 342            # dove sta l'Ego
 ATP = AX + 82         # Action Taker davanti alla sua casa              # EGO, PERFECTIONIST, ACTION TAKER
 MARBLE, MARBLE_E = (232, 232, 238), (120, 120, 132)
 BRICK, BRICK_E = (205, 200, 196), (80, 76, 74)
@@ -118,8 +121,8 @@ def frame(t):
         if 0 <= t - st < 0.35: shake = 10 * math.sin(t * 80) * (1 - (t - st) / 0.35)
     v = A.V(z, cx + shake, 935)
     # cielo e terreno
-    for k in range(10):
-        y0 = 120 * k; c = int(6 + k * 1.6); d.rectangle([0, y0, W, y0 + 120], fill=(c, c, c + 6))
+    for k in range(16):
+        y0 = 120 * k; c = int(6 + min(k, 11) * 1.4); d.rectangle([0, y0, W, y0 + 120], fill=(c, c, c + 6))
     G = v.p(0, GY); d.rectangle([0, G[1], W, H], fill=(18, 18, 22)); d.line([(0, G[1]), (W, G[1])], fill=(85, 85, 95), width=3)
     for k in range(-2, 14):
         P = v.p(k * 90 + 20, GY + 26); d.line([P, (P[0] + v.s(40), P[1])], fill=(40, 40, 48), width=3)
@@ -170,19 +173,36 @@ def frame(t):
                     x = AX + (c - (w - 1) / 2) * 44 + rng2.uniform(-6, 6) + (11 if r % 2 else 0); y = GY - 11 - r * 21; rr = rng2.uniform(-5, 5)
                     fx = x + rng.uniform(40, 260); fy = GY - 11 - rng.choice([0, 0, 21]); fr = rng.uniform(-90, 90)
                     e = k * k; brick(d, v, x + (fx - x) * e, y + (fy - y) * e - 160 * math.sin(k * math.pi) * rng.uniform(0.3, 1), rr + (fr - rr) * e)
-    # PERFECTIONIST con il suo mattone
-    lift = 0.5 + 0.5 * math.sin(t * 3)
+    # PERFECTIONIST: progetto tratteggiato, mattoni in griglia perfetta, lentissimo
+    bp = [(SX - 88, GY), (SX - 88, GY - 300), (SX, GY - 390), (SX + 88, GY - 300), (SX + 88, GY)]
+    for (x0, y0), (x1, y1) in zip(bp, bp[1:]):
+        L = math.hypot(x1 - x0, y1 - y0); nseg = int(L // 18)
+        for k in range(0, nseg, 2):
+            a0, a1 = k / nseg, min(1, (k + 1) / nseg)
+            d.line([v.p(x0 + (x1 - x0) * a0, y0 + (y1 - y0) * a0), v.p(x0 + (x1 - x0) * a1, y0 + (y1 - y0) * a1)], fill=(70, 110, 160), width=int(v.s(3)))
+    slot = lambda k: (SX - 63 + (k % 4) * 42, GY - 11 - (k // 4) * 21)
+    placed = sum(1 for tb in PB if t >= tb)
+    for k in range(placed): brick(d, v, *slot(k), 0, (238, 234, 228), BRICK_E)
     fin = t >= T["fine0"] + 0.4
-    pkind = "focus" if not fin else "big"
-    A.figure(d, v, PX, GY, pkind, WHITE, k=0.86, arms=(0.22 + 0.1 * lift, 0.22 + 0.1 * lift) if not fin else (0.95, 0.95))
-    hb = (PX, GY - 185 - 18 * lift) if not fin else (PX, GY - 405)
-    brick(d, v, hb[0], hb[1], 6 * math.sin(t * 2), (235, 230, 225), BRICK_E)
-    if not fin and int(t * 2) % 2 == 0:                                             # il righello
-        d.line([v.p(PX - 40, hb[1] - 20), v.p(PX + 40, hb[1] - 20)], fill=(150, 200, 255), width=int(v.s(3)))
+    if not fin and placed < len(PB):
+        tb = PB[placed]; ph = 1 - (tb - t) / 1.38                                     # 0..1 del ciclo
+        hold = (PX + 70, GY - 190)                                                    # davanti al petto
+        if ph < 0.65:                                                                 # lo guarda e lo misura
+            hb = (hold[0], hold[1] - 6 * math.sin(t * 6)); arms = (0.3, 0.42)
+            brick(d, v, hb[0], hb[1], 4 * math.sin(t * 5), (238, 234, 228), BRICK_E)
+            if int(t * 4) % 2 == 0:
+                d.line([v.p(hb[0] - 34, hb[1] - 20), v.p(hb[0] + 34, hb[1] - 20)], fill=(150, 200, 255), width=int(v.s(3)))
+        else:                                                                         # lo posa con calma
+            q = ease((ph - 0.65) / 0.35); sx_, sy_ = slot(placed)
+            brick(d, v, hold[0] + (sx_ - hold[0]) * q, hold[1] + (sy_ - hold[1]) * q, 0, (238, 234, 228), BRICK_E); arms = (0.3, 0.3)
+        A.figure(d, v, PX, GY, "focus", WHITE, k=0.86, arms=arms)
+    else:
+        A.figure(d, v, PX, GY, "big" if fin else "focus", WHITE, k=0.86, arms=(0.95, 0.95) if fin else (0.2, 0.2))
+        if fin: brick(d, v, PX, GY - 405, 6 * math.sin(t * 2), (238, 234, 228), BRICK_E)
     # EGO
     ex = keys(t, [(0, EGO0), (T["pugno"] - 1.4, EGO0), (T["pugno"] - 0.35, AX - 150), (T["pugno"] + 0.6, AX - 150),
                   (T["pugno"] + 1.4, EGO0), (T["karma"] - 0.8, EGO0), (T["karma"] - 0.1, AX - 255), (T["karma"] + 0.05, AX - 255),
-                  (T["karma"] + 0.6, PX - 60)])
+                  (T["karma"] + 0.6, PX - 40)])
     erot, ekind, earms = 0.0, "smug", (0.85, 0.85)
     if T["crollo"] <= t < T["pugno"] - 1.4: ekind, earms = "scared", (0.6, 0.6)
     if T["pugno"] - 1.4 <= t < T["pugno"] + 0.6: ekind, earms = "angry", ((0.1, 0.55) if t < T["pugno"] - 0.12 else (0.1, 0.62))
@@ -218,9 +238,9 @@ def frame(t):
             p_ = (ex, GY - 420) if i == 0 else (pos[i] if i != 2 else (ax_, GY - 420))
             A.bubble(d, v, p_, s, al, size=28)
     # etichette
-    if abs(ex - EGO0) < 5 or t >= T["karma"] + 0.6: A.label(d, v, ex if t < T["karma"] else PX - 130, GY + 40, "EGO", (215, 215, 220) if t < T["karma"] + 0.5 else (85, 85, 92))
+    if abs(ex - EGO0) < 5 or t >= T["karma"] + 0.6: A.label(d, v, ex if t < T["karma"] else PX - 110, GY + 40, "EGO", (215, 215, 220) if t < T["karma"] + 0.5 else (85, 85, 92))
     A.label(d, v, PX, GY + 72, "PERFECTIONIST", (215, 215, 220))
-    if not (C["trasporti"][0][1] - 0.45 <= t < T["luci"]): A.label(d, v, ax_, GY + 40, "ACTION TAKER", BLUE)
+    if not (C["trasporti"][0][1] - 0.45 <= t < T["luci"]): A.label(d, v, min(ax_, 905), GY + 40, "ACTION TAKER", BLUE)
     A.caption(d, C["testi"], t, DUR)
     A.question(d, C["domanda"], t, C["domanda_t"], 420, 50)
     return img
