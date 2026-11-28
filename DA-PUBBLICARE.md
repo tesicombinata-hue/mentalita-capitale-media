@@ -9,6 +9,30 @@ Come si fa, per ogni Reel:
 
 ---
 
+## NUOVO 28/11 – "One hit a day." (18 s, metafora della costanza)
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_roccia.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_roccia_copertina.jpg
+Audio: lenta e tesa (piano, archi bassi) che sale con i giorni, si spegne quando il piccone si spezza e si apre in modo epico quando la roccia si rompe.
+
+```
+One hit a day. Against the impossible. 🪨
+
+Day 1. Nothing.
+Day 100. Nothing.
+Day 251. The tool broke. So did he.
+
+He kept going anyway.
+
+It didn't break on day 365. It broke every day before it.
+
+Be honest: which day would you quit? 👇
+
+#consistency #discipline #mindset #nevergiveup #stickfigure
+```
+Primo commento da fissare: "And the guy who laughed for 365 days called it luck 😭"
+
+---
+
 ## NUOVO 28/11 sera – "3 builders. Same land." (19,6 s, idea del titolare)
 Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_palazzo.mp4
 Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_palazzo_copertina.jpg
