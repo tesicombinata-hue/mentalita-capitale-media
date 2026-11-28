@@ -19,13 +19,23 @@ GY = 1360
 OX = 95                                                   # spostamento della roccia verso destra
 SV = 0.78                                                  # roccia un po' più bassa (lascia spazio al contatore)
 def sy(y): return GY - (GY - y) * SV
-def sh(pts): return [(x + OX, sy(y)) for x, y in pts]
+SX_ = 0.8                                                  # roccia più stretta (rientra tutta)
+def hx(x): return 250 + (x - 250) * SX_ + OX
+def sh(pts): return [(hx(x), sy(y)) for x, y in pts]
 ROCK = sh([(250, GY), (232, 1150), (262, 960), (300, 830), (380, 735), (520, 690), (660, 700), (800, 750), (905, 850),
            (965, 1000), (985, 1180), (1000, GY)])
 SPLIT_X = sh([(620, 690), (600, 820), (640, 960), (595, 1090), (630, 1230), (610, GY)])
-HIT = (243 + OX, 1135)
+HIT = (hx(243), 1135)
+BYX = (hx(470), hx(640))                                   # i due seduti in cima
+T_PUGNO = C["pugno"]
 K = 0.95                                                   # scala del minatore
 FX = HIT[0] - 200                                          # piedi del minatore
+def top_y(x):
+    ys = []
+    for (x0, y0), (x1, y1) in zip(ROCK, ROCK[1:]):
+        if min(x0, x1) <= x <= max(x0, x1) and x0 != x1: ys.append(y0 + (y1 - y0) * (x - x0) / (x1 - x0))
+    return min(ys)
+LUCKY_X = BYX[1] + 200 + 40
 
 # ---------------- crepe ----------------
 def crack_tree():
@@ -42,12 +52,13 @@ def crack_tree():
 CRACKS = crack_tree(); MAXC = max(s[4] for s in CRACKS)
 
 def day(t):
-    return int(keys(t, [(0, 1), (T["acc0"], 1), (T["rotto"], 250), (T["rotto"] + 0.01, 251), (T["riparte"], 251), (T["ultimo"] - 1.2, 364), (T["ultimo"], 365)]))
+    if t < T["acc0"]: return 1 + sum(1 for h in HITS if 0 < h <= t)
+    return int(keys(t, [(T["acc0"], 1 + sum(1 for h in HITS if h < T["acc0"])), (T["rotto"], 250), (T["rotto"] + 0.01, 251), (T["riparte"], 251), (T["ultimo"] - 1.2, 364), (T["ultimo"], 365)]))
 def crack_amount(t):
     return keys(t, [(0, 0), (T["rotto"], 0.32 * MAXC), (T["ultimo"] - 1.2, 0.62 * MAXC), (T["ultimo"] + 0.6, 1.25 * MAXC)])
 
 def make_hits():
-    out = [0.55, 1.35, 2.05]
+    out = [0.3 + 0.3 * i for i in range(8)]                         # subito un ritmo serrato
     k = T["acc0"]
     while k < T["rotto"] - 0.05: out.append(k); k += max(0.2, 0.5 - 0.06 * (k - T["acc0"]))
     out.append(T["rotto"])
@@ -115,10 +126,10 @@ def rock_layer(t):
     d.polygon(sh([(905, 850), (965, 1000), (985, 1180), (1000, GY), (900, GY), (930, 1100)]), fill=(52, 52, 60, 255))
     rng = random.Random(4)
     for _ in range(40):
-        xx = rng.uniform(320, 940) + OX; yy = sy(rng.uniform(780, 1330)); r = rng.uniform(4, 12)
+        xx = hx(rng.uniform(320, 940)); yy = sy(rng.uniform(780, 1330)); r = rng.uniform(4, 12)
         d.ellipse([xx - r, yy - r * 0.6, xx + r, yy + r * 0.6], fill=(58, 58, 68, 255))
-    fnt = mc.font(92, mc.INTER); s = "IMPOSSIBLE"; tw = mc.text_w(s, fnt)
-    d.text((620 + OX - tw / 2, sy(1030)), s, font=fnt, fill=(44, 44, 52, 255))
+    fnt = mc.font(76, mc.INTER); s = "IMPOSSIBLE"; tw = mc.text_w(s, fnt)
+    d.text((hx(600) - tw / 2, sy(1030)), s, font=fnt, fill=(44, 44, 52, 255))
     amt = crack_amount(t); glow = ease((t - T["ultimo"] - 0.15) / 0.35)
     for x0, y0, x1, y1, t0 in CRACKS:
         if amt <= t0: continue
@@ -138,8 +149,8 @@ def split_masks():
 ML, MR = split_masks()
 
 def skyline(d, a):
-    rng = random.Random(2); x = 420 + OX
-    while x < 830 + OX:
+    rng = random.Random(2); x = hx(410)
+    while x < hx(840):
         w = rng.uniform(30, 60); h = rng.uniform(90, 260)
         d.rectangle([x, 1290 - h, x + w, 1290], fill=tuple(int(c * a) for c in (30, 60, 110)))
         for wy in range(int(1290 - h + 14), 1280, 26):
@@ -155,7 +166,7 @@ def scene(t):
     split = ease((t - T["ultimo"] - 0.55) / 0.9)
     if split > 0:
         light = Image.new("RGB", (W, H), (0, 0, 0)); ld = ImageDraw.Draw(light)
-        ld.ellipse([620 + OX - 560 * split, 1000 - 440, 620 + OX + 560 * split, 1000 + 440], fill=(255, 214, 140))
+        ld.ellipse([hx(620) - 520 * split, 1000 - 440, hx(620) + 520 * split, 1000 + 440], fill=(255, 214, 140))
         light = light.filter(ImageFilter.GaussianBlur(90))
         img = Image.fromarray(np.clip(np.asarray(img, dtype=int) + (np.asarray(light, dtype=int) * 0.85 * split).astype(int), 0, 255).astype("uint8")); d = ImageDraw.Draw(img)
         skyline(d, split)
@@ -164,31 +175,38 @@ def scene(t):
     if split <= 0: img.paste(lay, (0, 0), lay)
     else:
         al = np.asarray(lay.split()[3])
-        for m, sx, rot in ((ML, -280, 9), (MR, 320, -8)):
+        for m, sx, rot in ((ML, -170, 7), (MR, 200, -7)):
             piece = Image.new("RGBA", (W, H), (0, 0, 0, 0)); piece.paste(lay, (0, 0), Image.fromarray(np.minimum(al, m)))
-            piece = piece.rotate(rot * split, center=(620 + OX, GY), resample=Image.BICUBIC)
+            piece = piece.rotate(rot * split, center=(hx(620), GY), resample=Image.BICUBIC)
             img.paste(piece, (int(sx * split), int(30 * split)), piece)
     d = ImageDraw.Draw(img); v = A.V(1.0, 540, 960)
     # i due sopra la roccia
-    for j, bx in enumerate((470 + OX, 660 + OX)):
+    for j, bx in enumerate(BYX):
         if split <= 0:
-            by = sy(700) + (12 if j == 0 else -5); laugh = 0.5 + 0.5 * math.sin(t * 12 + j)
+            by = top_y(bx) + 82 * 0.72; laugh = 0.5 + 0.5 * math.sin(t * 12 + j)
             kind = "big" if t < T["rotto"] else ("smug" if t < T["ultimo"] else "scared")
             A.figure(d, v, bx, by, kind, (175, 175, 185), arms=(0.3 + 0.45 * laugh * (t < T["rotto"] + 1.5), 0.2), sit=1.0, k=0.72)
         else:
             k = min(1, (t - T["ultimo"] - 0.55) / 0.6)
-            fx = bx + (-280 if j == 0 else 320) * split; fy = sy(700) + (GY - sy(700)) * k * k
-            if k >= 1: fx += (110 if j == 0 else -110)
+            fx = bx + (-170 if j == 0 else 200) * split; y0 = top_y(bx) + 60; fy = y0 + (GY - y0) * k * k
+            if k >= 1: fx += (90 if j == 0 else 40)
             rot = (-88 * min(1, k * 1.3)) if j == 0 else (88 * min(1, k * 1.3) if k < 1 else 0)
+            if j == 1 and t >= T_PUGNO:                                                     # il pugno: vola via girando
+                q = t - T_PUGNO; fx = LUCKY_X + 620 * q; fy = GY - 1050 * q + 520 * q * q; rot = 540 * q
+                A.figure(d, v, fx, fy, "ko", (175, 175, 185), rot=rot, arms=(0.9, 0.9), k=0.72)
+                continue
             A.figure(d, v, fx, fy, ("ko" if k >= 1 else "scared") if j == 0 else ("smug" if k >= 1 else "scared"), (175, 175, 185), rot=rot, arms=(0.2, 0.2), k=0.72)
     # il minatore
     kneel = T["rotto"] + 0.3 <= t < T["riparte"]
-    x = FX if t < T["ultimo"] + 1.2 else FX + (t - T["ultimo"] - 1.2) * 300
+    x = keys(t, [(0, FX), (T["ultimo"] + 1.4, FX), (T_PUGNO - 0.15, LUCKY_X - 150), (DUR, LUCKY_X - 150)])
     if kneel:
         A.figure(d, v, x, GY, "tired", BLUE, arms=(0.05, 0.05), sit=1.0, k=K)
         d.polygon([(x + 120, GY - 6), (x + 170, GY - 22), (x + 190, GY - 6)], fill=(200, 205, 215))     # la testa del piccone a terra
+    elif T_PUGNO - 0.35 <= t < T_PUGNO + 0.45:                                               # carica e tira il pugno
+        A.figure(d, v, x, GY, "angry", BLUE, arms=(0.2, 0.0 if t < T_PUGNO - 0.05 else 0.5), k=K)
     elif t >= T["ultimo"] + 0.7:
-        A.figure(d, v, x, GY, "big", BLUE, arms=(0.92, 0.92), k=K, legs=0.6 * math.sin(t * 10) if t > T["ultimo"] + 1.2 else 0)
+        walking = T["ultimo"] + 1.4 < t < T_PUGNO - 0.35
+        A.figure(d, v, x, GY, "focus" if walking else "big", BLUE, arms=(0.1, 0.1) if walking else (0.92, 0.92), k=K, legs=0.6 * math.sin(t * 12) if walking else 0)
     else:
         kind = "strain" if abs(swing_angle(t) - 8) < 20 else "focus"
         if T["riparte"] <= t < T["riparte"] + 0.45: kind = "angry"
@@ -198,6 +216,10 @@ def scene(t):
         if py_ < GY - 10: pick_head(d, (px_, py_), 400 * k, K)
         mx = HIT[0] - 90 - 120 * k; my = HIT[1] + 30 - 200 * k + 800 * k * k
         if my < GY - 6: d.line([(mx, my), (mx - 70 * math.cos(6 * k), my - 70 * math.sin(6 * k))], fill=(156, 112, 70), width=9)
+    if 0 <= t - T_PUGNO < 0.28:
+        q = t - T_PUGNO; cxp, cyp = LUCKY_X - 20, GY - 250 * 0.72 - 40; rr = 40 + 200 * q; a_ = 1 - q / 0.28
+        pts = [(cxp + (rr if j % 2 == 0 else rr * 0.45) * math.cos(j * math.pi / 8), cyp + (rr if j % 2 == 0 else rr * 0.45) * math.sin(j * math.pi / 8)) for j in range(16)]
+        d.polygon(pts, fill=tuple(int(255 * a_) for _ in range(3)))
     last = max([h for h in HITS if h <= t] or [-9]); ph = t - last
     if 0 <= ph < 0.14 and last > 0 and t < T["ultimo"] + 0.3:                               # scintille e schegge
         rng = random.Random(int(last * 100)); big = 1.8 if abs(last - T["ultimo"]) < 0.01 or abs(last - T["rotto"]) < 0.01 else 1.0
@@ -208,10 +230,10 @@ def scene(t):
 
 def camera(t):
     """(zoom, cx, cy) in coordinate mondo; il punto (cx, cy) va sullo schermo in (540, 1200)."""
-    tl = [(0, 1.30, 480, 1100), (T["acc0"], 1.30, 480, 1100), (T["rotto"] - 0.2, 1.38, 480, 1110),
-          (T["rotto"] + 0.15, 1.62, 330, 1170), (T["riparte"] - 0.1, 1.62, 330, 1170), (T["riparte"] + 0.6, 1.36, 480, 1110),
-          (T["ultimo"] - 1.2, 1.36, 480, 1110), (T["ultimo"] - 0.1, 1.62, HIT[0], 1150), (T["ultimo"] + 0.5, 1.62, HIT[0], 1150),
-          (T["ultimo"] + 1.5, 1.12, 640, 1080), (DUR, 1.08, 680, 1080)]
+    tl = [(0, 1.16, 500, 1090), (T["acc0"], 1.16, 500, 1090), (T["rotto"] - 0.2, 1.2, 500, 1095),
+          (T["rotto"] + 0.15, 1.62, 330, 1170), (T["riparte"] - 0.1, 1.62, 330, 1170), (T["riparte"] + 0.6, 1.16, 500, 1090),
+          (T["ultimo"] - 1.2, 1.16, 500, 1090), (T["ultimo"] - 0.1, 1.62, HIT[0], 1150), (T["ultimo"] + 0.5, 1.62, HIT[0], 1150),
+          (T["ultimo"] + 1.5, 1.05, 560, 1080), (T_PUGNO - 0.3, 1.25, LUCKY_X - 80, 1120), (T_PUGNO + 0.6, 1.25, LUCKY_X - 80, 1120), (DUR, 1.05, 560, 1080)]
     return tuple(keys(t, [(row[0], row[i + 1]) for row in tl]) for i in range(3))
 
 def to_screen(p, cam):
@@ -225,7 +247,7 @@ def counter(d, t):
     last_change = None
     for k in range(1, 8):
         if day(t - k / 30) != dd: last_change = (k - 1) / 30; break
-    if last_change is not None: pop = 1 + 0.22 * (1 - min(1, last_change / 0.12))
+    if last_change is not None: pop = 1 + (0.35 if t < T['acc0'] else 0.2) * (1 - min(1, last_change / 0.14))
     col = WHITE
     if T["rotto"] <= t < T["riparte"]: col = RED
     if dd == 365: col = BLUE
@@ -251,8 +273,8 @@ def frame(t):
             al = ease((t - a0) / 0.06) * (1 - ease((t - b0 + 0.06) / 0.06))
             split = ease((t - T["ultimo"] - 0.55) / 0.9)
             if who == "lui": wp = (mx + 20, GY - 430)
-            elif who == "a": wp = (470 + OX, sy(700) - 200)
-            else: wp = (660 + OX, sy(700) - 200) if split <= 0 else (660 + OX + 320 - 110, GY - 330)
+            elif who == "a": wp = (BYX[0], top_y(BYX[0]) - 190)
+            else: wp = (BYX[1], top_y(BYX[1]) - 190) if split <= 0 else (LUCKY_X, GY - 330)
             P = to_screen(wp, cam)
             mc.bubble(d, min(max(P[0], 170), W - 170), max(P[1], 540), s, size=34, alpha=al)
     counter(d, t)
@@ -272,6 +294,7 @@ if __name__ == "__main__":
            (T["riparte"], mc.s_rise(1.0, 0.25, 180, 260)),
            (T["ultimo"] - 0.6, mc.s_whoosh(0.6, 0.35)), (T["ultimo"], mc.s_tok(420, 0.08, 1.0)), (T["ultimo"] + 0.02, mc.s_thud(0.9, 45)),
            (T["ultimo"] + 0.5, mc.s_crack(1.0)), (T["ultimo"] + 0.6, mc.s_thud(1.0, 40)), (T["ultimo"] + 0.7, mc.s_rise(2.6, 0.5)),
-           (T["ultimo"] + 1.3, mc.s_thud(0.6, 70)), (C["domanda_t"], mc.s_chime(0.35, 660))]
+           (T["ultimo"] + 1.3, mc.s_thud(0.6, 70)), (T_PUGNO, mc.s_thud(1.0, 80)), (T_PUGNO + 0.02, mc.s_crack(0.7)), (T_PUGNO + 0.05, mc.s_whoosh(0.8, 0.35)),
+           (C["domanda_t"], mc.s_chime(0.35, 660))]
     for w_, s, a, b in C["fumetti"]: ev.append((a, mc.s_pop(0.2, 650)))
     A.finish(OUT, DUR, frame, ev)
