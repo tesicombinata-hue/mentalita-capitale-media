@@ -1,0 +1,138 @@
+{
+ "durata": 19.6,
+ "tempi": {
+  "ego0": 0.3,
+  "crollo": 5.2,
+  "pugno": 7.6,
+  "rifa0": 9.0,
+  "luci": 14.6,
+  "karma": 15.6,
+  "fine0": 16.6
+ },
+ "domanda_t": 17.2,
+ "domanda": "Which one are you?",
+ "trasporti": [
+  [
+   "base",
+   10.35,
+   10.8
+  ],
+  [
+   "c1",
+   11.25,
+   11.7
+  ],
+  [
+   "c2",
+   11.25,
+   11.7
+  ],
+  [
+   "c3",
+   12.15,
+   12.6
+  ],
+  [
+   "c4",
+   12.15,
+   12.6
+  ],
+  [
+   "arch",
+   13.05,
+   13.5
+  ],
+  [
+   "ped",
+   13.05,
+   13.5
+  ],
+  [
+   "dome",
+   13.95,
+   14.4
+  ]
+ ],
+ "testi": [
+  [
+   "3 builders. Same land.|Who builds it?",
+   0.0,
+   3.4
+  ],
+  [
+   "Ego:|builds to impress.",
+   3.5,
+   6.0
+  ],
+  [
+   "Then Ego did this.",
+   6.1,
+   8.9
+  ],
+  [
+   "Action Taker:|builds with the pieces.",
+   9.0,
+   14.5
+  ],
+  [
+   "Ego tried again.",
+   14.6,
+   16.5
+  ],
+  [
+   "Done beats perfect.|Every time.",
+   16.6,
+   19.6
+  ]
+ ],
+ "fumetti": [
+  [
+   0,
+   "LOOK AT MY PALACE!",
+   1.6,
+   3.4
+  ],
+  [
+   1,
+   "NOT YET...",
+   3.6,
+   4.9
+  ],
+  [
+   0,
+   "NO NO NO",
+   4.8,
+   6.0
+  ],
+  [
+   0,
+   "IF I CAN'T, NOBODY CAN",
+   6.4,
+   7.5
+  ],
+  [
+   2,
+   "...",
+   8.2,
+   9.0
+  ],
+  [
+   1,
+   "ALMOST...",
+   11.0,
+   12.4
+  ],
+  [
+   0,
+   "BONK",
+   15.6,
+   16.3
+  ],
+  [
+   1,
+   "ALMOST READY",
+   17.4,
+   19.5
+  ]
+ ]
+}

@@ -9,6 +9,30 @@ Come si fa, per ogni Reel:
 
 ---
 
+## NUOVO 28/11 sera – "3 builders. Same land." (19,6 s, idea del titolare)
+Video: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_palazzo.mp4
+Copertina: https://raw.githubusercontent.com/tesicombinata-hue/mentalita-capitale-media/media/2026-11-28/en/reel_palazzo_copertina.jpg
+Audio: epica e tesa che si spezza sul crollo, rabbiosa sul pugno, poi si apre quando si accendono le luci del palazzo nuovo.
+
+```
+3 builders. Same land. 🏛️
+
+Ego built the most beautiful palace. No foundation.
+When it fell, he smashed Action Taker's house too.
+
+Action Taker picked up the pieces and built something better.
+Perfectionist? Still choosing the first brick.
+
+Done beats perfect. Every time.
+
+Ego, Perfectionist or Action Taker: which one are you? 👇
+
+#mindset #actiontaker #perfectionism #ego #stickfigure
+```
+Primo commento da fissare: "Ego punched it twice. Which hurt more? 😭"
+
+---
+
 ## NUOVO 28/11 – 3 Reel in inglese sulla mentalità (il titolare tiene solo il n. 3, "Life hits everyone"; 1 e 2 scartati: realizzazione povera)
 Orari consigliati: 12:30 · 16:30 · 20:30 ("Same paycheck" è uscito alle 17:26). Copertina personalizzata dal file `_copertina.jpg`.
 
