@@ -21,7 +21,7 @@ Ego built the most beautiful palace. No foundation.
 When it fell, he smashed Action Taker's house too.
 
 Action Taker picked up the pieces and built something better.
-Perfectionist? Still choosing the first brick.
+Perfectionist laid 12 perfect bricks. Not even halfway.
 
 Done beats perfect. Every time.
 
