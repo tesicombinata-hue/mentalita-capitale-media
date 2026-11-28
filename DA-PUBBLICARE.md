@@ -9,7 +9,7 @@ Come si fa, per ogni Reel:
 
 ---
 
-## NUOVO 28/11 – 3 Reel in inglese sulla mentalità (ognuno con un elemento che fa commentare)
+## NUOVO 28/11 – 3 Reel in inglese sulla mentalità (il titolare tiene solo il n. 3, "Life hits everyone"; 1 e 2 scartati: realizzazione povera)
 Orari consigliati: 12:30 · 16:30 · 20:30 ("Same paycheck" è uscito alle 17:26). Copertina personalizzata dal file `_copertina.jpg`.
 
 ### 1 – "4 builders. 1 idea. 100 days." (21,4 s)
@@ -61,16 +61,18 @@ Audio: drammatica e potente (colpi sui pugni), con un cambio ironico sul selfie 
 ```
 Life hits everyone. 👊
 
-Motivation stayed down.
-Ego hit back. Bad idea.
-Obsession got up until his body said stop.
-Discipline got up. Every single time.
+Round 1: Motivation stayed down.
+Round 2: Ego hit back. Bad idea.
+Round 3: Obsession got up until his body said stop.
 
-Which one are you? 👇
+Discipline got up every single time.
+Then he took a selfie. 📸
+
+Was that necessary? And which one are you? 👇
 
 #mindset #discipline #resilience #motivation #stickfigure
 ```
-Primo commento da fissare: "Discipline wins... and then posts it 😭 Which one are you?"
+Primo commento da fissare: "Be honest: which round would have knocked YOU out? 1, 2 or 3 👇"
 
 ---
 
